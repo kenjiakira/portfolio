@@ -34,6 +34,7 @@ export const vi = {
   nav_projects: "Dự Án",
   nav_blog: "Blog",
   nav_contact: "Liên Hệ",
+  language: "Ngôn ngữ",
   form_name: "Tên của bạn",
   form_email: "Email của bạn",
   form_subject: "Chủ đề",

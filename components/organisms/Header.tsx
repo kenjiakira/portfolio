@@ -183,6 +183,41 @@ export function Header({
                     {item.label}
                   </motion.a>
                 ))}
+                
+                {/* Language Selector for Mobile */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navigationItems.length * 0.1 }}
+                  className="pt-2 mt-2 border-t border-white/10"
+                >
+                  <div className="px-4 py-2">
+                    <p className={`text-xs font-medium mb-2 ${
+                      darkMode ? "text-slate-400" : "text-slate-600"
+                    }`}>
+                      {t.language || "Language"}
+                    </p>
+                    <div className="flex gap-2">
+                      {(["en", "vi", "ja"] as const).map((lang) => (
+                        <motion.button
+                          key={lang}
+                          onClick={() => setLanguage(lang)}
+                          className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
+                            language === lang
+                              ? "bg-blue-600 text-white shadow-lg"
+                              : darkMode
+                                ? "text-slate-300 hover:text-white hover:bg-white/10"
+                                : "text-slate-700 hover:text-slate-900 hover:bg-black/10"
+                          }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {lang.toUpperCase()}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
               </CardContent>
             </Card>
           </motion.div>

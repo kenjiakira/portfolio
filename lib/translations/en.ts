@@ -34,6 +34,7 @@ export const en = {
   nav_projects: "Projects",
   nav_blog: "Blog",
   nav_contact: "Contact",
+  language: "Language",
   form_name: "Your Name",
   form_email: "Your Email",
   form_subject: "Subject",

@@ -34,6 +34,7 @@ export const ja = {
   nav_projects: "プロジェクト",
   nav_blog: "ブログ",
   nav_contact: "連絡先",
+  language: "言語",
   form_name: "お名前",
   form_email: "メールアドレス",
   form_subject: "件名",
