@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 import {
   Header, 
   Footer, 

@@ -4,7 +4,7 @@ import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface HeaderProps {
   darkMode: boolean

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ExternalIcon } from "@/components/ui/external-icon"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface SkillsSectionProps {
   darkMode: boolean

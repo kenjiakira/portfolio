@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalIcon, aboutIcons } from "@/components/ui/external-icon"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 import { ExternalLink, CheckCircle, Clock, Award } from "lucide-react"
 
 interface AboutSectionProps {

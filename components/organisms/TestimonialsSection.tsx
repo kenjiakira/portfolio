@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Quote } from "lucide-react"
 import Image from "next/image"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface TestimonialsSectionProps {
   darkMode: boolean

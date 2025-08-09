@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Roboto, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { TranslationsProvider } from "@/hooks/use-translations-context"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -29,7 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} ${jetbrainsMono.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${roboto.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <TranslationsProvider>
+          {children}
+        </TranslationsProvider>
+      </body>
     </html>
   )
 }

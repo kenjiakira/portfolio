@@ -4,7 +4,7 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Heart, Coffee, ArrowUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface FooterProps {
   darkMode: boolean

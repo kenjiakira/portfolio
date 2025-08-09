@@ -14,7 +14,7 @@ import {
   MapPin, 
   Coffee
 } from "lucide-react"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface HeroSectionProps {
   darkMode: boolean

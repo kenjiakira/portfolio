@@ -15,7 +15,7 @@ import {
   Send, 
   CheckCircle 
 } from "lucide-react"
-import { useTranslations } from "@/hooks/use-translations"
+import { useTranslations } from "@/hooks/use-translations-context"
 
 interface ContactSectionProps {
   darkMode: boolean
