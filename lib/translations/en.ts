@@ -1,5 +1,6 @@
 export const en = {
   name: "Kenji Akira",
+  realname: "Hoàng Ngọc Từ",
   title: "Junior Full Stack Developer",
   subtitle: "Crafting digital experiences that matter",
   location: "Hanoi, Vietnam",
@@ -8,7 +9,11 @@ export const en = {
   clients: "25+ Happy Clients",
   about: "About Me",
   aboutText:
-  "I’m Hoang Ngoc Tu, a passionate young developer focused on creating useful technology products for the community, especially in web and AI fields. At just 18 years old, I have built and contributed to real projects such as the online tool platform AIBinhdan (formerly 100Tools), the Codino programming platform supporting Vietnamese developers, and participated in AI projects with major companies like VNPT.I have experience with Next.js, React, Node.js, TypeScript, and modern AI technologies. I strive for simplicity, optimization, and efficiency in every product I build. I’m eager to learn, face new challenges, and contribute to the growth of the Vietnamese tech community.",
+  "I'm Hoang Ngoc Tu, a passionate young developer focused on creating useful technology products for the community, especially in web and AI fields. At just 18 years old, I have built and contributed to real projects such as the online tool platform AIBinhdan (formerly 100Tools), the Codino programming platform supporting Vietnamese developers, and participated in AI projects with major companies like VNPT.I have experience with Next.js, React, Node.js, TypeScript, and modern AI technologies. I strive for simplicity, optimization, and efficiency in every product I build. I'm eager to learn, face new challenges, and contribute to the growth of the Vietnamese tech community.",
+  // About detailed text
+  about_intro: "I'm {realname}, a passionate young developer focused on creating useful technology products for the community, especially in {web} and {ai_fields}.",
+  about_experience: "At just {age}, I have built and contributed to real projects such as the online tool platform {aibinhdan} (formerly 100Tools), the {codino} supporting Vietnamese developers, and participated in AI projects with major companies like {vnpt}.",
+  about_skills: "I have experience with {techs} and modern AI technologies. I strive for {principles} in every product I build.",
   experience_section: "Experience",
   education: "Education",
   featured_projects: "Featured Projects",
@@ -54,7 +59,7 @@ export const en = {
   // Companies
   company_growfund: "Growfund Investment & Development Company Limited",
   company_vnpt: "VNPT",
-  company_fca: "FCA Chat Bot Message Project (Outsource)",
+  company_fca: "FCA Chat Bot Messenger Project",
   company_aibinhdan: "AIBinhdan (trước đây là 100Tools)",
   // Experience descriptions
   desc_growfund: "Outsource development and maintenance of technology products, including AIBinhdan project (100+ online tools) and supporting development of Codino - programming platform for Vietnamese developers.",
@@ -139,6 +144,14 @@ export const en = {
   value_collaboration_desc: "Building amazing things together",
   value_learning_title: "Learning",
   value_learning_desc: "Continuous growth and development",
+  // About section highlights
+  highlight_web: "web",
+  highlight_ai_fields: "AI fields",
+  highlight_age: "18 years old",
+  highlight_aibinhdan: "AIBinhdan",
+  highlight_codino: "Codino programming platform",
+  highlight_vnpt: "VNPT",
+  highlight_principles: "simplicity, optimization, and efficiency",
   // Achievements/Certificates
   cert_google_title: "Technical Support Fundamentals",
   cert_google_desc: "Technical support foundation and basic IT troubleshooting from Google",

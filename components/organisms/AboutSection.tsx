@@ -37,6 +37,55 @@ interface Value {
 export function AboutSection({ darkMode }: AboutSectionProps) {
   const { t } = useTranslations()
 
+  // Helper function to create highlighted spans
+  const createHighlight = (text: string, color: 'blue' | 'purple' | 'emerald' | 'cyan' | 'orange' | 'gradient') => {
+    if (color === 'gradient') {
+      return (
+        <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          {text}
+        </span>
+      )
+    }
+    
+    const colorClasses = {
+      blue: darkMode 
+        ? 'bg-blue-500/20 text-blue-300 border border-blue-400/30' 
+        : 'bg-blue-50 text-blue-700 border border-blue-200',
+      purple: darkMode 
+        ? 'bg-purple-500/20 text-purple-300 border border-purple-400/30' 
+        : 'bg-purple-50 text-purple-700 border border-purple-200',
+      emerald: darkMode 
+        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/30' 
+        : 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+      cyan: darkMode 
+        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30' 
+        : 'bg-cyan-50 text-cyan-700 border border-cyan-200',
+      orange: darkMode 
+        ? 'bg-orange-500/20 text-orange-300 border border-orange-400/30' 
+        : 'bg-orange-50 text-orange-700 border border-orange-200'
+    }
+    
+    return (
+      <span className={`font-semibold px-2 py-1 rounded-lg ${colorClasses[color]}`}>
+        {text}
+      </span>
+    )
+  }
+
+  // Helper function to parse template strings with highlights
+  const parseTemplate = (template: string, replacements: { [key: string]: React.ReactNode }) => {
+    const parts = template.split(/(\{[^}]+\})/)
+    return parts.map((part, index) => {
+      if (part.startsWith('{') && part.endsWith('}')) {
+        const key = part.slice(1, -1)
+        return replacements[key] || part
+      }
+      return part
+    }).map((part, index) => (
+      <React.Fragment key={index}>{part}</React.Fragment>
+    ))
+  }
+
   const getStatusIcon = (status: Achievement['status']) => {
     if (status === t.cert_status_completed) {
       return CheckCircle
@@ -120,9 +169,10 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
   ]
 
   const skills: Skill[] = [
-    { name: t.skill_problem_solving, level: 95, iconSrc: aboutIcons.target },
-    { name: t.skill_team_leadership, level: 90, iconSrc: aboutIcons.users },
-    { name: t.skill_system_design, level: 88, iconSrc: aboutIcons.code }
+    { name: "AI/ML Integration", level: 92, iconSrc: aboutIcons.cpu },
+    { name: "Full-Stack Development", level: 95, iconSrc: aboutIcons.code },
+    { name: "Cloud Architecture", level: 88, iconSrc: aboutIcons.cloud },
+    { name: "DevOps & CI/CD", level: 85, iconSrc: aboutIcons.deploy }
   ]
 
   return (
@@ -213,9 +263,58 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                     </h3>
                   </div>
                   
-                  <p className={`text-lg leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
-                    {t.aboutText}
-                  </p>
+                  <div className={`text-lg leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
+                    <p className="mb-4">
+                      {parseTemplate(t.about_intro, {
+                        realname: createHighlight(t.realname, 'gradient'),
+                        web: createHighlight(t.highlight_web, 'blue'),
+                        ai_fields: createHighlight(t.highlight_ai_fields, 'purple')
+                      })}
+                    </p>
+                    
+                    <p className="mb-4">
+                      {parseTemplate(t.about_experience, {
+                        age: (
+                          <span className={`font-bold text-xl ${
+                            darkMode ? "text-white" : "text-slate-900"
+                          }`}>
+                            {t.highlight_age}
+                          </span>
+                        ),
+                        aibinhdan: createHighlight(t.highlight_aibinhdan, 'emerald'),
+                        codino: createHighlight(t.highlight_codino, 'cyan'),
+                        vnpt: createHighlight(t.highlight_vnpt, 'orange')
+                      })}
+                    </p>
+
+                    <p>
+                      {parseTemplate(t.about_skills, {
+                        techs: (
+                          <span className="inline-flex flex-wrap gap-1 items-center">
+                            {["Next.js", "React", "Node.js", "TypeScript"].map((tech, index) => (
+                              <motion.span
+                                key={tech}
+                                className={`font-medium px-2 py-1 rounded-md text-sm ${
+                                  darkMode 
+                                    ? 'bg-slate-700/50 text-slate-200 border border-slate-600/50' 
+                                    : 'bg-slate-100 text-slate-700 border border-slate-300'
+                                }`}
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                              >
+                                {tech}
+                              </motion.span>
+                            ))}
+                          </span>
+                        ),
+                        principles: (
+                          <span className="font-semibold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                            {t.highlight_principles}
+                          </span>
+                        )
+                      })}
+                    </p>
+                  </div>
 
                   {/* Current Role */}
                   <motion.div
@@ -253,57 +352,248 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
             </Card>
           </motion.div>
 
-          {/* Skills Summary */}
+          {/* Modern Tech Stack */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Card className="ios-glass-card border-0 shadow-2xl h-full">
-              <CardContent className="p-6">
-                <h3 className={`text-xl font-bold mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}>
-                  {t.core_strengths}
-                </h3>
-                <div className="space-y-4">
+            <Card className="ios-glass-card border-0 shadow-2xl h-full relative overflow-hidden">
+              {/* Glow Effect */}
+              <motion.div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: darkMode
+                    ? 'linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.08))'
+                    : 'linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.03), rgba(6, 182, 212, 0.04))',
+                  backgroundSize: '400% 400%',
+                  animation: 'gradientShift 6s ease-in-out infinite',
+                }}
+                animate={{
+                  opacity: [0.3, 0.7, 0.3]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <CardContent className="p-6 relative z-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <motion.div 
+                    className={`p-3 rounded-xl ${
+                      darkMode 
+                        ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30' 
+                        : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
+                    } shadow-lg`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <ExternalIcon 
+                      src={aboutIcons.cpu} 
+                      size={24}
+                      className={darkMode ? 'filter invert' : 'filter-none'}
+                    />
+                  </motion.div>
+                  <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
+                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                      Tech Stack
+                    </span>
+                  </h3>
+                </div>
+                
+                <div className="space-y-5">
                   {skills.map((skill, index) => (
                     <motion.div
                       key={skill.name}
-                      className="space-y-2"
+                      className="space-y-3"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + 0.6, duration: 0.6 }}
+                      transition={{ delay: index * 0.15 + 0.6, duration: 0.6 }}
                       viewport={{ once: true }}
+                      whileHover={{ scale: 1.02 }}
                     >
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <ExternalIcon 
-                            src={skill.iconSrc} 
-                            size={16}
-                            className={`${darkMode ? "filter invert opacity-70" : "opacity-70"}`}
-                          />
-                          <span className={`text-sm font-medium ${darkMode ? "text-slate-300" : "text-slate-700"}`}>
+                        <div className="flex items-center gap-3">
+                          <motion.div
+                            className={`p-2 rounded-lg ${
+                              darkMode 
+                                ? 'bg-white/10 border border-white/20' 
+                                : 'bg-slate-100 border border-slate-200'
+                            } shadow-sm`}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <ExternalIcon 
+                              src={skill.iconSrc} 
+                              size={16}
+                              className={darkMode ? "filter invert" : "filter-none"}
+                            />
+                          </motion.div>
+                          <span className={`font-semibold ${darkMode ? "text-slate-200" : "text-slate-800"}`}>
                             {skill.name}
                           </span>
                         </div>
-                        <span className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className={`w-full ${darkMode ? 'bg-white/10' : 'bg-slate-200'} rounded-full h-2`}>
-                        <motion.div
-                          className={`h-2 ${
-                            darkMode ? 'bg-white/30' : 'bg-slate-400'
-                          } rounded-full`}
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ delay: index * 0.1 + 0.8, duration: 1, ease: "easeOut" }}
+                        <motion.span 
+                          className={`text-sm font-bold px-3 py-1 rounded-full ${
+                            skill.level >= 90 
+                              ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                              : skill.level >= 85
+                                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                                : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white'
+                          } shadow-lg`}
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          transition={{ delay: index * 0.15 + 0.8, type: "spring", stiffness: 300 }}
                           viewport={{ once: true }}
+                        >
+                          {skill.level}%
+                        </motion.span>
+                      </div>
+                      
+                      <div className={`relative w-full ${darkMode ? 'bg-white/10' : 'bg-slate-200'} rounded-full h-4 overflow-hidden shadow-inner`}>
+                        {/* Background glow */}
+                        <motion.div
+                          className={`absolute inset-0 rounded-full ${
+                            skill.level >= 90 
+                              ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20'
+                              : skill.level >= 85
+                                ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20'
+                                : 'bg-gradient-to-r from-orange-500/20 to-amber-500/20'
+                          } blur-sm`}
+                          animate={{
+                            opacity: [0.5, 0.8, 0.5]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                        
+                        {/* Main progress bar */}
+                        <motion.div
+                          className={`relative h-full rounded-full ${
+                            skill.level >= 90 
+                              ? 'bg-gradient-to-r from-green-400 via-emerald-500 to-green-600'
+                              : skill.level >= 85
+                                ? 'bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600'
+                                : 'bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600'
+                          } shadow-lg overflow-hidden`}
+                          initial={{ width: 0, x: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ delay: index * 0.15 + 1, duration: 1.5, ease: "easeOut" }}
+                          viewport={{ once: true }}
+                          style={{
+                            backgroundSize: '200% 100%',
+                            animation: 'gradientShift 3s ease-in-out infinite',
+                            transformOrigin: 'left center'
+                          }}
+                        >
+                          {/* Top highlight */}
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-full" />
+                          
+                          {/* Animated dots */}
+                          <motion.div
+                            className="absolute inset-0 flex items-center justify-end pr-2"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: index * 0.15 + 2, duration: 0.5 }}
+                            viewport={{ once: true }}
+                          >
+                            {Array.from({ length: 3 }).map((_, dotIndex) => (
+                              <motion.div
+                                key={dotIndex}
+                                className="w-1 h-1 bg-white/60 rounded-full mx-0.5"
+                                animate={{
+                                  scale: [1, 1.5, 1],
+                                  opacity: [0.6, 1, 0.6]
+                                }}
+                                transition={{
+                                  duration: 1.5,
+                                  repeat: Infinity,
+                                  delay: dotIndex * 0.2
+                                }}
+                              />
+                            ))}
+                          </motion.div>
+                        </motion.div>
+                        
+                        {/* Shine sweep effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                          initial={{ x: '-100%' }}
+                          whileInView={{ x: '200%' }}
+                          transition={{ delay: index * 0.15 + 2.5, duration: 1, ease: "easeInOut" }}
+                          viewport={{ once: true }}
+                        />
+                        
+                        {/* Pulse border */}
+                        <motion.div
+                          className={`absolute inset-0 rounded-full border-2 ${
+                            skill.level >= 90 
+                              ? 'border-green-400/50'
+                              : skill.level >= 85
+                                ? 'border-blue-400/50'
+                                : 'border-orange-400/50'
+                          }`}
+                          animate={{
+                            borderColor: skill.level >= 90 
+                              ? ['rgba(74, 222, 128, 0.3)', 'rgba(74, 222, 128, 0.7)', 'rgba(74, 222, 128, 0.3)']
+                              : skill.level >= 85
+                                ? ['rgba(96, 165, 250, 0.3)', 'rgba(96, 165, 250, 0.7)', 'rgba(96, 165, 250, 0.3)']
+                                : ['rgba(251, 146, 60, 0.3)', 'rgba(251, 146, 60, 0.7)', 'rgba(251, 146, 60, 0.3)']
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
                         />
                       </div>
                     </motion.div>
                   ))}
                 </div>
+                
+                {/* Highlight Stats */}
+                <motion.div
+                  className="mt-6 pt-6 border-t border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5, duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="grid grid-cols-2 gap-4">
+                    <motion.div 
+                      className="text-center"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
+                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                          4+
+                        </span>
+                      </div>
+                      <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                        Years Experience
+                      </div>
+                    </motion.div>
+                    <motion.div 
+                      className="text-center"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
+                        <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                          30+
+                        </span>
+                      </div>
+                      <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
+                        Projects Built
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
               </CardContent>
             </Card>
           </motion.div>

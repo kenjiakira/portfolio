@@ -163,25 +163,6 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Timeline Line */}
-          <motion.div 
-            className={`absolute left-8 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-px ${
-              darkMode ? 'bg-white/20' : 'bg-slate-300'
-            } z-0`}
-            initial={{ opacity: 0, scaleY: 0 }}
-            whileInView={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ transformOrigin: 'top' }}
-          >
-            <motion.div
-              className="absolute top-0 left-0 w-full bg-gradient-to-b from-blue-500 to-purple-600"
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              transition={{ duration: 2, delay: 1.2 }}
-              viewport={{ once: true }}
-            />
-          </motion.div>
 
           {/* Experience Cards */}
           <div className="space-y-16">

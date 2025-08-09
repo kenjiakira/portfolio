@@ -1,5 +1,6 @@
 export const vi = {
   name: "Kenji Akira",
+  realname: "Hoàng Ngọc Từ",
   title: "Lập Trình Viên Full Stack Junior",
   subtitle: "Tạo ra những trải nghiệm số có ý nghĩa",
   location: "Hanoi, Vietnam",
@@ -9,6 +10,10 @@ export const vi = {
   about: "Về Tôi",
   aboutText:
    "Mình là Hoàng Ngọc Từ, một lập trình viên trẻ đam mê phát triển các sản phẩm công nghệ hữu ích cho cộng đồng, đặc biệt trong lĩnh vực web và AI. Dù mới 18 tuổi, mình đã xây dựng và phát triển nhiều dự án thực tế như nền tảng bộ công cụ trực tuyến AIBinhdan (trước đây là 100Tools), nền tảng lập trình Codino hỗ trợ developer Việt, và tham gia các dự án AI cùng các doanh nghiệp lớn như VNPT.Mình có kinh nghiệm với Next.js, React, Node.js, TypeScript và các công nghệ AI hiện đại. Mình luôn hướng tới sự tối ưu, đơn giản và hiệu quả trong sản phẩm. Ngoài ra, mình rất thích học hỏi và chinh phục thử thách mới, mong muốn góp phần phát triển cộng đồng công nghệ Việt Nam.",
+  // About detailed text
+  about_intro: "Mình là {realname}, một lập trình viên trẻ đam mê phát triển các sản phẩm công nghệ hữu ích cho cộng đồng, đặc biệt trong {web} và {ai_fields}.",
+  about_experience: "Dù mới {age}, mình đã xây dựng và phát triển nhiều dự án thực tế như nền tảng bộ công cụ trực tuyến {aibinhdan} (trước đây là 100Tools), {codino} hỗ trợ developer Việt, và tham gia các dự án AI cùng các doanh nghiệp lớn như {vnpt}.",
+  about_skills: "Mình có kinh nghiệm với {techs} và các công nghệ AI hiện đại. Mình luôn hướng tới {principles} trong mọi sản phẩm mình xây dựng.",
   experience_section: "Kinh Nghiệm",
   education: "Học Vấn",
   featured_projects: "Dự Án Nổi Bật",
@@ -54,7 +59,7 @@ export const vi = {
   // Companies
   company_growfund: "Công ty TNHH Đầu tư và Phát triển Growfund",
   company_vnpt: "VNPT",
-  company_fca: "Dự án FCA Chat Bot Message (Outsource)",
+  company_fca: "Dự án FCA ChatBot Messenger ",
   company_aibinhdan: "AIBinhdan (trước đây là 100Tools)",
   // Experience descriptions
   desc_growfund: "Làm outsource phát triển và duy trì các sản phẩm công nghệ, trong đó có dự án AIBinhdan (bộ công cụ trực tuyến 100+ tiện ích) và hỗ trợ phát triển Codino – nền tảng lập trình cho developer Việt.",
@@ -139,6 +144,14 @@ export const vi = {
   value_collaboration_desc: "Xây dựng những điều tuyệt vời cùng nhau",
   value_learning_title: "Học Hỏi",
   value_learning_desc: "Phát triển và trưởng thành liên tục",
+  // About section highlights
+  highlight_web: "web",
+  highlight_ai_fields: "lĩnh vực AI",
+  highlight_age: "18 tuổi",
+  highlight_aibinhdan: "AIBinhdan",
+  highlight_codino: "nền tảng lập trình Codino",
+  highlight_vnpt: "VNPT",
+  highlight_principles: "sự đơn giản, tối ưu hóa và hiệu quả",
   // Achievements/Certificates
   cert_google_title: "Technical Support Fundamentals",
   cert_google_desc: "Nền tảng hỗ trợ kỹ thuật và giải quyết sự cố IT cơ bản từ Google",

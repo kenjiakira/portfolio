@@ -127,8 +127,35 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="space-y-6 lg:space-y-10"
+              className="space-y-6 lg:space-y-10 relative"
             >
+              {/* Floating Dots Background */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <motion.div
+                    key={`dot-${i}`}
+                    className={`absolute w-1 h-1 rounded-full ${
+                      darkMode ? 'bg-white/20' : 'bg-slate-900/20'
+                    }`}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                      x: [0, Math.random() * 100 - 50],
+                      y: [0, Math.random() * 100 - 50],
+                      opacity: [0.2, 0.8, 0.2],
+                      scale: [1, 1.5, 1],
+                    }}
+                    transition={{
+                      duration: Math.random() * 4 + 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
+              </div>
               <div className="space-y-4 lg:space-y-6">
                 <motion.div
                   className="flex items-center gap-3 text-sm font-medium"
@@ -141,9 +168,33 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
-                  <span className={darkMode ? "text-slate-300" : "text-slate-600"}>
-                    Available for new opportunities
-                  </span>
+                  <motion.div
+                    className={`${darkMode ? "text-slate-300" : "text-slate-600"} cursor-pointer`}
+                    whileHover="bounce"
+                    animate="bounce"
+                  >
+                    {"Available for new opportunities".split("").map((char, index) => (
+                      <motion.span
+                        key={`available-${index}`}
+                        className="inline-block"
+                        style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                        variants={{
+                          bounce: {
+                            y: [0, -8, 0],
+                            transition: {
+                              delay: index * 0.05,
+                              duration: 0.8,
+                              ease: "easeInOut",
+                              repeat: Infinity,
+                              repeatDelay: 2
+                            }
+                          }
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </motion.div>
                 </motion.div>
 
                 <motion.h1
@@ -182,26 +233,55 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
               >
-                <motion.button
-                  onClick={downloadResume}
-                  className="group relative px-8 py-4 btn-light font-semibold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                <motion.div 
+                  className="relative p-1 rounded-2xl"
+                  style={{
+                    background: darkMode
+                      ? 'linear-gradient(45deg, #ffffff, #f8fafc, #e2e8f0, #ffffff)'
+                      : 'linear-gradient(45deg, #1e293b, #475569, #64748b, #1e293b)',
+                    backgroundSize: '400% 400%',
+                    animation: 'gradientShift 3s ease-in-out infinite',
+                  }}
+                  animate={{
+                    filter: darkMode 
+                      ? [
+                          'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))',
+                          'drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))',
+                          'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))'
+                        ]
+                      : [
+                          'drop-shadow(0 0 10px rgba(30, 41, 59, 0.3))',
+                          'drop-shadow(0 0 20px rgba(30, 41, 59, 0.6))',
+                          'drop-shadow(0 0 10px rgba(30, 41, 59, 0.3))'
+                        ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 >
-                  <div className={`absolute inset-0 ${
-                    darkMode 
-                      ? 'bg-gradient-to-r from-white/20 to-white/30' 
-                      : 'bg-gradient-to-r from-slate-700 to-slate-900'
-                  } opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                  <div className={`relative flex items-center gap-3 transition-colors duration-300 ${
-                    darkMode 
-                      ? 'text-slate-300 group-hover:text-white' 
-                      : 'text-slate-700 group-hover:text-white'
-                  }`}>
-                    <Download className="h-5 w-5" />
-                    {t.downloadCV}
-                  </div>
-                </motion.button>
+                  <motion.button
+                    onClick={downloadResume}
+                    className="group relative px-8 py-4 btn-light font-semibold rounded-2xl button-shadow-dramatic transition-all duration-300 overflow-hidden w-full"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div className={`absolute inset-0 ${
+                      darkMode 
+                        ? 'bg-gradient-to-r from-white/20 to-white/30' 
+                        : 'bg-gradient-to-r from-slate-700 to-slate-900'
+                    } opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    <div className={`relative flex items-center gap-3 transition-colors duration-300 ${
+                      darkMode 
+                        ? 'text-slate-900 group-hover:text-slate-800' 
+                        : 'text-white group-hover:text-slate-100'
+                    }`}>
+                      <Download className="h-5 w-5" />
+                      {t.downloadCV}
+                    </div>
+                  </motion.button>
+                </motion.div>
 
                 <div className="flex gap-4">
                   {socialLinks.map((social, index) => (
@@ -248,23 +328,53 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
               className="relative"
             >
               <div className="relative max-w-lg mx-auto">
-                {/* Main Image Container */}
-                <motion.div
-                  className="relative z-10 overflow-hidden rounded-3xl ios-glass-card shadow-2xl"
-                  whileHover={{ scale: 1.02, rotateY: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                {/* Glow Effect Container */}
+                <motion.div 
+                  className="relative p-1 rounded-3xl"
+                  style={{
+                    background: darkMode
+                      ? 'linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981, #3b82f6)'
+                      : 'linear-gradient(45deg, #1e40af, #7c3aed, #0891b2, #059669, #1e40af)',
+                    backgroundSize: '400% 400%',
+                    animation: 'gradientShift 4s ease-in-out infinite',
+                  }}
+                  animate={{
+                    filter: darkMode 
+                      ? [
+                          'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.2))',
+                          'drop-shadow(0 0 30px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.3))',
+                          'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.2))'
+                        ]
+                      : [
+                          'drop-shadow(0 0 15px rgba(30, 64, 175, 0.3)) drop-shadow(0 0 30px rgba(124, 58, 237, 0.2))',
+                          'drop-shadow(0 0 25px rgba(30, 64, 175, 0.5)) drop-shadow(0 0 50px rgba(124, 58, 237, 0.3))',
+                          'drop-shadow(0 0 15px rgba(30, 64, 175, 0.3)) drop-shadow(0 0 30px rgba(124, 58, 237, 0.2))'
+                        ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 >
-                  <Image
-                    src="/professional-headshot.png"
-                    alt="Kenji Akira"
-                    width={500}
-                    height={600}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
+                  {/* Main Image Container */}
+                  <motion.div
+                    className="relative z-10 overflow-hidden rounded-3xl ios-glass-card shadow-2xl"
+                    whileHover={{ scale: 1.02, rotateY: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <Image
+                      src="/professional-headshot.png"
+                      alt="Kenji Akira"
+                      width={500}
+                      height={600}
+                      className="w-full h-auto object-cover"
+                      priority
+                    />
 
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </motion.div>
                 </motion.div>
 
               </div>

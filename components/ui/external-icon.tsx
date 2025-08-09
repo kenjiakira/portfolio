@@ -36,5 +36,8 @@ export const aboutIcons = {
   clock: "/assets/svg/clock.svg",
   google: "/assets/svg/google.svg",
   ibm: "/assets/svg/ibm.svg",
-  meta: "/assets/svg/meta.svg", 
+  meta: "/assets/svg/meta.svg",
+  cpu: "/assets/svg/runtime.svg",
+  cloud: "/assets/svg/azure.svg",
+  deploy: "/assets/svg/deploy.svg"
 }

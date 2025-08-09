@@ -44,7 +44,7 @@ export function Header({
             <Card className="ios-glass-card border-0 shadow-2xl backdrop-blur-2xl rounded-full">
               <CardContent className="flex items-center justify-between px-4 lg:px-8 py-3">
                 <motion.div
-                  className="text-2xl font-bold tracking-tight"
+                  className="text-2xl font-bold tracking-tight text-shadow-dramatic"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -90,10 +90,10 @@ export function Header({
                         onClick={() => setLanguage(lang)}
                         className={`px-3 py-1.5 text-xs font-medium transition-all duration-300 ${
                           language === lang
-                            ? "btn-light text-blue-600 shadow-lg"
+                            ? "btn-light text-blue-600 button-shadow-medium"
                             : darkMode
-                              ? "text-slate-300 hover:text-white hover:bg-white/5"
-                              : "text-slate-700 hover:text-slate-900 hover:bg-black/5"
+                              ? "text-slate-300 hover:text-white hover:bg-white/5 button-shadow-light"
+                              : "text-slate-700 hover:text-slate-900 hover:bg-black/5 button-shadow-light"
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -106,7 +106,7 @@ export function Header({
                   {/* Dark Mode Toggle */}
                   <motion.button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 rounded-full liquid-glass-subtle hover:scale-105 transition-all duration-300"
+                    className="p-2 rounded-full liquid-glass-subtle hover:scale-105 transition-all duration-300 button-shadow-medium"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -130,7 +130,7 @@ export function Header({
                   {/* Mobile Menu Button */}
                   <motion.button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden p-2 rounded-full liquid-glass-subtle"
+                    className="md:hidden p-2 rounded-full liquid-glass-subtle button-shadow-medium"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -204,10 +204,10 @@ export function Header({
                           onClick={() => setLanguage(lang)}
                           className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
                             language === lang
-                              ? "bg-blue-600 text-white shadow-lg"
+                              ? "bg-blue-600 text-white button-shadow-strong"
                               : darkMode
-                                ? "text-slate-300 hover:text-white hover:bg-white/10"
-                                : "text-slate-700 hover:text-slate-900 hover:bg-black/10"
+                                ? "text-slate-300 hover:text-white hover:bg-white/10 button-shadow-light"
+                                : "text-slate-700 hover:text-slate-900 hover:bg-black/10 button-shadow-light"
                           }`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}

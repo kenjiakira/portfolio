@@ -1,14 +1,19 @@
 export const ja = {
   name: "Kenji Akira",
+  realname: "Hoàng Ngọc Từ",
   title: "シニアフルスタック開発者",
   subtitle: "意味のあるデジタル体験を創造する",
-  location: "サンフランシスコ, CA",
+  location: "ハノイ、ベトナム",
   experience: "5年以上の経験",
   projects: "50以上のプロジェクト完了",
   clients: "25以上の満足したクライアント",
   about: "私について",
   aboutText:
   "私はホアン・ゴック・トゥ（Hoang Ngoc Tu）と申します。コミュニティのために役立つ技術製品を開発することに情熱を持つ若い開発者で、特にウェブやAIの分野に注力しています。18歳という若さですが、オンラインツールプラットフォーム「AIBinhdan」（旧100Tools）やベトナムの開発者を支援するプログラミングプラットフォーム「Codino」などの実際のプロジェクトを構築・開発し、VNPTなどの大手企業のAIプロジェクトにも参加しています。Next.js、React、Node.js、TypeScript、最新のAI技術の経験があります。製品開発ではシンプルさ、最適化、効率性を重視しており、新しい挑戦を学び続け、ベトナムの技術コミュニティの成長に貢献したいと考えています。",
+  // About detailed text
+  about_intro: "私は{realname}と申します。コミュニティのために役立つ技術製品を開発することに情熱を持つ若い開発者で、特に{web}や{ai_fields}の分野に注力しています。",
+  about_experience: "{age}という若さですが、オンラインツールプラットフォーム{aibinhdan}（旧100Tools）や{codino}などの実際のプロジェクトを構築・開発し、{vnpt}などの大手企業のAIプロジェクトにも参加しています。",
+  about_skills: "{techs}や最新のAI技術の経験があります。製品開発では{principles}を重視しています。",
   experience_section: "経験",
   education: "学歴",
   featured_projects: "注目のプロジェクト",
@@ -54,7 +59,7 @@ export const ja = {
   // Companies
   company_growfund: "Growfund Investment & Development Company Limited",
   company_vnpt: "VNPT",
-  company_fca: "FCA Chat Bot Message Project (Outsource)",
+  company_fca: "FCA Chat Bot Messenger Project",
   company_aibinhdan: "AIBinhdan (旧100Tools)",
   // Experience descriptions
   desc_growfund: "技術製品のアウトソース開発・保守、AIBinhdanプロジェクト（100以上のオンラインツール）およびベトナム開発者向けプログラミングプラットフォームCodino開発支援。",
@@ -139,6 +144,14 @@ export const ja = {
   value_collaboration_desc: "一緒に素晴らしいものを構築",
   value_learning_title: "学習",
   value_learning_desc: "継続的な成長と発展",
+  // About section highlights
+  highlight_web: "ウェブ",
+  highlight_ai_fields: "AI分野",
+  highlight_age: "18歳",
+  highlight_aibinhdan: "AIBinhdan",
+  highlight_codino: "Codinoプログラミングプラットフォーム",
+  highlight_vnpt: "VNPT",
+  highlight_principles: "シンプルさ、最適化、効率性",
   // Achievements/Certificates
   cert_google_title: "Technical Support Fundamentals",
   cert_google_desc: "Googleからの技術サポート基盤と基本的ITトラブルシューティング",
