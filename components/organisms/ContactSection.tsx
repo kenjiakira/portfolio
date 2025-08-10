@@ -46,26 +46,76 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
   })
 
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    
+    // Client-side validation
+    const trimmedData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim()
+    }
+    
+    if (!trimmedData.name || !trimmedData.email || !trimmedData.subject || !trimmedData.message) {
       setFormStatus("error")
+      setErrorMessage(t.contact_fill_required || "Please fill in all required fields")
+      return
+    }
+    
+    // Check message length
+    if (trimmedData.message.length < 10) {
+      setFormStatus("error")
+      setErrorMessage("Message must be at least 10 characters long")
       return
     }
 
     setFormStatus("loading")
+    setErrorMessage("")
 
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus("success")
-      setFormData({ name: "", email: "", subject: "", message: "" })
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(trimmedData),
+      })
 
-      // Reset form status after 5 seconds
+      const result = await response.json()
+
+      if (response.ok) {
+        setFormStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        
+        // Reset form status after 5 seconds
+        setTimeout(() => {
+          setFormStatus("idle")
+        }, 5000)
+      } else {
+        console.error('Email sending failed:', result.error)
+        setFormStatus("error")
+        setErrorMessage(result.error || "Failed to send message. Please try again.")
+        
+        // Reset error status after 5 seconds
+        setTimeout(() => {
+          setFormStatus("idle")
+          setErrorMessage("")
+        }, 5000)
+      }
+    } catch (error) {
+      console.error('Network error:', error)
+      setFormStatus("error")
+              setErrorMessage("Network error. Please check your connection and try again.")
+      
+      // Reset error status after 5 seconds
       setTimeout(() => {
         setFormStatus("idle")
+        setErrorMessage("")
       }, 5000)
-    }, 2000)
+    }
   }
 
 
@@ -459,18 +509,27 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                       >
                         {t.contact_project_details}
                       </label>
-                      <Textarea
-                        id="message"
-                        rows={6}
-                        placeholder={t.contact_project_placeholder}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className={`transition-all duration-300 resize-none ${darkMode
-                            ? 'bg-white/5 border border-white/20 text-white placeholder:text-slate-400 focus:bg-white/10 focus:border-white/30'
-                            : 'bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-500 focus:bg-white focus:border-slate-300'
-                          } focus:ring-2 focus:ring-blue-500/20`}
-                        required
-                      />
+                      <div className="relative">
+                        <Textarea
+                          id="message"
+                          rows={6}
+                          placeholder={t.contact_project_placeholder}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          className={`transition-all duration-300 resize-none ${darkMode
+                              ? 'bg-white/5 border border-white/20 text-white placeholder:text-slate-400 focus:bg-white/10 focus:border-white/30'
+                              : 'bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-500 focus:bg-white focus:border-slate-300'
+                            } focus:ring-2 focus:ring-blue-500/20`}
+                          required
+                        />
+                        <div className={`absolute bottom-2 right-2 text-xs ${
+                          formData.message.length < 10 
+                            ? (darkMode ? 'text-red-400' : 'text-red-500')
+                            : (darkMode ? 'text-green-400' : 'text-green-600')
+                        }`}>
+                          {formData.message.length}/10 min
+                        </div>
+                      </div>
                     </motion.div>
 
                     <motion.div
@@ -526,7 +585,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                             }`}
                         >
                           <p className="text-center font-medium">
-                            {t.contact_fill_required}
+                            {errorMessage || t.contact_fill_required}
                           </p>
                         </motion.div>
                       )}

@@ -205,7 +205,7 @@ export const vi = {
   contact_full_name: "Họ Và Tên",
   contact_email_address: "Địa Chỉ Email",
   contact_project_details: "Chi Tiết Dự Án",
-  contact_project_placeholder: "Hãy cho tôi biết về dự án, thời gian, ngân sách và các yêu cầu cụ thể của bạn...",
+  contact_project_placeholder: "Hãy cho tôi biết về dự án, thời gian, ngân sách và các yêu cầu cụ thể của bạn... (tối thiểu 10 ký tự)",
   contact_send_message: "Gửi Tin Nhắn",
   contact_message_sent: "Tin Nhắn Đã Gửi Thành Công!",
   contact_fill_required: "Vui lòng điền đầy đủ các trường bắt buộc.",
@@ -220,10 +220,10 @@ export const vi = {
   footer_get_updates: "Nhận cập nhật mới nhất về dự án và công nghệ",
   footer_email_placeholder: "your@email.com",
   footer_join: "Tham Gia",
-  footer_navigation: "Liên Hệ",
-  footer_resources: "Liên Hệ",
-  footer_privacy_policy: "Liên Hệ",
-  footer_terms_of_service: "Liên Hệ",
+  footer_navigation: "Điều hướng",
+  footer_resources: "Tài Nguyên",
+  footer_privacy_policy: "Quyền riêng tư",
+  footer_terms_of_service: "Điều khoản dịch vụ",
 
   // About section
   tech_stack: "Công Nghệ Sử Dụng",

@@ -205,7 +205,7 @@ export const en = {
   contact_full_name: "Full Name",
   contact_email_address: "Email Address",
   contact_project_details: "Project Details",
-  contact_project_placeholder: "Tell me about your project, timeline, budget, and any specific requirements...",
+  contact_project_placeholder: "Tell me about your project, timeline, budget, and any specific requirements... (minimum 10 characters)",
   contact_send_message: "Send Message",
   contact_message_sent: "Message Sent Successfully!",
   contact_fill_required: "Please fill in all required fields.",

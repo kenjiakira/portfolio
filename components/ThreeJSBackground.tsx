@@ -256,5 +256,5 @@ export const ThreeJSBackground = React.memo(({ darkMode }: ThreeJSBackgroundProp
     />
   )
 })
-
 ThreeJSBackground.displayName = 'ThreeJSBackground'
+

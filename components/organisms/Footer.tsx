@@ -14,8 +14,8 @@ interface FooterProps {
 export function Footer({ darkMode }: FooterProps) {
   const { t } = useTranslations()
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub", color: "from-gray-600 to-gray-800" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: darkMode ? "" : "from-blue-600 to-blue-800" },
+    { icon: Github, href: "https://github.com/kenjiakira", label: "GitHub", color: "from-gray-600 to-gray-800" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/tu-ngoc-hoang-348557291/", label: "LinkedIn", color: darkMode ? "" : "from-blue-600 to-blue-800" },
     { icon: Mail, href: "mailto:kenjiakira2006@gmail.com", label: "Email", color: darkMode ? "" : "from-emerald-600 to-emerald-800" },
   ]
 

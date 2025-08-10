@@ -205,7 +205,7 @@ export const ja = {
   contact_full_name: "氏名",
   contact_email_address: "メールアドレス",
   contact_project_details: "プロジェクト詳細",
-  contact_project_placeholder: "プロジェクト、タイムライン、予算、特定の要件について教えてください...",
+  contact_project_placeholder: "プロジェクト、タイムライン、予算、特定の要件について教えてください...（最低10文字）",
   contact_send_message: "メッセージを送信",
   contact_message_sent: "メッセージが正常に送信されました！",
   contact_fill_required: "すべての必須フィールドを入力してください。",
