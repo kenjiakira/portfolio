@@ -37,36 +37,19 @@ interface Value {
 export function AboutSection({ darkMode }: AboutSectionProps) {
   const { t } = useTranslations()
 
-  // Helper function to create highlighted spans
+  // Helper function to create highlighted spans - simplified to just bold
   const createHighlight = (text: string, color: 'blue' | 'purple' | 'emerald' | 'cyan' | 'orange' | 'gradient') => {
     if (color === 'gradient') {
       return (
-        <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <span className="font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           {text}
         </span>
       )
     }
     
-    const colorClasses = {
-      blue: darkMode 
-        ? 'bg-blue-500/20 text-blue-300 border border-blue-400/30' 
-        : 'bg-blue-50 text-blue-700 border border-blue-200',
-      purple: darkMode 
-        ? 'bg-purple-500/20 text-purple-300 border border-purple-400/30' 
-        : 'bg-purple-50 text-purple-700 border border-purple-200',
-      emerald: darkMode 
-        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/30' 
-        : 'bg-emerald-50 text-emerald-700 border border-emerald-200',
-      cyan: darkMode 
-        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30' 
-        : 'bg-cyan-50 text-cyan-700 border border-cyan-200',
-      orange: darkMode 
-        ? 'bg-orange-500/20 text-orange-300 border border-orange-400/30' 
-        : 'bg-orange-50 text-orange-700 border border-orange-200'
-    }
-    
+    // Just use bold text without background colors
     return (
-      <span className={`font-semibold px-2 py-1 rounded-lg ${colorClasses[color]}`}>
+      <span className="font-bold">
         {text}
       </span>
     )
@@ -308,7 +291,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                           </span>
                         ),
                         principles: (
-                          <span className="font-semibold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                          <span className="font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                             {t.highlight_principles}
                           </span>
                         )

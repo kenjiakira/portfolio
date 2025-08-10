@@ -15,41 +15,54 @@ import {
 } from "@/components/organisms"
 
 import { motion } from "framer-motion"
+import { ThreeJSBackground } from "@/components/ThreeJSBackground"
 
 const FloatingParticles = React.memo(() => {
-  // Adaptive particle count based on device performance
+  // Adaptive particle count based on device performance - further optimized
   const getParticleCount = React.useCallback(() => {
-    if (typeof window === 'undefined') return 8
+    if (typeof window === 'undefined') return 6
     
-    // Reduce particles on mobile or low-performance devices
+    // Reduce particles for better performance
     const isMobile = window.innerWidth < 768
     const isLowPerformance = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     
-    if (isMobile || isLowPerformance) return 4
-    return 8 // Further reduced for better mobile performance
+    if (prefersReducedMotion) return 0
+    if (isMobile || isLowPerformance) return 3
+    return 6 // Reduced for better performance
   }, [])
 
   // Pre-calculate particles data to avoid recalculation on re-renders
   const particles = React.useMemo(() => {
     if (typeof window === 'undefined') return []
     
-    return [...Array(getParticleCount())].map((_, i) => ({
+    const count = getParticleCount()
+    if (count === 0) return []
+    
+    return [...Array(count)].map((_, i) => ({
       id: i,
       initialX: Math.random() * window.innerWidth,
       initialY: Math.random() * window.innerHeight,
       targetX: Math.random() * window.innerWidth,
       targetY: Math.random() * window.innerHeight,
-      duration: Math.random() * 15 + 15, // 15-30s instead of 10-30s
-      delay: Math.random() * 5, // Stagger start times
+      duration: Math.random() * 20 + 20, // 20-40s for smoother animation
+      delay: Math.random() * 3, // Reduced stagger
     }))
   }, [getParticleCount])
+
+  // Don't render if no particles
+  if (particles.length === 0) return null
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute w-1 h-1 bg-blue-400/15 rounded-full floating-particle"
+          className="absolute w-1 h-1 bg-blue-400/10 rounded-full"
+          style={{
+            willChange: 'transform, opacity',
+            contain: 'layout style paint',
+          }}
           initial={{
             x: particle.initialX,
             y: particle.initialY,
@@ -58,14 +71,14 @@ const FloatingParticles = React.memo(() => {
           animate={{
             x: [particle.initialX, particle.targetX, particle.initialX],
             y: [particle.initialY, particle.targetY, particle.initialY],
-            opacity: [0, 0.6, 0],
+            opacity: [0, 0.4, 0], // Reduced opacity for subtlety
           }}
           transition={{
             duration: particle.duration,
             delay: particle.delay,
             repeat: Infinity,
-            ease: "easeInOut", // More natural than linear
-            type: "tween", // Use tween instead of spring for better performance
+            ease: "easeInOut",
+            type: "tween",
           }}
         />
       ))}
@@ -74,19 +87,24 @@ const FloatingParticles = React.memo(() => {
 })
 
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState<boolean | null>(null) // Start with null to indicate loading
   const { mounted } = useTranslations()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection] = useState("home")
+  const [isDarkModeReady, setIsDarkModeReady] = useState(false)
 
   useEffect(() => {
+    // Read from localStorage immediately
     const isDark = localStorage.getItem("darkMode")
     // Default to dark mode if no preference saved
-    setDarkMode(isDark !== null ? isDark === "true" : true)
+    const initialDarkMode = isDark !== null ? isDark === "true" : true
+    setDarkMode(initialDarkMode)
+    setIsDarkModeReady(true)
+    console.log('Initial darkMode set to:', initialDarkMode)
   }, [])
 
   useEffect(() => {
-    if (mounted) {
+    if (mounted && darkMode !== null) {
       localStorage.setItem("darkMode", darkMode.toString())
       if (darkMode) {
         document.documentElement.classList.add("dark")
@@ -105,25 +123,27 @@ export default function Portfolio() {
     link.click()
   }
 
-  if (!mounted) return null
+  if (!mounted || darkMode === null || !isDarkModeReady) return null
 
   return (
     <div
-      className={`min-h-screen transition-all duration-700 relative overflow-hidden ${
+      className={`min-h-screen transition-all duration-500 relative overflow-hidden ${
         darkMode
-          ? "bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20"
+          ? "bg-gradient-to-br from-slate-950 via-slate-900/30 to-slate-800/20"
           : "bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30"
       }`}
     >
-      {/* Animated Background */}
+      {/* Optimized Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div
-          className={`absolute inset-0 ${darkMode ? "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" : "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"}`}
+          className={`absolute inset-0 ${darkMode ? "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.08),transparent_40%)]" : "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"}`}
         />
-
       </div>
 
       <FloatingParticles />
+      
+      {/* ThreeJS Background for Dark Mode */}
+      <ThreeJSBackground darkMode={darkMode} />
 
       <Header 
         darkMode={darkMode}

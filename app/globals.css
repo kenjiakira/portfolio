@@ -77,17 +77,18 @@
 
 /* Enhanced Dark Mode Colors - Optimized for Performance */
 .dark {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 50%, #0f141f 100%);
   color: #f8fafc;
 }
 
 .dark body {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 50%, #0f141f 100%);
   background-attachment: fixed;
-  /* Subtle texture overlay - low impact */
+  /* Elegant subtle texture overlay - optimized for performance */
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.02) 0%, transparent 50%);
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.015) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.01) 0%, transparent 60%);
 }
 
 /* iOS-Style Liquid Glass Effects - Performance Optimized */
@@ -303,7 +304,7 @@
     inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Performance Optimizations */
+/* Performance Optimizations - Enhanced */
 .liquid-glass,
 .liquid-glass-subtle,
 .ios-glass-card,
@@ -313,9 +314,76 @@
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+  will-change: transform, opacity;
 }
 
-/* Reduced motion support */
+/* Additional performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in-up,
+  .animate-liquid-float,
+  .animate-liquid-pulse,
+  .animate-gradient-shift {
+    will-change: transform, opacity;
+  }
+}
+
+/* Reduce repaints for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize backdrop filters for better performance */
+.liquid-glass,
+.liquid-glass-subtle,
+.ios-glass-card,
+.ios-glass-button,
+.ios-frosted {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Additional performance optimizations */
+/* Reduce paint complexity for better performance */
+.liquid-glass::before,
+.liquid-glass-subtle::before,
+.ios-glass-card::before,
+.ios-glass-button::before {
+  will-change: opacity;
+}
+
+/* Optimize text rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce layout thrashing */
+.container,
+.max-w-6xl,
+.max-w-4xl,
+.max-w-2xl {
+  contain: layout style;
+}
+
+/* Optimize images and media */
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  contain: layout style paint;
+}
+
+/* Reduced motion support - Enhanced */
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass,
   .liquid-glass-subtle,
@@ -325,6 +393,19 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transition: none;
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Disable floating animations for reduced motion */
+  .floating-particle,
+  [class*="animate-"] {
+    animation: none !important;
   }
 }
 
@@ -561,28 +642,28 @@ html {
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-/* Animations */
+/* Animations - Performance Optimized */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 @keyframes liquid-float {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotate(0deg) translateZ(0);
   }
   33% {
-    transform: translateY(-10px) rotate(1deg);
+    transform: translateY(-10px) rotate(1deg) translateZ(0);
   }
   66% {
-    transform: translateY(5px) rotate(-1deg);
+    transform: translateY(5px) rotate(-1deg) translateZ(0);
   }
 }
 
@@ -590,11 +671,11 @@ html {
   0%,
   100% {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
   }
   50% {
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
-    transform: scale(1.02);
+    transform: scale(1.02) translateZ(0);
   }
 }
 

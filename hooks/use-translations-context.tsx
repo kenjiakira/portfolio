@@ -17,16 +17,20 @@ interface TranslationsProviderProps {
 }
 
 export function TranslationsProvider({ children }: TranslationsProviderProps) {
-  const [language, setLanguageState] = useState<Language>('en')
+  const [language, setLanguageState] = useState<Language>('vi')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     
-    // Get language from localStorage if available
+    // Get language from localStorage if available, default to Vietnamese
     const savedLanguage = localStorage.getItem('language') as Language
     if (savedLanguage && ['en', 'vi', 'ja'].includes(savedLanguage)) {
       setLanguageState(savedLanguage)
+    } else {
+      // Set Vietnamese as default if no language is saved
+      setLanguageState('vi')
+      localStorage.setItem('language', 'vi')
     }
   }, [])
 
