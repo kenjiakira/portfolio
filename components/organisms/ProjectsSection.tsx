@@ -185,7 +185,7 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            A showcase of my recent work and creative projects
+            {t.projects_description}
           </motion.p>
         </motion.div>
 

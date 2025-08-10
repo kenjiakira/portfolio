@@ -154,7 +154,7 @@ export function SkillsSection({ darkMode }: SkillsSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Technologies and tools I use to build amazing digital experiences
+            {t.skills_description}
           </motion.p>
         </motion.div>
 

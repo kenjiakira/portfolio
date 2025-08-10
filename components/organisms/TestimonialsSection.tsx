@@ -16,7 +16,7 @@ interface TechQuote {
   author: string
   handle: string
   avatar: string
-  content: string
+  contentKey: string // Key for translation
   date: string
   likes: string
   retweets: string
@@ -33,7 +33,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Elon Musk",
       handle: "@elonmusk",
       avatar: "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg",
-      content: "The future of AI is not just about building smarter machines, but about creating tools that amplify human potential. The best developers are those who understand both technology and human needs.",
+      contentKey: "quote_elon_content",
       date: "2h",
       likes: "45.2K",
       retweets: "12.8K",
@@ -45,7 +45,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Bill Gates",
       handle: "@BillGates",
       avatar: "/assets/images/bill-gates.jpg",
-      content: "Software is eating the world, but the most impactful code is written by developers who think about accessibility, sustainability, and how their work affects billions of people.",
+      contentKey: "quote_bill_content",
       date: "5h",
       likes: "38.7K",
       retweets: "9.2K",
@@ -57,7 +57,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Sundar Pichai",
       handle: "@sundarpichai",
       avatar: "/assets/images/sundar-pichai.jpg",
-      content: "The best developers don't just write code - they solve real problems. They understand that technology should make life better, simpler, and more accessible for everyone.",
+      contentKey: "quote_sundar_content",
       date: "1d",
       likes: "29.4K",
       retweets: "7.6K",
@@ -69,7 +69,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Sam Altman",
       handle: "@sama",
       avatar: "/assets/images/sam-altman.jpg",
-      content: "The most valuable skill in tech isn't just coding - it's the ability to learn quickly, adapt to new technologies, and build things that people actually want to use.",
+      contentKey: "quote_sam_content",
       date: "3d",
       likes: "52.1K",
       retweets: "15.3K",
@@ -81,7 +81,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Mark Zuckerberg",
       handle: "@finkd",
       avatar: "/assets/images/mark-zuckerberg.jpg",
-      content: "Great developers focus on impact. They build products that connect people, solve real problems, and create value for millions of users around the world.",
+      contentKey: "quote_mark_content",
       date: "1w",
       likes: "41.3K",
       retweets: "11.9K",
@@ -93,7 +93,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
       author: "Jensen Huang",
       handle: "@JensenHuang",
       avatar: "/assets/images/jensen-huang.jpg",
-      content: "The future belongs to developers who can harness the power of AI to create applications that were previously impossible. Innovation happens at the intersection of technology and creativity.",
+      contentKey: "quote_jensen_content",
       date: "2w",
       likes: "33.8K",
       retweets: "8.7K",
@@ -187,7 +187,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
                       transition={{ delay: 0.3, duration: 0.6 }}
                       viewport={{ once: true }}
                     >
-                      "{quote.content}"
+                      "{t[quote.contentKey as keyof typeof t]}"
                     </motion.p>
 
                     {/* Engagement Stats */}

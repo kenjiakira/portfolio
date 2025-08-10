@@ -20,7 +20,28 @@ export const metadata: Metadata = {
   description: "Junior Full Stack Developer & UI/UX Designer with 5+ years of experience in modern web technologies",
   keywords: "Full Stack Developer, React, Next.js, TypeScript, UI/UX Designer",
   authors: [{ name: "Kenji Akira" }],
-  creator: "Kenji Akira"
+  creator: "Kenji Akira",
+  icons: {
+    icon: [
+      {
+        url: "/assets/images/logo.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/assets/images/logo.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/assets/images/logo.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
 }
 
 export default function RootLayout({

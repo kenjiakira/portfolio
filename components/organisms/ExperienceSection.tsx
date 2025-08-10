@@ -171,7 +171,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
                 key={index}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } flex-col lg:gap-16`}
+                } flex-col lg:gap-16 justify-center lg:justify-start`}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.3, duration: 0.8 }}
@@ -181,7 +181,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
 
                 {/* Experience Card */}
                 <motion.div 
-                  className="flex-1 ml-16 lg:ml-0 max-w-2xl relative z-10"
+                  className="flex-1 lg:ml-16 ml-0 max-w-2xl relative z-10"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -243,7 +243,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
                       {/* Highlights */}
                       <div className="mb-6">
                         <h4 className={`text-sm font-semibold mb-3 ${darkMode ? "text-slate-300" : "text-slate-700"}`}>
-                          Key Achievements:
+                          {t.experience_key_achievements}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {exp.highlights.map((highlight, highlightIndex) => (
@@ -272,7 +272,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
                       {/* Technologies */}
                       <div>
                         <h4 className={`text-sm font-semibold mb-3 ${darkMode ? "text-slate-300" : "text-slate-700"}`}>
-                          Technologies Used:
+                          {t.experience_technologies}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {exp.technologies.map((tech, techIndex) => (

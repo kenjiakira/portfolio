@@ -382,7 +382,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                   </motion.div>
                   <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      Tech Stack
+                      {t.tech_stack}
                     </span>
                   </h3>
                 </div>
@@ -559,7 +559,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                         </span>
                       </div>
                       <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                        Years Experience
+                        {t.years_experience}
                       </div>
                     </motion.div>
                     <motion.div 
@@ -572,7 +572,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                         </span>
                       </div>
                       <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                        Projects Built
+                        {t.projects_built}
                       </div>
                     </motion.div>
                   </div>

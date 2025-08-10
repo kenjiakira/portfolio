@@ -19,7 +19,7 @@ export const vi = {
   featured_projects: "Dự Án Nổi Bật",
   skills: "Kỹ Năng Kỹ Thuật",
   achievements: "Chứng chỉ chuyên môn",
-  testimonials: "Tech Leaders Say",
+  testimonials: "Những lời nói của các lãnh đạo công nghệ",
   blog: "Bài Viết Mới Nhất",
   contact: "Cùng Nhau Làm Việc",
   contactText: "Tôi luôn quan tâm đến những cơ hội mới và dự án thú vị",
@@ -136,14 +136,14 @@ export const vi = {
   skill_team_leadership: "Lãnh Đạo Nhóm", 
   skill_system_design: "Thiết Kế Hệ Thống",
   // Values/Driving factors - Modernized
-  value_innovation_title: "Innovation",
-  value_innovation_desc: "Pushing boundaries with cutting-edge AI & Web3 technologies",
-  value_quality_title: "Excellence",
-  value_quality_desc: "Crafting scalable, maintainable code that stands the test of time",
-  value_collaboration_title: "Impact",
-  value_collaboration_desc: "Building solutions that empower communities and drive real change",
-  value_learning_title: "Growth",
-  value_learning_desc: "Continuously evolving with emerging technologies and best practices",
+  value_innovation_title: "Sáng Tạo",
+  value_innovation_desc: "Sử dụng công nghệ AI & Web3 tiên tiến để đẩy mạnh giới hạn",
+  value_quality_title: "Chất Lượng",
+  value_quality_desc: "Tạo ra mã nguồn có khả năng mở rộng, bảo trì và chịu đựng thời gian",
+  value_collaboration_title: "Ảnh Hưởng",
+  value_collaboration_desc: "Xây dựng giải pháp để phát triển cộng đồng và thực hiện thay đổi thực tế",
+  value_learning_title: "Phát Triển",
+  value_learning_desc: "Phát triển liên tục với các công nghệ mới và các thực hành tốt nhất",
   // About section highlights
   highlight_web: "web",
   highlight_ai_fields: "lĩnh vực AI",
@@ -181,4 +181,52 @@ export const vi = {
   footer_blog_desc: "Bài viết kỹ thuật",
   footer_newsletter_desc: "Cập nhật hàng tháng",
   footer_contact_desc: "Liên hệ",
+  // Tech Quotes translations
+  quote_elon_content: "Tương lai của AI không chỉ là xây dựng những cỗ máy thông minh hơn, mà còn là tạo ra những công cụ khuếch đại tiềm năng con người. Những developer giỏi nhất là những người hiểu cả công nghệ và nhu cầu con người.",
+  quote_bill_content: "Phần mềm đang 'ăn' thế giới, nhưng những dòng code có tác động lớn nhất được viết bởi những developer nghĩ về khả năng tiếp cận, tính bền vững và cách công việc của họ ảnh hưởng đến hàng tỷ người.",
+  quote_sundar_content: "Những developer giỏi nhất không chỉ viết code - họ giải quyết những vấn đề thực tế. Họ hiểu rằng công nghệ nên làm cho cuộc sống tốt hơn, đơn giản hơn và dễ tiếp cận hơn cho tất cả mọi người.",
+  quote_sam_content: "Kỹ năng có giá trị nhất trong lĩnh vực công nghệ không chỉ là lập trình - mà là khả năng học hỏi nhanh chóng, thích ứng với công nghệ mới và xây dựng những thứ mà mọi người thực sự muốn sử dụng.",
+  quote_mark_content: "Những developer xuất sắc tập trung vào tác động. Họ xây dựng những sản phẩm kết nối con người, giải quyết những vấn đề thực tế và tạo ra giá trị cho hàng triệu người dùng trên khắp thế giới.",
+  quote_jensen_content: "Tương lai thuộc về những developer có thể khai thác sức mạnh của AI để tạo ra những ứng dụng mà trước đây không thể. Sự đổi mới xảy ra tại giao điểm giữa công nghệ và sáng tạo.",
+
+  // Projects section
+  projects_description: "Một bộ sưu tập các dự án và sản phẩm được tạo ra bởi tôi",
+
+  // Skills section
+  skills_description: "Công nghệ và công cụ mà tôi sử dụng để tạo ra những trải nghiệm số tuyệt vời",
+  
+  // Contact section additional translations
+  contact_lets_chat: "Hãy Trò Chuyện!",
+  contact_project_mind: "Có dự án trong đầu? Dù là câu hỏi nhanh hay thảo luận chi tiết, tôi ở đây để giúp hiện thực hóa ý tưởng của bạn.",
+  contact_schedule_call: "Lên Lịch Gọi",
+  contact_support_work: "Hỗ Trợ Công Việc Của Tôi",
+  contact_send_message_title: "Gửi Tin Nhắn Cho Tôi",
+  contact_form_description: "Điền form bên dưới và tôi sẽ phản hồi trong vòng 24 giờ.",
+  contact_full_name: "Họ Và Tên",
+  contact_email_address: "Địa Chỉ Email",
+  contact_project_details: "Chi Tiết Dự Án",
+  contact_project_placeholder: "Hãy cho tôi biết về dự án, thời gian, ngân sách và các yêu cầu cụ thể của bạn...",
+  contact_send_message: "Gửi Tin Nhắn",
+  contact_message_sent: "Tin Nhắn Đã Gửi Thành Công!",
+  contact_fill_required: "Vui lòng điền đầy đủ các trường bắt buộc.",
+  contact_thanks_message: "Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi trong vòng 24 giờ.",
+
+  // Experience section
+  experience_key_achievements: "Kết Quả Nổi Bật",
+  experience_technologies: "Công Nghệ Sử Dụng",
+
+  // Footer section
+  footer_stay_connected: "Liên Hệ",
+  footer_get_updates: "Nhận cập nhật mới nhất về dự án và công nghệ",
+  footer_email_placeholder: "your@email.com",
+  footer_join: "Tham Gia",
+  footer_navigation: "Liên Hệ",
+  footer_resources: "Liên Hệ",
+  footer_privacy_policy: "Liên Hệ",
+  footer_terms_of_service: "Liên Hệ",
+
+  // About section
+  tech_stack: "Công Nghệ Sử Dụng",
+  years_experience: "Năm Kinh Nghiệm",
+  projects_built: "Dự Án Đã Xây Dựng",
 }

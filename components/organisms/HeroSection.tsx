@@ -173,7 +173,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                     whileHover="bounce"
                     animate="bounce"
                   >
-                    {"Available for new opportunities".split("").map((char, index) => (
+                      {"Available for new opportunities".split("").map((char, index) => (
                       <motion.span
                         key={`available-${index}`}
                         className="inline-block"

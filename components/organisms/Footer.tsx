@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Heart, Coffee, ArrowUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "@/hooks/use-translations-context"
+import Image from "next/image"
 
 interface FooterProps {
   darkMode: boolean
@@ -91,6 +92,20 @@ export function Footer({ darkMode }: FooterProps) {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
+                  {/* Logo */}
+                  <div className="relative w-10 h-10 flex items-center justify-center">
+                    <Image
+                      src="/assets/images/logo3.png"
+                      alt="Logo"
+                      width={40}
+                      height={40}
+                      className={`transition-all duration-300 ${
+                        darkMode ? 'filter-none' : 'filter invert'
+                      }`}
+                    />
+                  </div>
+                  
+                  {/* Text */}
                   <span className={`text-4xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
                     Kenji
                   </span>
@@ -106,7 +121,7 @@ export function Footer({ darkMode }: FooterProps) {
                   transition={{ delay: 0.2, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  Passionate about creating digital experiences that make a difference. Always exploring new technologies and pushing creative boundaries.
+                 {t.footer_about_desc}
                 </motion.p>
 
                 {/* Social Links & Buy Me a Coffee */}
@@ -182,16 +197,16 @@ export function Footer({ darkMode }: FooterProps) {
                   <div className="flex items-center gap-3 mb-3">
                     <Coffee className={`h-5 w-5 ${darkMode ? 'text-white' : 'text-slate-700'}`} />
                     <h4 className={`font-semibold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                      Stay Connected
+                      {t.footer_stay_connected}
                     </h4>
                   </div>
                   <p className={`text-sm mb-4 ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
-                    Get monthly updates on new projects and tech insights.
+                    {t.footer_get_updates}
                   </p>
                   <div className="flex gap-2">
                     <input
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder={t.footer_email_placeholder}
                       className={`flex-1 px-4 py-2 rounded-lg text-sm transition-all duration-300 ${
                         darkMode
                           ? 'bg-white/5 border border-white/20 text-white placeholder:text-slate-400 focus:bg-white/10 focus:border-white/30'
@@ -199,7 +214,7 @@ export function Footer({ darkMode }: FooterProps) {
                       } focus:ring-2 focus:ring-blue-500/20`}
                     />
                     <Button size="sm" className={`ios-glass-button ${darkMode ? 'text-white hover:text-white' : 'text-slate-900 hover:text-white'} font-medium`}>
-                      Join
+                      {t.footer_join}
                     </Button>
                   </div>
                 </motion.div>
@@ -214,7 +229,7 @@ export function Footer({ darkMode }: FooterProps) {
               viewport={{ once: true }}
             >
               <h4 className={`font-bold text-xl mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}>
-                Navigation
+                {t.footer_navigation}
               </h4>
               <div className="space-y-4">
                 {quickLinks.map((link, index) => (
@@ -251,7 +266,7 @@ export function Footer({ darkMode }: FooterProps) {
               viewport={{ once: true }}
             >
               <h4 className={`font-bold text-xl mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}>
-                Resources
+                {t.footer_resources}
               </h4>
               <div className="space-y-4">
                 {resourceLinks.map((link, index) => (
@@ -311,7 +326,7 @@ export function Footer({ darkMode }: FooterProps) {
                   }`}
                   whileHover={{ y: -2 }}
                 >
-                  Privacy Policy
+                  {t.footer_privacy_policy}
                 </motion.a>
                 <motion.a
                   href="#"
@@ -320,7 +335,7 @@ export function Footer({ darkMode }: FooterProps) {
                   }`}
                   whileHover={{ y: -2 }}
                 >
-                  Terms of Service
+                  {t.footer_terms_of_service}
                 </motion.a>
                 
                 {/* Scroll to Top Button */}

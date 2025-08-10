@@ -181,4 +181,53 @@ export const en = {
   footer_blog_desc: "Technical articles",
   footer_newsletter_desc: "Monthly updates",
   footer_contact_desc: "Get in touch",
+  // Tech Quotes translations
+  quote_elon_content: "The future of AI is not just about building smarter machines, but about creating tools that amplify human potential. The best developers are those who understand both technology and human needs.",
+  quote_bill_content: "Software is eating the world, but the most impactful code is written by developers who think about accessibility, sustainability, and how their work affects billions of people.",
+  quote_sundar_content: "The best developers don't just write code - they solve real problems. They understand that technology should make life better, simpler, and more accessible for everyone.",
+  quote_sam_content: "The most valuable skill in tech isn't just coding - it's the ability to learn quickly, adapt to new technologies, and build things that people actually want to use.",
+  quote_mark_content: "Great developers focus on impact. They build products that connect people, solve real problems, and create value for millions of users around the world.",
+  quote_jensen_content: "The future belongs to developers who can harness the power of AI to create applications that were previously impossible. Innovation happens at the intersection of technology and creativity.",
+
+  // Projects section
+  projects_description: "A showcase of my recent work and creative projects",
+
+  // Skills section
+  skills_description: "Technologies and tools I use to build amazing digital experiences",
+  
+  // Contact section additional translations
+  contact_lets_chat: "Let's Chat!",
+  contact_project_mind: "Have a project in mind? Whether it's a quick question or a detailed discussion, I'm here to help bring your ideas to life.",
+  contact_schedule_call: "Schedule a Call",
+  contact_support_work: "Support my work",
+  contact_send_message_title: "Send me a message",
+  contact_form_description: "Fill out the form below and I'll get back to you within 24 hours.",
+  contact_full_name: "Full Name",
+  contact_email_address: "Email Address",
+  contact_project_details: "Project Details",
+  contact_project_placeholder: "Tell me about your project, timeline, budget, and any specific requirements...",
+  contact_send_message: "Send Message",
+  contact_message_sent: "Message Sent Successfully!",
+  contact_fill_required: "Please fill in all required fields.",
+  contact_thanks_message: "Thanks for reaching out! I'll get back to you within 24 hours.",
+
+  // Experience section
+  experience_key_achievements: "Key Achievements",
+  experience_technologies: "Technologies Used",
+
+  // Footer section
+  footer_stay_connected: "Stay Connected",
+  footer_get_updates: "Get monthly updates on new projects and tech insights.",
+  footer_email_placeholder: "your@email.com",
+  footer_join: "Join",
+  footer_navigation: "Navigation",
+  footer_resources: "Resources",
+  footer_privacy_policy: "Privacy Policy",
+  footer_terms_of_service: "Terms of Service",
+
+  // About section
+  tech_stack: "Tech Stack",
+  years_experience: "Years Experience",
+  projects_built: "Projects Built",
 }
+

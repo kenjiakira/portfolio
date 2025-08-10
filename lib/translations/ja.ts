@@ -19,7 +19,7 @@ export const ja = {
   featured_projects: "注目のプロジェクト",
   skills: "技術スキル",
   achievements: "実績",
-  testimonials: "Tech Leaders Say",
+  testimonials: "技術リーダーの声",
   blog: "最新記事",
   contact: "一緒に働きましょう",
   contactText: "新しい機会とエキサイティングなプロジェクトに常に興味があります",
@@ -136,14 +136,14 @@ export const ja = {
   skill_team_leadership: "チームリーダーシップ", 
   skill_system_design: "システム設計",
   // Values/Driving factors - Modernized
-  value_innovation_title: "Innovation",
-  value_innovation_desc: "Pushing boundaries with cutting-edge AI & Web3 technologies",
-  value_quality_title: "Excellence",
-  value_quality_desc: "Crafting scalable, maintainable code that stands the test of time",
-  value_collaboration_title: "Impact",
-  value_collaboration_desc: "Building solutions that empower communities and drive real change",
-  value_learning_title: "Growth",
-  value_learning_desc: "Continuously evolving with emerging technologies and best practices",
+  value_innovation_title: "革新",
+  value_innovation_desc: "最先端のAI & Web3技術で境界を押し広げる",
+  value_quality_title: "品質",
+  value_quality_desc: "時代遅れなく、拡張性のある、保守可能なコードを作成する",
+  value_collaboration_title: "影響",
+  value_collaboration_desc: "コミュニティを強化し、実際の変化を引き起こすソリューションを構築する",
+  value_learning_title: "成長",
+  value_learning_desc: "新しい技術とベストプラクティスで継続的に進化する",
   // About section highlights
   highlight_web: "ウェブ",
   highlight_ai_fields: "AI分野",
@@ -181,4 +181,52 @@ export const ja = {
   footer_blog_desc: "技術記事",
   footer_newsletter_desc: "月次更新",
   footer_contact_desc: "お問い合わせ",
-}
+  // Tech Quotes translations
+  quote_elon_content: "AIの未来は、より賢い機械を構築することだけでなく、人間の可能性を増幅するツールを作り出すことです。最高の開発者は、技術と人間のニーズの両方を理解している人です。",
+  quote_bill_content: "ソフトウェアは世界を食べていますが、最も影響力のあるコードは、アクセシビリティ、持続可能性、そして彼らの仕事が何十億人もの人々にどのように影響するかを考える開発者によって書かれています。",
+  quote_sundar_content: "最高の開発者は単にコードを書くだけでなく、実際の問題を解決します。彼らは技術がすべての人にとって生活をより良く、シンプルで、アクセスしやすくすべきであることを理解しています。",
+  quote_sam_content: "テック業界で最も価値のあるスキルは、単なるコーディングではありません。それは、素早く学習し、新しい技術に適応し、人々が実際に使用したいものを構築する能力です。",
+  quote_mark_content: "素晴らしい開発者は影響に焦点を当てます。彼らは人々を繋ぎ、実際の問題を解決し、世界中の何百万人ものユーザーに価値を創造する製品を構築します。",
+  quote_jensen_content: "未来は、AIの力を活用して以前は不可能だったアプリケーションを作成できる開発者に属します。革新は技術と創造性の交差点で起こります。",
+
+  // Projects section
+  projects_description: "最近の作品とクリエイティブなプロジェクトの展示",
+
+  // Skills section
+  skills_description: "驚くべきデジタル体験を構築するために使用する技術とツール",
+  
+  // Contact section additional translations
+  contact_lets_chat: "チャットしましょう！",
+  contact_project_mind: "プロジェクトのアイデアがありますか？簡単な質問でも詳細な議論でも、あなたのアイデアを実現するお手伝いをします。",
+  contact_schedule_call: "通話をスケジュール",
+  contact_support_work: "私の仕事をサポート",
+  contact_send_message_title: "メッセージを送ってください",
+  contact_form_description: "下のフォームに記入してください。24時間以内に返信いたします。",
+  contact_full_name: "氏名",
+  contact_email_address: "メールアドレス",
+  contact_project_details: "プロジェクト詳細",
+  contact_project_placeholder: "プロジェクト、タイムライン、予算、特定の要件について教えてください...",
+  contact_send_message: "メッセージを送信",
+  contact_message_sent: "メッセージが正常に送信されました！",
+  contact_fill_required: "すべての必須フィールドを入力してください。",
+  contact_thanks_message: "お問い合わせありがとうございます！24時間以内に返信いたします。",
+
+  // Experience section
+  experience_key_achievements: "重要な成果",
+  experience_technologies: "使用技術",
+
+  // Footer section
+  footer_stay_connected: "継続的に接続",
+  footer_get_updates: "新しいプロジェクトと技術の洞察を月次で受け取る",
+  footer_email_placeholder: "your@email.com",
+  footer_join: "参加",
+  footer_navigation: "ナビゲーション",
+  footer_resources: "リソース",
+  footer_privacy_policy: "プライバシーポリシー",
+  footer_terms_of_service: "利用規約",
+
+  // About section
+  tech_stack: "技術スタック",
+  years_experience: "年の経験",
+  projects_built: "プロジェクトの構築",
+  }

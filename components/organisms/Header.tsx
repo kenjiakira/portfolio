@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations-context"
+import Image from "next/image"
 
 interface HeaderProps {
   darkMode: boolean
@@ -44,12 +45,28 @@ export function Header({
             <Card className="ios-glass-card border-0 shadow-2xl backdrop-blur-2xl rounded-full">
               <CardContent className="flex items-center justify-between px-4 lg:px-8 py-3">
                 <motion.div
-                  className="text-2xl font-bold tracking-tight text-shadow-dramatic"
+                  className="flex items-center gap-3"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className={darkMode ? "text-white" : "text-slate-900"}>Kenji </span>
-                  <span className={darkMode ? "text-white" : "text-slate-900"}>Akira</span>
+                  {/* Logo */}
+                  <div className="relative w-8 h-8 flex items-center justify-center">
+                    <Image
+                      src="/assets/images/logo3.png"
+                      alt="Logo"
+                      width={32}
+                      height={32}
+                      className={`transition-all duration-300 ${
+                        darkMode ? 'filter-none' : 'filter invert'
+                      }`}
+                    />
+                  </div>
+                  
+                  {/* Text */}
+                  <div className="text-2xl font-bold tracking-tight text-shadow-dramatic">
+                    <span className={darkMode ? "text-white" : "text-slate-900"}>Kenji </span>
+                    <span className={darkMode ? "text-white" : "text-slate-900"}>Akira</span>
+                  </div>
                 </motion.div>
 
                 {/* Desktop Navigation */}

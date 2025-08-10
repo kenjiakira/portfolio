@@ -177,7 +177,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                   transition={{ delay: 0.7, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  Let's Chat!
+                  {t.contact_lets_chat}
                 </motion.h3>
 
                 <motion.p
@@ -187,7 +187,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                   transition={{ delay: 0.8, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  Have a project in mind? Whether it's a quick question or a detailed discussion, I'm here to help bring your ideas to life.
+                  {t.contact_project_mind}
                 </motion.p>
 
                 <motion.div
@@ -203,7 +203,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                   >
                     <Button className="w-full btn-light shadow-lg hover:shadow-xl transition-all duration-300">
                       <Mail className="mr-2 h-4 w-4" />
-                      Schedule a Call
+                      {t.contact_schedule_call}
                     </Button>
                   </motion.div>
 
@@ -230,7 +230,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                       <span className={`text-sm font-medium relative z-10 transition-colors duration-300 ${
                         darkMode ? 'text-slate-300 group-hover:text-white' : 'text-slate-700 group-hover:text-slate-900'
                       }`}>
-                        Support my work
+                        {t.contact_support_work}
                       </span>
                     </motion.a>
                   </motion.div>
@@ -305,10 +305,10 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                     viewport={{ once: true }}
                   >
                     <h3 className={`text-3xl font-bold mb-3 ${darkMode ? "text-white" : "text-slate-900"}`}>
-                      Send me a message
+                      {t.contact_send_message_title}
                     </h3>
                     <p className={`${darkMode ? "text-slate-300" : "text-slate-600"}`}>
-                      Fill out the form below and I'll get back to you within 24 hours.
+                      {t.contact_form_description}
                     </p>
                   </motion.div>
 
@@ -324,7 +324,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                           htmlFor="name"
                           className={`block text-sm font-semibold mb-3 ${darkMode ? "text-slate-300" : "text-slate-700"}`}
                         >
-                          Full Name
+                          {t.contact_full_name}
                         </label>
                         <Input
                           id="name"
@@ -350,7 +350,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                           htmlFor="email"
                           className={`block text-sm font-semibold mb-3 ${darkMode ? "text-slate-300" : "text-slate-700"}`}
                         >
-                          Email Address
+                          {t.contact_email_address}
                         </label>
                         <Input
                           id="email"
@@ -457,12 +457,12 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                         htmlFor="message"
                         className={`block text-sm font-semibold mb-3 ${darkMode ? "text-slate-300" : "text-slate-700"}`}
                       >
-                        Project Details
+                        {t.contact_project_details}
                       </label>
                       <Textarea
                         id="message"
                         rows={6}
-                        placeholder="Tell me about your project, timeline, budget, and any specific requirements..."
+                        placeholder={t.contact_project_placeholder}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className={`transition-all duration-300 resize-none ${darkMode
@@ -502,12 +502,12 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                               className="flex items-center"
                             >
                               <CheckCircle className="mr-2 h-5 w-5" />
-                              Message Sent Successfully!
+                              {t.contact_message_sent}
                             </motion.div>
                           ) : (
                             <>
                               <Send className="mr-2 h-5 w-5" />
-                              Send Message
+                              {t.contact_send_message}
                             </>
                           )}
                         </div>
@@ -526,7 +526,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                             }`}
                         >
                           <p className="text-center font-medium">
-                            Please fill in all required fields.
+                            {t.contact_fill_required}
                           </p>
                         </motion.div>
                       )}
@@ -542,7 +542,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                             }`}
                         >
                           <p className="text-center font-medium">
-                            Thanks for reaching out! I'll get back to you within 24 hours.
+                            {t.contact_thanks_message}
                           </p>
                         </motion.div>
                       )}
