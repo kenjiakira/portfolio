@@ -229,4 +229,5 @@ export const vi = {
   tech_stack: "Công Nghệ Sử Dụng",
   years_experience: "Năm Kinh Nghiệm",
   projects_built: "Dự Án Đã Xây Dựng",
+
 }

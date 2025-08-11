@@ -37,7 +37,7 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
       "image": "/assets/images/project-1.png",
       "tech": ["React", "Node.js", "TypeScript", "Express", "MongoDB"],
       "github": "",
-      "demo": "https://codino-demo.example.com",
+      "demo": "https://codino.hnt.io.vn/",
       "featured": true,
       "category": t.category_fullstack,
       "status": t.status_in_progress
@@ -59,7 +59,7 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
       "description": t.project_vngenai_desc,
       "longDescription": t.project_vngenai_long,
       "image": "/assets/images/project-2.png",
-      "tech": ["React", "Node.js", "TypeScript", "Express", "NestJS"],
+      "tech": ["React", "Node.js", "TypeScript", "Express", "NestJS", "AWS"],
       "github": "",
       "demo": "Private/Confidential",
       "featured": false,
@@ -85,7 +85,7 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
       "image": "/assets/images/project-4.png",
       "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       "github": "https://github.com/kenjiakira/portfolio",
-      "demo": "hnt.io.vn",
+      "demo": "https://hnt.io.vn",
       "featured": false,
       "category": t.category_frontend,
       "status": t.status_completed
@@ -334,7 +334,15 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
                       whileHover={{ scale: 1.02 }} 
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button className="w-full btn-light shadow-lg hover:shadow-xl transition-all duration-300">
+                      <Button 
+                        className="w-full btn-light shadow-lg hover:shadow-xl transition-all duration-300"
+                        onClick={() => {
+                          if (featuredProject.demo && featuredProject.demo !== "Private/Confidential" && featuredProject.demo !== "") {
+                            window.open(featuredProject.demo, '_blank')
+                          }
+                        }}
+                        disabled={!featuredProject.demo || featuredProject.demo === "Private/Confidential" || featuredProject.demo === ""}
+                      >
                         <ExternalLink className="mr-2 h-4 w-4" />
                         {t.view_live_demo}
                       </Button>
@@ -485,11 +493,20 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
                       whileHover={{ scale: 1.02 }} 
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button size="sm" className="w-full text-xs">
+                      <Button 
+                        size="sm" 
+                        className="w-full text-xs"
+                        onClick={() => {
+                          if (project.demo && project.demo !== "Private/Confidential" && project.demo !== "") {
+                            window.open(project.demo, '_blank')
+                          }
+                        }}
+                        disabled={!project.demo || project.demo === "Private/Confidential" || project.demo === ""}
+                      >
                         <ExternalLink className="mr-1 h-3 w-3" />
                         Demo
-                        </Button>
-                      </motion.div>
+                      </Button>
+                    </motion.div>
 
                     {project.github && (
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

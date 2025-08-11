@@ -42,7 +42,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
     {
       role: t.role_fullstack,
       company: t.company_vnpt,
-      period: "01/2025 - 05/2025",
+      period: "06/2025 - Present",
       description: t.desc_vnpt,
       technologies: ["Python", "TensorFlow", "Node.js", "React"],
       highlights: [
@@ -68,7 +68,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
     {
       role: t.role_founder,
       company: t.company_aibinhdan,
-      period: "01/2025",
+      period: "03/2025",
       description: t.desc_aibinhdan,
       technologies: ["Next.js", "React", "Node.js", "TypeScript", "Vercel"],
       highlights: [
@@ -81,7 +81,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
     {
       role: t.role_founder,
       company: "Codino",
-      period: "05/2025 - Present",
+      period: "07/2025 - Present",
       description: t.desc_codino,
       technologies: ["React", "Node.js", "TypeScript", "Express", "MongoDB"],
       highlights: [

@@ -9,8 +9,9 @@ import {
   AboutSection, 
   ExperienceSection, 
   SkillsSection,
-  TestimonialsSection,
+  FamousQuotesSection,
   ProjectsSection,
+  // TestimonialsSection,
   ContactSection
 } from "@/components/organisms"
 
@@ -164,9 +165,11 @@ export default function Portfolio() {
 
       <SkillsSection darkMode={darkMode} />
 
-      <TestimonialsSection darkMode={darkMode} />
+      <FamousQuotesSection darkMode={darkMode} />
 
       <ProjectsSection darkMode={darkMode} />
+
+      {/* <TestimonialsSection darkMode={darkMode} /> */}
 
       <ContactSection darkMode={darkMode} />
 

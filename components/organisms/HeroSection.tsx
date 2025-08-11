@@ -348,7 +348,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 </div>
                 <div className="flex items-center gap-3">
                   <Coffee className={`h-5 w-5 ${darkMode ? "text-slate-400" : "text-slate-600"}`} />
-                  <span className={darkMode ? "text-slate-300" : "text-slate-600"}>Open to coffee chats</span>
+                  <span className={darkMode ? "text-slate-300" : "text-slate-600"}>{t.open_to_coffee}</span>
                 </div>
               </motion.div>
             </motion.div>

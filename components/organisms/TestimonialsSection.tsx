@@ -1,247 +1,276 @@
-"use client"
+// "use client"
 
-import React from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, MessageCircle, Heart, Repeat, Share } from "lucide-react"
-import Image from "next/image"
-import { useTranslations } from "@/hooks/use-translations-context"
+// import React from "react"
+// import { motion } from "framer-motion"
+// import { Star, Quote, ArrowRight } from "lucide-react"
+// import Image from "next/image"
+// import { useTranslations } from "@/hooks/use-translations-context"
 
-interface TestimonialsSectionProps {
-  darkMode: boolean
-}
+// interface TestimonialsSectionProps {
+//   darkMode: boolean
+// }
 
-interface TechQuote {
-  author: string
-  handle: string
-  avatar: string
-  contentKey: string // Key for translation
-  date: string
-  likes: string
-  retweets: string
-  replies: string
-  verified: boolean
-  company: string
-}
+// interface Testimonial {
+//   name: string
+//   position: string
+//   company: string
+//   avatar: string
+//   contentKey: string
+//   rating: number
+//   project: string
+//   duration: string
+// }
 
-export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
-  const { t } = useTranslations()
+// export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
+//   const { t } = useTranslations()
 
-  const techQuotes: TechQuote[] = [
-    {
-      author: "Elon Musk",
-      handle: "@elonmusk",
-      avatar: "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg",
-      contentKey: "quote_elon_content",
-      date: "2h",
-      likes: "45.2K",
-      retweets: "12.8K",
-      replies: "3.4K",
-      verified: true,
-      company: "Tesla & SpaceX"
-    },
-    {
-      author: "Bill Gates",
-      handle: "@BillGates",
-      avatar: "/assets/images/bill-gates.jpg",
-      contentKey: "quote_bill_content",
-      date: "5h",
-      likes: "38.7K",
-      retweets: "9.2K",
-      replies: "2.1K",
-      verified: true,
-      company: "Microsoft"
-    },
-    {
-      author: "Sundar Pichai",
-      handle: "@sundarpichai",
-      avatar: "/assets/images/sundar-pichai.jpg",
-      contentKey: "quote_sundar_content",
-      date: "1d",
-      likes: "29.4K",
-      retweets: "7.6K",
-      replies: "1.8K",
-      verified: true,
-      company: "Google"
-    },
-    {
-      author: "Sam Altman",
-      handle: "@sama",
-      avatar: "/assets/images/sam-altman.jpg",
-      contentKey: "quote_sam_content",
-      date: "3d",
-      likes: "52.1K",
-      retweets: "15.3K",
-      replies: "4.7K",
-      verified: true,
-      company: "OpenAI"
-    },
-    {
-      author: "Mark Zuckerberg",
-      handle: "@finkd",
-      avatar: "/assets/images/mark-zuckerberg.jpg",
-      contentKey: "quote_mark_content",
-      date: "1w",
-      likes: "41.3K",
-      retweets: "11.9K",
-      replies: "3.2K",
-      verified: true,
-      company: "Meta"
-    },
-    {
-      author: "Jensen Huang",
-      handle: "@JensenHuang",
-      avatar: "/assets/images/jensen-huang.jpg",
-      contentKey: "quote_jensen_content",
-      date: "2w",
-      likes: "33.8K",
-      retweets: "8.7K",
-      replies: "2.4K",
-      verified: true,
-      company: "NVIDIA"
-    }
-  ]
+//   const testimonials: Testimonial[] = [
+//     {
+//       name: "Sarah Johnson",
+//       position: "Senior Developer",
+//       company: "TechCorp",
+//       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+//       contentKey: "testimonial_sarah_content",
+//       rating: 5,
+//       project: "E-commerce Platform",
+//       duration: "6 months"
+//     },
+//     {
+//       name: "Michael Chen",
+//       position: "Product Manager",  
+//       company: "InnovateLab",
+//       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+//       contentKey: "testimonial_michael_content",
+//       rating: 5,
+//       project: "Mobile App Development",
+//       duration: "4 months"
+//     }
+//   ]
 
-  return (
-    <section className="py-20 lg:py-32 px-4 lg:px-6">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className={`text-5xl lg:text-7xl font-bold text-center mb-20 ${
-              darkMode ? "text-white" : "text-slate-900"
-            }`}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {t.testimonials}
-          </motion.h2>
+//   const renderStars = (rating: number) => {
+//     return Array.from({ length: 5 }, (_, i) => (
+//       <Star
+//         key={i}
+//         className={`h-5 w-5 ${
+//           i < rating
+//             ? "text-yellow-400 fill-current"
+//             : darkMode
+//             ? "text-slate-600"
+//             : "text-slate-300"
+//         }`}
+//       />
+//     ))
+//   }
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {techQuotes.map((quote, index) => (
-              <motion.div
-                key={quote.author}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className={`ios-glass-card border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 group h-full hover:scale-105 ${
-                  darkMode ? 'hover:bg-white/5' : 'hover:bg-black/5'
-                }`}>
-                  <CardContent className="p-6 flex flex-col h-full">
-                    {/* Header */}
-                    <motion.div
-                      className="flex items-center gap-3 mb-4"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.2, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
-                        <Image
-                          src={quote.avatar}
-                          alt={quote.author}
-                          width={48}
-                          height={48}
-                          className="rounded-full ring-2 ring-blue-500/20"
-                          loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                        />
-                      </motion.div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h4 className={`font-bold text-sm truncate ${darkMode ? "text-white" : "text-slate-900"}`}>
-                            {quote.author}
-                          </h4>
-                          {quote.verified && (
-                            <Badge variant="secondary" className="h-4 w-4 p-0 bg-blue-500 text-white rounded-full flex items-center justify-center">
-                              <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                            </Badge>
-                          )}
-                        </div>
-                        <p className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                          {quote.handle} · {quote.date}
-                        </p>
-                        <p className={`text-xs font-medium ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
-                          {quote.company}
-                        </p>
-                      </div>
-                    </motion.div>
+//   return (
+//     <section className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
+//       {/* Background Elements */}
+//       <div className="absolute inset-0 pointer-events-none">
+//         <div className={`absolute top-20 left-10 w-32 h-32 rounded-full blur-3xl opacity-20 ${
+//           darkMode ? "bg-blue-500" : "bg-blue-300"
+//         }`}></div>
+//         <div className={`absolute bottom-20 right-10 w-40 h-40 rounded-full blur-3xl opacity-20 ${
+//           darkMode ? "bg-purple-500" : "bg-purple-300"
+//         }`}></div>
+//       </div>
 
-                    {/* Content */}
-                    <motion.p
-                      className={`mb-6 flex-grow text-sm leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-700"}`}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.3, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      "{t[quote.contentKey as keyof typeof t]}"
-                    </motion.p>
+//       <div className="max-w-6xl mx-auto relative z-10">
+//         <motion.div
+//           initial={{ opacity: 0, y: 50 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           viewport={{ once: true }}
+//         >
+//           {/* Header */}
+//           <div className="text-center mb-16">
+//             <motion.div
+//               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6"
+//               style={{
+//                 background: darkMode 
+//                   ? "rgba(255, 255, 255, 0.05)" 
+//                   : "rgba(0, 0, 0, 0.05)",
+//                 borderColor: darkMode 
+//                   ? "rgba(255, 255, 255, 0.1)" 
+//                   : "rgba(0, 0, 0, 0.1)"
+//               }}
+//               initial={{ opacity: 0, scale: 0.8 }}
+//               whileInView={{ opacity: 1, scale: 1 }}
+//               transition={{ duration: 0.6 }}
+//               viewport={{ once: true }}
+//             >
+//               <Quote className="h-4 w-4 text-blue-500" />
+//               <span className={`text-sm font-medium ${
+//                 darkMode ? "text-slate-300" : "text-slate-600"
+//               }`}>
+//                 Client Testimonials
+//               </span>
+//             </motion.div>
 
-                    {/* Engagement Stats */}
-                    <motion.div
-                      className="flex items-center justify-between text-xs"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="flex items-center gap-4">
-                        <motion.button
-                          className={`flex items-center gap-1 ${darkMode ? "text-slate-400 hover:text-red-400" : "text-slate-500 hover:text-red-500"}`}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <MessageCircle className="h-4 w-4" />
-                          <span>{quote.replies}</span>
-                        </motion.button>
-                        
-                        <motion.button
-                          className={`flex items-center gap-1 ${darkMode ? "text-slate-400 hover:text-green-400" : "text-slate-500 hover:text-green-500"}`}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Repeat className="h-4 w-4" />
-                          <span>{quote.retweets}</span>
-                        </motion.button>
-                        
-                        <motion.button
-                          className={`flex items-center gap-1 ${darkMode ? "text-slate-400 hover:text-red-400" : "text-slate-500 hover:text-red-500"}`}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Heart className="h-4 w-4" />
-                          <span>{quote.likes}</span>
-                        </motion.button>
-                      </div>
-                      
-                      <motion.button
-                        className={`${darkMode ? "text-slate-400 hover:text-blue-400" : "text-slate-500 hover:text-blue-500"}`}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Share className="h-4 w-4" />
-                      </motion.button>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
+//             <motion.h2
+//               className={`text-4xl lg:text-6xl font-bold mb-6 ${
+//                 darkMode ? "text-white" : "text-slate-900"
+//               }`}
+//               initial={{ opacity: 0, y: 30 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               viewport={{ once: true }}
+//             >
+//               What Clients Say
+//             </motion.h2>
+
+//             <motion.p
+//               className={`text-lg max-w-2xl mx-auto ${
+//                 darkMode ? "text-slate-400" : "text-slate-600"
+//               }`}
+//               initial={{ opacity: 0, y: 20 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8, delay: 0.2 }}
+//               viewport={{ once: true }}
+//             >
+//               Real feedback from clients who have worked with me on their projects
+//             </motion.p>
+//           </div>
+
+//           {/* Testimonials */}
+//           <div className="space-y-8">
+//             {testimonials.map((testimonial, index) => (
+//               <motion.div
+//                 key={testimonial.name}
+//                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+//                 whileInView={{ opacity: 1, x: 0 }}
+//                 transition={{ delay: index * 0.3, duration: 0.8 }}
+//                 viewport={{ once: true }}
+//                 className={`flex flex-col lg:flex-row gap-8 items-center ${
+//                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
+//                 }`}
+//               >
+//                 {/* Avatar Section */}
+//                 <motion.div
+//                   className="flex-shrink-0"
+//                   whileHover={{ scale: 1.05 }}
+//                   transition={{ type: "spring", stiffness: 300 }}
+//                 >
+//                   <div className="relative">
+//                     <div className={`absolute inset-0 rounded-full blur-xl opacity-30 ${
+//                       darkMode ? "bg-blue-500" : "bg-blue-400"
+//                     }`}></div>
+//                     <Image
+//                       src={testimonial.avatar}
+//                       alt={testimonial.name}
+//                       width={120}
+//                       height={120}
+//                       className="relative rounded-full ring-4 ring-white/10"
+//                       loading="lazy"
+//                     />
+//                   </div>
+//                 </motion.div>
+
+//                 {/* Content Section */}
+//                 <div className="flex-1 text-center lg:text-left">
+//                   {/* Rating */}
+//                   <motion.div
+//                     className="flex items-center justify-center lg:justify-start gap-1 mb-4"
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
+//                     transition={{ delay: 0.4, duration: 0.6 }}
+//                     viewport={{ once: true }}
+//                   >
+//                     {renderStars(testimonial.rating)}
+//                   </motion.div>
+
+//                   {/* Quote */}
+//                   <motion.blockquote
+//                     className={`text-xl lg:text-2xl leading-relaxed mb-6 italic ${
+//                       darkMode ? "text-slate-200" : "text-slate-700"
+//                     }`}
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
+//                     transition={{ delay: 0.5, duration: 0.6 }}
+//                     viewport={{ once: true }}
+//                   >
+//                     "{t[testimonial.contentKey as keyof typeof t]}"
+//                   </motion.blockquote>
+
+//                   {/* Author Info */}
+//                   <motion.div
+//                     className="space-y-2"
+//                     initial={{ opacity: 0, y: 20 }}
+//                     whileInView={{ opacity: 1, y: 0 }}
+//                     transition={{ delay: 0.6, duration: 0.6 }}
+//                     viewport={{ once: true }}
+//                   >
+//                     <h4 className={`font-bold text-xl ${
+//                       darkMode ? "text-white" : "text-slate-900"
+//                     }`}>
+//                       {testimonial.name}
+//                     </h4>
+//                     <p className={`text-lg font-medium ${
+//                       darkMode ? "text-blue-400" : "text-blue-600"
+//                     }`}>
+//                       {testimonial.position}
+//                     </p>
+//                     <p className={`text-base ${
+//                       darkMode ? "text-slate-400" : "text-slate-600"
+//                     }`}>
+//                       {testimonial.company}
+//                     </p>
+                    
+//                     {/* Project Details */}
+//                     <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm ${
+//                       darkMode 
+//                         ? "bg-white/5 text-slate-300" 
+//                         : "bg-black/5 text-slate-600"
+//                     }`}>
+//                       <span className="font-medium">{testimonial.project}</span>
+//                       <span>•</span>
+//                       <span>{testimonial.duration}</span>
+//                     </div>
+//                   </motion.div>
+//                 </div>
+
+//                 {/* Arrow */}
+//                 <motion.div
+//                   className="hidden lg:block flex-shrink-0"
+//                   initial={{ opacity: 0, scale: 0 }}
+//                   whileInView={{ opacity: 1, scale: 1 }}
+//                   transition={{ delay: 0.7, duration: 0.6 }}
+//                   viewport={{ once: true }}
+//                 >
+//                   <div className={`p-3 rounded-full ${
+//                     darkMode 
+//                       ? "bg-white/10 text-slate-400" 
+//                       : "bg-black/10 text-slate-600"
+//                   }`}>
+//                     <ArrowRight className="h-6 w-6" />
+//                   </div>
+//                 </motion.div>
+//               </motion.div>
+//             ))}
+//           </div>
+
+//           {/* CTA Section */}
+//           <motion.div
+//             className="text-center mt-16"
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8, delay: 0.8 }}
+//             viewport={{ once: true }}
+//           >
+//             <motion.button
+//               className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 ${
+//                 darkMode
+//                   ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
+//                   : "bg-slate-900 hover:bg-slate-800 text-white shadow-lg hover:shadow-xl"
+//               }`}
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//             >
+//               <span>View More Testimonials</span>
+//               <ArrowRight className="h-4 w-4" />
+//             </motion.button>
+//           </motion.div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   )
+// }

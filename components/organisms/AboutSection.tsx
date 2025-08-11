@@ -555,7 +555,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                     >
                       <div className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
                         <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                          4+
+                          3+
                         </span>
                       </div>
                       <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
