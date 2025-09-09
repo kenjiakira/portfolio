@@ -91,6 +91,18 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
       "status": t.status_completed
     },
     {
+      "title": t.project_mytel_genai_title,
+      "description": t.project_mytel_genai_desc,
+      "longDescription": t.project_mytel_genai_long,
+      "image": "/assets/images/project-6.png",
+      "tech": ["React", "Node.js", "TypeScript", "AI/ML", "Python", "AWS"],
+      "github": "",
+      "demo": "Private/Confidential",
+      "featured": false,
+      "category": t.category_fullstack,
+      "status": t.status_in_progress
+    },
+    {
       "title": t.project_coming_soon_title,
       "description": t.project_coming_soon_desc,
       "longDescription": t.project_coming_soon_long,

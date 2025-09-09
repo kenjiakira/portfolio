@@ -91,6 +91,7 @@ export const vi = {
   project_chatbot_title: "ChatBot Messenger (Node.js)",
   project_portfolio_title: "Website Portfolio Cá Nhân",
   project_coming_soon_title: "Sắp Ra Mắt",
+  project_mytel_genai_title: "Mytel GenAI",
   // Project descriptions
   project_codino_desc: "Nền tảng lập trình đơn giản, hỗ trợ developer Việt với các công cụ tinh gọn",
   project_aibinhdan_desc: "Bộ công cụ online đa dạng, miễn phí, hỗ trợ người dùng với hơn 100 tiện ích",
@@ -98,6 +99,7 @@ export const vi = {
   project_chatbot_desc: "Hệ thống chatbot tin nhắn đa kênh với backend Node.js",
   project_portfolio_desc: "Website portfolio cá nhân thể hiện kỹ năng và dự án",
   project_coming_soon_desc: "Dự án đang lên kế hoạch và phát triển",
+  project_mytel_genai_desc: "Ứng dụng GenAI cho Mytel Myanmar (liên doanh của Viettel với MEC)",
   // Project long descriptions
   project_codino_long: "Codino là nền tảng lập trình dành cho cộng đồng developer Việt, tập trung vào sự đơn giản, tiện lợi và hiệu quả. Dự án đang trong quá trình hoàn thiện với nhiều tính năng hữu ích cho lập trình viên.",
   project_aibinhdan_long: "AIBinhdan là phiên bản mới của 100Tools với hơn 100 công cụ trực tuyến đa dạng về text, hình ảnh, file, AI và nhiều lĩnh vực khác. Dự án đã hoàn thành và đang được duy trì phát triển.",
@@ -105,6 +107,7 @@ export const vi = {
   project_chatbot_long: "Xây dựng và triển khai hệ thống chatbot FCA hỗ trợ gửi nhận tin nhắn đa kênh, xử lý logic phức tạp, tích hợp backend bằng Node.js với hiệu suất cao.",
   project_portfolio_long: "Thiết kế và phát triển website portfolio cá nhân, giới thiệu bản thân, kỹ năng, các dự án đã làm và liên hệ, giúp tăng cơ hội tuyển dụng.",
   project_coming_soon_long: "Dự án mới đang trong giai đoạn lên ý tưởng và phát triển, sẽ được cập nhật trong tương lai gần.",
+  project_mytel_genai_long: "Hiện đang đóng góp vào việc phát triển ứng dụng GenAI cho Mytel Myanmar (liên doanh của Viettel với MEC). Tập trung xây dựng các giải pháp có khả năng mở rộng, thân thiện với người dùng, tích hợp AI sinh để nâng cao tương tác khách hàng và dịch vụ số.",
   // Project categories
   category_fullstack: "Full-Stack",
   category_backend: "Backend", 

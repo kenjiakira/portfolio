@@ -91,6 +91,7 @@ export const en = {
   project_chatbot_title: "ChatBot Messenger (Node.js)",
   project_portfolio_title: "Personal Portfolio Website",
   project_coming_soon_title: "Coming Soon",
+  project_mytel_genai_title: "Mytel GenAI",
   // Project descriptions
   project_codino_desc: "Simple programming platform supporting Vietnamese developers with streamlined tools",
   project_aibinhdan_desc: "Diverse online tools, free of charge, supporting users with 100+ utilities",
@@ -98,6 +99,7 @@ export const en = {
   project_chatbot_desc: "Multi-channel chatbot messaging system with Node.js backend",
   project_portfolio_desc: "Personal portfolio website showcasing skills and projects",
   project_coming_soon_desc: "Project in planning and development phase",
+  project_mytel_genai_desc: "GenAI-powered application for Mytel Myanmar (Viettel's joint venture with MEC)",
   // Project long descriptions
   project_codino_long: "Codino is a programming platform for Vietnamese developer community, focusing on simplicity, convenience and efficiency. The project is in completion process with many useful features for programmers.",
   project_aibinhdan_long: "AIBinhdan is the new version of 100Tools with 100+ diverse online tools for text, images, files, AI and many other fields. The project is completed and being maintained for development.",
@@ -105,6 +107,7 @@ export const en = {
   project_chatbot_long: "Built and deployed FCA chatbot system supporting multi-channel messaging, complex logic processing, integrated with Node.js backend for high performance.",
   project_portfolio_long: "Designed and developed personal portfolio website, introducing myself, skills, completed projects and contact information, helping increase recruitment opportunities.",
   project_coming_soon_long: "New project in ideation and development phase, will be updated in the near future.",
+  project_mytel_genai_long: "Currently contributing to the development of a GenAI-powered application for Mytel Myanmar (Viettel's joint venture with MEC). Focused on building scalable, user-friendly solutions that integrate generative AI to enhance customer engagement and digital services.",
   // Project categories
   category_fullstack: "Full-Stack",
   category_backend: "Backend", 
