@@ -92,6 +92,7 @@ export const ja = {
   project_portfolio_title: "個人ポートフォリオサイト",
   project_coming_soon_title: "近日公開",
   project_mytel_genai_title: "Mytel GenAI",
+  project_growfund_title: "Growfund",
   // Project descriptions
   project_codino_desc: "ベトナム開発者をサポートする合理化されたツールを備えたシンプルなプログラミングプラットフォーム",
   project_aibinhdan_desc: "100以上のユーティリティでユーザーをサポートする多様なオンラインツール、無料",
@@ -100,6 +101,7 @@ export const ja = {
   project_portfolio_desc: "スキルとプロジェクトを紹介する個人ポートフォリオサイト",
   project_coming_soon_desc: "企画・開発段階のプロジェクト",
   project_mytel_genai_desc: "Mytel Myanmar（ViettelとMECの合弁）向けGenAIアプリケーション",
+  project_growfund_desc: "技術製品のアウトソース開発・保守、GrowFundAIプロジェクト（100以上のオンラインツール）およびベトナム開発者向けプログラミングプラットフォームCodino開発支援。",
   // Project long descriptions
   project_codino_long: "Codinoはベトナム開発者コミュニティ向けのプログラミングプラットフォームで、シンプルさ、利便性、効率性に焦点を当てています。プログラマー向けの多くの有用な機能を備えた完成プロセス中のプロジェクトです。",
   project_aibinhdan_long: "AIBinhdanは100Toolsの新版で、テキスト、画像、ファイル、AI、その他多くの分野の100以上の多様なオンラインツールを提供します。プロジェクトは完了しており、開発のために維持されています。",
@@ -108,6 +110,7 @@ export const ja = {
   project_portfolio_long: "個人ポートフォリオサイトをデザイン・開発し、自己紹介、スキル、完了したプロジェクト、連絡先情報を紹介し、採用機会の増加を支援。",
   project_coming_soon_long: "アイデア創出・開発段階の新プロジェクト、近い将来に更新予定。",
   project_mytel_genai_long: "現在、Mytel Myanmar（ViettelとMECの合弁）向けGenAIアプリケーションの開発に貢献しています。生成AIを統合して顧客エンゲージメントとデジタルサービスを向上させる、スケーラブルでユーザーフレンドリーなソリューションの構築に焦点を当てています。",
+  project_growfund_long: "技術製品のアウトソース開発・保守、GrowFundAIプロジェクト（100以上のオンラインツール）およびベトナム開発者向けプログラミングプラットフォームCodino開発支援。",
   // Project categories
   category_fullstack: "フルスタック",
   category_backend: "バックエンド", 

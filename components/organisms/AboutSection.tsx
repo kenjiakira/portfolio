@@ -2,12 +2,24 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { ExternalIcon, aboutIcons } from "@/components/ui/external-icon"
 import { useTranslations } from "@/hooks/use-translations-context"
-import { ExternalLink, CheckCircle, Clock, Award } from "lucide-react"
+import { CheckCircle, Clock, Award } from "lucide-react"
+import { 
+  IconContainer,
+  TechBadge,
+  HighlightedText,
+  LiquidGlassCard
+} from "@/components/atoms"
+import { 
+  ValueCard, 
+  SkillItem, 
+  AchievementCard, 
+  CurrentRoleCard,
+  SectionHeader,
+  StatsItem,
+  SubsectionHeader
+} from "@/components/molecules"
 
 interface AboutSectionProps {
   darkMode: boolean
@@ -37,22 +49,9 @@ interface Value {
 export function AboutSection({ darkMode }: AboutSectionProps) {
   const { t } = useTranslations()
 
-  // Helper function to create highlighted spans - simplified to just bold
+  // Helper function to create highlighted spans
   const createHighlight = (text: string, color: 'blue' | 'purple' | 'emerald' | 'cyan' | 'orange' | 'gradient') => {
-    if (color === 'gradient') {
-      return (
-        <span className="font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          {text}
-        </span>
-      )
-    }
-    
-    // Just use bold text without background colors
-    return (
-      <span className="font-bold">
-        {text}
-      </span>
-    )
+    return <HighlightedText color={color}>{text}</HighlightedText>
   }
 
   // Helper function to parse template strings with highlights
@@ -181,34 +180,11 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className={`text-5xl lg:text-7xl font-bold mb-6 ${
-              darkMode ? "text-white" : "text-slate-900"
-            }`}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {t.about}
-          </motion.h2>
-          <motion.p
-            className={`text-xl max-w-3xl mx-auto ${darkMode ? "text-slate-300" : "text-slate-600"}`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {t.about_subtitle}
-          </motion.p>
-        </motion.div>
+        <SectionHeader 
+          title={t.about}
+          subtitle={t.about_subtitle}
+          darkMode={darkMode}
+        />
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-20">
@@ -220,8 +196,8 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="ios-glass-card border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 group h-full">
-              <CardContent className="p-6 lg:p-8">
+            <LiquidGlassCard className="hover:shadow-3xl transition-all duration-500 group h-full">
+              <div className="p-6 lg:p-8">
                 <motion.div
                   className="space-y-6"
                   initial={{ opacity: 0 }}
@@ -230,17 +206,11 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className={`p-3 rounded-xl ${
-                      darkMode 
-                        ? 'bg-white/10 border border-white/20' 
-                        : 'bg-slate-100 border border-slate-200'
-                    } shadow-sm`}>
-                      <ExternalIcon 
-                        src={aboutIcons.user} 
-                        size={24}
-                        className={darkMode ? 'filter invert' : 'filter-none'}
-                      />
-                    </div>
+                    <IconContainer
+                      iconSrc={aboutIcons.user}
+                      size={24}
+                      darkMode={darkMode}
+                    />
                     <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
                       {t.about_me_title}
                     </h3>
@@ -274,19 +244,10 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                       {parseTemplate(t.about_skills, {
                         techs: (
                           <span className="inline-flex flex-wrap gap-1 items-center">
-                            {["Next.js", "React", "Node.js", "TypeScript"].map((tech, index) => (
-                              <motion.span
-                                key={tech}
-                                className={`font-medium px-2 py-1 rounded-md text-sm ${
-                                  darkMode 
-                                    ? 'bg-slate-700/50 text-slate-200 border border-slate-600/50' 
-                                    : 'bg-slate-100 text-slate-700 border border-slate-300'
-                                }`}
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                              >
+                            {["Next.js", "React", "Node.js", "TypeScript"].map((tech, techIndex) => (
+                              <TechBadge key={tech} darkMode={darkMode} index={techIndex}>
                                 {tech}
-                              </motion.span>
+                              </TechBadge>
                             ))}
                           </span>
                         ),
@@ -300,39 +261,16 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                   </div>
 
                   {/* Current Role */}
-                  <motion.div
-                    className="p-6 rounded-2xl ios-glass-button"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${
-                        darkMode 
-                          ? 'bg-white/10 border border-white/20' 
-                          : 'bg-slate-100 border border-slate-200'
-                      } shadow-sm`}>
-                        <ExternalIcon 
-                          src={aboutIcons.briefcase} 
-                          size={20}
-                          className={darkMode ? 'filter invert' : 'filter-none'}
-                        />
-                      </div>
-                      <div>
-                        <h4 className={`font-bold text-lg ${darkMode ? "text-white" : "text-slate-900"}`}>
-                          {t.current_role}
-                        </h4>
-                        <p className={`font-medium ${darkMode ? "text-slate-300" : "text-slate-700"}`}>
-                          {t.current_company}
-                        </p>
-                        <p className={`text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                          {t.current_period}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <CurrentRoleCard
+                    role={t.current_role}
+                    company={t.current_company}
+                    period={t.current_period}
+                    iconSrc={aboutIcons.briefcase}
+                    darkMode={darkMode}
+                  />
                 </motion.div>
-              </CardContent>
-            </Card>
+              </div>
+            </LiquidGlassCard>
           </motion.div>
 
           {/* Modern Tech Stack */}
@@ -342,7 +280,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Card className="ios-glass-card border-0 shadow-2xl h-full relative overflow-hidden">
+            <LiquidGlassCard className="h-full relative overflow-hidden">
               {/* Glow Effect */}
               <motion.div 
                 className="absolute inset-0 pointer-events-none"
@@ -363,7 +301,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                 }}
               />
               
-              <CardContent className="p-6 relative z-10">
+              <div className="p-6 relative z-10">
                 <div className="flex items-center gap-3 mb-6">
                   <motion.div 
                     className={`p-3 rounded-xl ${
@@ -389,154 +327,14 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                 
                 <div className="space-y-5">
                   {skills.map((skill, index) => (
-                    <motion.div
+                    <SkillItem
                       key={skill.name}
-                      className="space-y-3"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.15 + 0.6, duration: 0.6 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <motion.div
-                            className={`p-2 rounded-lg ${
-                              darkMode 
-                                ? 'bg-white/10 border border-white/20' 
-                                : 'bg-slate-100 border border-slate-200'
-                            } shadow-sm`}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            transition={{ type: "spring", stiffness: 300 }}
-                          >
-                            <ExternalIcon 
-                              src={skill.iconSrc} 
-                              size={16}
-                              className={darkMode ? "filter invert" : "filter-none"}
-                            />
-                          </motion.div>
-                          <span className={`font-semibold ${darkMode ? "text-slate-200" : "text-slate-800"}`}>
-                            {skill.name}
-                          </span>
-                        </div>
-                        <motion.span 
-                          className={`text-sm font-bold px-3 py-1 rounded-full ${
-                            skill.level >= 90 
-                              ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                              : skill.level >= 85
-                                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
-                                : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white'
-                          } shadow-lg`}
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          transition={{ delay: index * 0.15 + 0.8, type: "spring", stiffness: 300 }}
-                          viewport={{ once: true }}
-                        >
-                          {skill.level}%
-                        </motion.span>
-                      </div>
-                      
-                      <div className={`relative w-full ${darkMode ? 'bg-white/10' : 'bg-slate-200'} rounded-full h-4 overflow-hidden shadow-inner`}>
-                        {/* Background glow */}
-                        <motion.div
-                          className={`absolute inset-0 rounded-full ${
-                            skill.level >= 90 
-                              ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20'
-                              : skill.level >= 85
-                                ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20'
-                                : 'bg-gradient-to-r from-orange-500/20 to-amber-500/20'
-                          } blur-sm`}
-                          animate={{
-                            opacity: [0.5, 0.8, 0.5]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        />
-                        
-                        {/* Main progress bar */}
-                        <motion.div
-                          className={`relative h-full rounded-full ${
-                            skill.level >= 90 
-                              ? 'bg-gradient-to-r from-green-400 via-emerald-500 to-green-600'
-                              : skill.level >= 85
-                                ? 'bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600'
-                                : 'bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600'
-                          } shadow-lg overflow-hidden`}
-                          initial={{ width: 0, x: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ delay: index * 0.15 + 1, duration: 1.5, ease: "easeOut" }}
-                          viewport={{ once: true }}
-                          style={{
-                            backgroundSize: '200% 100%',
-                            animation: 'gradientShift 3s ease-in-out infinite',
-                            transformOrigin: 'left center'
-                          }}
-                        >
-                          {/* Top highlight */}
-                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-full" />
-                          
-                          {/* Animated dots */}
-                          <motion.div
-                            className="absolute inset-0 flex items-center justify-end pr-2"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: index * 0.15 + 2, duration: 0.5 }}
-                            viewport={{ once: true }}
-                          >
-                            {Array.from({ length: 3 }).map((_, dotIndex) => (
-                              <motion.div
-                                key={dotIndex}
-                                className="w-1 h-1 bg-white/60 rounded-full mx-0.5"
-                                animate={{
-                                  scale: [1, 1.5, 1],
-                                  opacity: [0.6, 1, 0.6]
-                                }}
-                                transition={{
-                                  duration: 1.5,
-                                  repeat: Infinity,
-                                  delay: dotIndex * 0.2
-                                }}
-                              />
-                            ))}
-                          </motion.div>
-                        </motion.div>
-                        
-                        {/* Shine sweep effect */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-                          initial={{ x: '-100%' }}
-                          whileInView={{ x: '200%' }}
-                          transition={{ delay: index * 0.15 + 2.5, duration: 1, ease: "easeInOut" }}
-                          viewport={{ once: true }}
-                        />
-                        
-                        {/* Pulse border */}
-                        <motion.div
-                          className={`absolute inset-0 rounded-full border-2 ${
-                            skill.level >= 90 
-                              ? 'border-green-400/50'
-                              : skill.level >= 85
-                                ? 'border-blue-400/50'
-                                : 'border-orange-400/50'
-                          }`}
-                          animate={{
-                            borderColor: skill.level >= 90 
-                              ? ['rgba(74, 222, 128, 0.3)', 'rgba(74, 222, 128, 0.7)', 'rgba(74, 222, 128, 0.3)']
-                              : skill.level >= 85
-                                ? ['rgba(96, 165, 250, 0.3)', 'rgba(96, 165, 250, 0.7)', 'rgba(96, 165, 250, 0.3)']
-                                : ['rgba(251, 146, 60, 0.3)', 'rgba(251, 146, 60, 0.7)', 'rgba(251, 146, 60, 0.3)']
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        />
-                      </div>
-                    </motion.div>
+                      name={skill.name}
+                      level={skill.level}
+                      iconSrc={skill.iconSrc}
+                      darkMode={darkMode}
+                      index={index}
+                    />
                   ))}
                 </div>
                 
@@ -549,36 +347,24 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                   viewport={{ once: true }}
                 >
                   <div className="grid grid-cols-2 gap-4">
-                    <motion.div 
-                      className="text-center"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                          3+
-                        </span>
-                      </div>
-                      <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                        {t.years_experience}
-                      </div>
-                    </motion.div>
-                    <motion.div 
-                      className="text-center"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                        <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                          30+
-                        </span>
-                      </div>
-                      <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                        {t.projects_built}
-                      </div>
-                    </motion.div>
+                    <StatsItem
+                      value="3+"
+                      label={t.years_experience}
+                      from="from-blue-600"
+                      to="to-purple-600"
+                      darkMode={darkMode}
+                    />
+                    <StatsItem
+                      value="10+"
+                      label={t.projects_built}
+                      from="from-green-600"
+                      to="to-emerald-600"
+                      darkMode={darkMode}
+                    />
                   </div>
                 </motion.div>
-              </CardContent>
-            </Card>
+              </div>
+            </LiquidGlassCard>
           </motion.div>
         </div>
 
@@ -595,40 +381,14 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {values.map((value, index) => (
-              <motion.div
+              <ValueCard
                 key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.8, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="ios-glass-button border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <CardContent className="p-4 lg:p-6 text-center">
-                    <motion.div
-                      className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${
-                        darkMode 
-                          ? 'bg-white/10 border border-white/20' 
-                          : 'bg-slate-100 border border-slate-200'
-                      } shadow-sm flex items-center justify-center`}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <ExternalIcon 
-                        src={value.iconSrc} 
-                        size={32}
-                        className={darkMode ? 'filter invert' : 'filter-none'}
-                      />
-                    </motion.div>
-                    <h4 className={`font-bold text-lg mb-2 ${darkMode ? "text-white" : "text-slate-900"}`}>
-                      {value.title}
-                    </h4>
-                    <p className={`text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-                      {value.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                title={value.title}
+                description={value.description}
+                iconSrc={value.iconSrc}
+                darkMode={darkMode}
+                index={index}
+              />
             ))}
           </div>
         </motion.div>
@@ -640,26 +400,11 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="text-center mb-16">
-            <motion.h3 
-              className={`text-4xl lg:text-5xl font-bold mb-4 ${darkMode ? "text-white" : "text-slate-900"}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              {t.achievements}
-            </motion.h3>
-            <motion.p
-              className={`text-xl ${darkMode ? "text-slate-300" : "text-slate-600"}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              {t.certificates_subtitle}
-            </motion.p>
-          </div>
+          <SubsectionHeader 
+            title={t.achievements}
+            subtitle={t.certificates_subtitle}
+            darkMode={darkMode}
+          />
           
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {achievements.map((achievement, index) => {
@@ -667,87 +412,20 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
               const statusColor = getStatusColor(achievement.status)
               
               return (
-                <motion.div
+                <AchievementCard
                   key={achievement.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.6, duration: 0.7 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8 }}
-                >
-                  <Card className="ios-glass-card border-0 shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden h-full">
-                    <CardContent className="p-6 lg:p-8">
-                      <div className="flex items-start gap-6 mb-6">
-                        {/* Company Icon */}
-                        <motion.div
-                          className={`p-4 rounded-2xl ${
-                            darkMode 
-                              ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/20' 
-                              : 'bg-gradient-to-br from-slate-50 to-white border border-slate-200'
-                          } shadow-lg group-hover:shadow-xl transition-all duration-300`}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                        >
-                          <ExternalIcon 
-                            src={achievement.iconSrc} 
-                            size={32}
-                            className="filter-none"
-                          />
-                        </motion.div>
-                        
-                        {/* Status Badge */}
-                        <motion.div
-                          className={`ml-auto flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${statusColor} text-white font-medium text-sm shadow-lg`}
-                          whileHover={{ scale: 1.05 }}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + 0.8, duration: 0.5 }}
-                          viewport={{ once: true }}
-                        >
-                          <StatusIcon size={16} />
-                          {achievement.status}
-                        </motion.div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="mb-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <h4 className={`font-bold text-xl leading-tight ${darkMode ? "text-white" : "text-slate-900"}`}>
-                            {achievement.title}
-                          </h4>
-                          <Badge variant="secondary" className={`ml-4 text-sm font-medium ${
-                            darkMode 
-                              ? 'bg-white/10 text-white border-white/20' 
-                              : 'bg-slate-100 text-slate-700 border-slate-200'
-                          }`}>
-                            {achievement.date}
-                          </Badge>
-                        </div>
-                        <p className={`text-base leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
-                          {achievement.description}
-                        </p>
-                      </div>
-                      
-                      {/* Action Button */}
-                      {achievement.link && (
-                        <motion.div
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <Button
-                            onClick={() => window.open(achievement.link, '_blank')}
-                            className={`w-full ios-glass-button ${
-                              darkMode ? 'text-white' : 'text-slate-700'
-                            } group/btn`}
-                            variant="outline"
-                          >
-                            <ExternalLink className="mr-3 h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
-                            {t.view_certificate}
-                          </Button>
-                        </motion.div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                  title={achievement.title}
+                  date={achievement.date}
+                  description={achievement.description}
+                  iconSrc={achievement.iconSrc}
+                  link={achievement.link}
+                  status={achievement.status}
+                  statusIcon={StatusIcon}
+                  statusColor={statusColor}
+                  darkMode={darkMode}
+                  index={index}
+                  viewCertText={t.view_certificate}
+                />
               )
             })}
           </div>

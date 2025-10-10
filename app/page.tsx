@@ -16,7 +16,7 @@ import {
 } from "@/components/organisms"
 
 import { motion } from "framer-motion"
-import { ThreeJSBackground } from "@/components/ThreeJSBackground"
+// import { ThreeJSBackground } from "@/components/ThreeJSBackground"
 
 const FloatingParticles = React.memo(() => {
   // Adaptive particle count based on device performance - further optimized
@@ -128,23 +128,19 @@ export default function Portfolio() {
 
   return (
     <div
-      className={`min-h-screen transition-all duration-500 relative overflow-hidden ${
-        darkMode
-          ? "bg-gradient-to-br from-slate-950 via-slate-900/30 to-slate-800/20"
-          : "bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30"
-      }`}
+      className="min-h-screen transition-all duration-500 relative overflow-hidden"
     >
-      {/* Optimized Animated Background */}
-      <div className="fixed inset-0 pointer-events-none">
+      {/* Optimized Animated Background - Removed to show background image clearly */}
+      {/* <div className="fixed inset-0 pointer-events-none">
         <div
           className={`absolute inset-0 ${darkMode ? "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.08),transparent_40%)]" : "bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"}`}
         />
-      </div>
+      </div> */}
 
       <FloatingParticles />
       
-      {/* ThreeJS Background for Dark Mode */}
-      <ThreeJSBackground darkMode={darkMode} />
+      {/* ThreeJS Background for Dark Mode - Disabled */}
+      {/* <ThreeJSBackground darkMode={darkMode} /> */}
 
       <Header 
         darkMode={darkMode}

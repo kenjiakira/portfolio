@@ -2,10 +2,8 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ExternalIcon } from "@/components/ui/external-icon"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { SectionHeader, SkillsCategory } from "@/components/molecules"
 
 interface SkillsSectionProps {
   darkMode: boolean
@@ -129,103 +127,23 @@ export function SkillsSection({ darkMode }: SkillsSectionProps) {
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className={`text-5xl lg:text-7xl font-bold mb-6 ${
-              darkMode ? "text-white" : "text-slate-900"
-            }`}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {t.skills}
-          </motion.h2>
-          <motion.p
-            className={`text-xl max-w-3xl mx-auto ${darkMode ? "text-slate-300" : "text-slate-600"}`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {t.skills_description}
-          </motion.p>
-        </motion.div>
+        <SectionHeader
+          title={t.skills}
+          subtitle={t.skills_description}
+          darkMode={darkMode}
+        />
 
         {/* Skills Categories */}
         <div className="space-y-12 lg:space-y-16">
           {skills.map((category, categoryIndex) => (
-            <motion.div
+            <SkillsCategory
               key={category.category}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: categoryIndex * 0.2, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              {/* Category Title */}
-              <motion.div
-                className="flex items-center justify-center gap-3 mb-6 lg:mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: categoryIndex * 0.2 + 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <motion.div
-                  className={`p-2 rounded-xl ${
-                    darkMode 
-                      ? 'bg-white/10 border border-white/20' 
-                      : 'bg-slate-100 border border-slate-200'
-                  } shadow-sm`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                >
-                  <ExternalIcon 
-                    src={category.categoryIcon} 
-                    size={20}
-                    className={darkMode ? 'filter invert' : 'filter-none'}
-                  />
-                </motion.div>
-                <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                  {category.category}
-                </h3>
-              </motion.div>
-
-              {/* Skills Badges */}
-              <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4">
-                {category.items.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 + categoryIndex * 0.2 + 0.4, duration: 0.4 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                  >
-                    <Badge
-                      variant="outline"
-                      className={`px-4 py-3 text-sm font-medium rounded-full border-2 transition-all duration-300 ${
-                        darkMode
-                          ? 'bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30'
-                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300'
-                      } hover:shadow-lg hover:shadow-blue-500/20 flex items-center gap-2`}
-                    >
-                      <ExternalIcon 
-                        src={skill.icon} 
-                        size={16}
-                        className="filter-none"
-                      />
-                      {skill.name}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              category={category.category}
+              categoryIcon={category.categoryIcon}
+              items={category.items}
+              darkMode={darkMode}
+              categoryIndex={categoryIndex}
+            />
           ))}
         </div>
 

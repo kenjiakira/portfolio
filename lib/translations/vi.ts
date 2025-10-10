@@ -4,8 +4,8 @@ export const vi = {
   title: "Lập Trình Viên Full Stack Junior",
   subtitle: "Tạo ra những trải nghiệm số có ý nghĩa",
   location: "Hanoi, Vietnam",
-  experience: "5+ Năm Kinh Nghiệm",
-  projects: "50+ Dự Án Hoàn Thành",
+  experience: "3+ Năm Kinh Nghiệm",
+  projects: "10+ Dự Án Hoàn Thành",
   clients: "25+ Khách Hàng Hài Lòng",
   about: "Về Tôi",
   aboutText:
@@ -92,6 +92,7 @@ export const vi = {
   project_portfolio_title: "Website Portfolio Cá Nhân",
   project_coming_soon_title: "Sắp Ra Mắt",
   project_mytel_genai_title: "Mytel GenAI",
+  project_growfund_title: "Growfund",
   // Project descriptions
   project_codino_desc: "Nền tảng lập trình đơn giản, hỗ trợ developer Việt với các công cụ tinh gọn",
   project_aibinhdan_desc: "Bộ công cụ online đa dạng, miễn phí, hỗ trợ người dùng với hơn 100 tiện ích",
@@ -100,6 +101,7 @@ export const vi = {
   project_portfolio_desc: "Website portfolio cá nhân thể hiện kỹ năng và dự án",
   project_coming_soon_desc: "Dự án đang lên kế hoạch và phát triển",
   project_mytel_genai_desc: "Ứng dụng GenAI cho Mytel Myanmar (liên doanh của Viettel với MEC)",
+  project_growfund_desc: "Làm outsource phát triển và duy trì các sản phẩm công nghệ, trong đó có dự án GrowFundAI (bộ công cụ AI, AI Models, AI Chat, AI trending) và hỗ trợ phát triển Codino – nền tảng lập trình cho developer Việt.",
   // Project long descriptions
   project_codino_long: "Codino là nền tảng lập trình dành cho cộng đồng developer Việt, tập trung vào sự đơn giản, tiện lợi và hiệu quả. Dự án đang trong quá trình hoàn thiện với nhiều tính năng hữu ích cho lập trình viên.",
   project_aibinhdan_long: "AIBinhdan là phiên bản mới của 100Tools với hơn 100 công cụ trực tuyến đa dạng về text, hình ảnh, file, AI và nhiều lĩnh vực khác. Dự án đã hoàn thành và đang được duy trì phát triển.",
@@ -108,6 +110,7 @@ export const vi = {
   project_portfolio_long: "Thiết kế và phát triển website portfolio cá nhân, giới thiệu bản thân, kỹ năng, các dự án đã làm và liên hệ, giúp tăng cơ hội tuyển dụng.",
   project_coming_soon_long: "Dự án mới đang trong giai đoạn lên ý tưởng và phát triển, sẽ được cập nhật trong tương lai gần.",
   project_mytel_genai_long: "Hiện đang đóng góp vào việc phát triển ứng dụng GenAI cho Mytel Myanmar (liên doanh của Viettel với MEC). Tập trung xây dựng các giải pháp có khả năng mở rộng, thân thiện với người dùng, tích hợp AI sinh để nâng cao tương tác khách hàng và dịch vụ số.",
+  project_growfund_long: "Làm outsource phát triển và duy trì các sản phẩm công nghệ, trong đó có dự án GrowFundAI (bộ công cụ AI, AI Models, AI Chat, AI trending) và hỗ trợ phát triển Codino – nền tảng lập trình cho developer Việt.",
   // Project categories
   category_fullstack: "Full-Stack",
   category_backend: "Backend", 

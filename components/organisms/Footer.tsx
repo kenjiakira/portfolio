@@ -185,39 +185,6 @@ export function Footer({ darkMode }: FooterProps) {
                     </span>
                   </motion.a>
                 </div>
-
-                {/* Newsletter Signup */}
-                <motion.div
-                  className="ios-glass-card p-6 rounded-2xl max-w-md"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <Coffee className={`h-5 w-5 ${darkMode ? 'text-white' : 'text-slate-700'}`} />
-                    <h4 className={`font-semibold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                      {t.footer_stay_connected}
-                    </h4>
-                  </div>
-                  <p className={`text-sm mb-4 ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
-                    {t.footer_get_updates}
-                  </p>
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      placeholder={t.footer_email_placeholder}
-                      className={`flex-1 px-4 py-2 rounded-lg text-sm transition-all duration-300 ${
-                        darkMode
-                          ? 'bg-white/5 border border-white/20 text-white placeholder:text-slate-400 focus:bg-white/10 focus:border-white/30'
-                          : 'bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-500 focus:bg-white focus:border-slate-300'
-                      } focus:ring-2 focus:ring-blue-500/20`}
-                    />
-                    <Button size="sm" className={`ios-glass-button ${darkMode ? 'text-white hover:text-white' : 'text-slate-900 hover:text-white'} font-medium`}>
-                      {t.footer_join}
-                    </Button>
-                  </div>
-                </motion.div>
               </motion.div>
             </div>
 

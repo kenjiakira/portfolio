@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Roboto, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { TranslationsProvider } from "@/hooks/use-translations-context"
+import { SVGFilters } from "@/components/atoms/SVGFilters"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <SVGFilters />
         <TranslationsProvider>
           {children}
         </TranslationsProvider>

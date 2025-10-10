@@ -2,7 +2,6 @@
 
 import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations-context"
 import Image from "next/image"
@@ -34,7 +33,7 @@ export function Header({
 
   return (
     <>
-      {/* Enhanced Navigation */}
+      {/* Enhanced Navigation with Liquid Glass */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -42,8 +41,11 @@ export function Header({
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Card className="ios-glass-card border-0 shadow-2xl backdrop-blur-2xl rounded-full">
-              <CardContent className="flex items-center justify-between px-4 lg:px-8 py-3">
+            <div className="liquidGlass-wrapper border-0 shadow-2xl rounded-full">
+              <div className="liquidGlass-effect"></div>
+              <div className="liquidGlass-tint"></div>
+              <div className="liquidGlass-shine"></div>
+              <div className="liquidGlass-content flex items-center justify-between px-4 lg:px-8 py-3">
                 <motion.div
                   className="flex items-center gap-3"
                   whileHover={{ scale: 1.05 }}
@@ -164,8 +166,8 @@ export function Header({
                     </AnimatePresence>
                   </motion.button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </nav>
@@ -180,8 +182,11 @@ export function Header({
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="fixed top-20 left-4 right-4 z-40 md:hidden"
           >
-            <Card className="ios-glass-card border-0 shadow-2xl backdrop-blur-2xl rounded-3xl">
-              <CardContent className="p-4 space-y-2">
+            <div className="liquidGlass-wrapper border-0 shadow-2xl rounded-3xl">
+              <div className="liquidGlass-effect rounded-3xl"></div>
+              <div className="liquidGlass-tint rounded-3xl"></div>
+              <div className="liquidGlass-shine rounded-3xl"></div>
+              <div className="liquidGlass-content p-4 space-y-2">
                 {navigationItems.map((item, index) => (
                   <motion.a
                     key={item.key}
@@ -235,8 +240,8 @@ export function Header({
                     </div>
                   </div>
                 </motion.div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
