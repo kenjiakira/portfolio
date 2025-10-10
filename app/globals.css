@@ -958,14 +958,21 @@ body {
 
 /* Responsive improvements for dark mode */
 @media (max-width: 768px) {
-  /* Optimize background image for mobile */
+  /* Optimize background image for mobile - adaptive for all screen ratios */
   body {
-    background-attachment: scroll;
+    background-image: url('/app-bg-lightmode-mobile.png');
+    background-attachment: fixed;
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   
   .dark body {
-    background-attachment: scroll;
+    background-image: url('/app-bg-darkmode-mobile.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   
   .dark .liquid-glass {
@@ -978,6 +985,42 @@ body {
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     background: rgba(15, 23, 42, 0.2);
+  }
+}
+
+/* Tối ưu cho các tỉ lệ màn hình khác nhau */
+/* Màn hình rất dài (20:9, 21:9) - ví dụ: Samsung, Xiaomi mới */
+@media (max-width: 768px) and (min-aspect-ratio: 9/20) {
+  body, .dark body {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* Màn hình chuẩn (16:9, 18:9) - ví dụ: iPhone, hầu hết Android */
+@media (max-width: 768px) and (min-aspect-ratio: 9/18) and (max-aspect-ratio: 9/16) {
+  body, .dark body {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* Màn hình vuông hơn (iPad mini, tablet nhỏ) */
+@media (max-width: 768px) and (max-aspect-ratio: 9/18) {
+  body, .dark body {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* Tối ưu cho iOS Safari - fix background-attachment: fixed issue */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    body, .dark body {
+      background-attachment: scroll;
+      background-size: cover;
+      min-height: 100vh;
+    }
   }
 }
 

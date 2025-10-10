@@ -15,8 +15,7 @@ import {
   ContactSection
 } from "@/components/organisms"
 
-import { motion } from "framer-motion"
-// import { ThreeJSBackground } from "@/components/ThreeJSBackground"
+import { motion } from "framer-motion"ù import { ThreeJSBackground } from "@/components/ThreeJSBackground"
 
 const FloatingParticles = React.memo(() => {
   // Adaptive particle count based on device performance - further optimized
@@ -140,7 +139,7 @@ export default function Portfolio() {
       <FloatingParticles />
       
       {/* ThreeJS Background for Dark Mode - Disabled */}
-      {/* <ThreeJSBackground darkMode={darkMode} /> */}
+      <ThreeJSBackground darkMode={darkMode} />
 
       <Header 
         darkMode={darkMode}

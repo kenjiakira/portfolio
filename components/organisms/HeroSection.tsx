@@ -147,7 +147,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 />
               </div>
               {/* Enhanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 mt-2 sm:mt-0">
+              <div className="flex flex-row flex-wrap items-center gap-4 lg:gap-6 mt-2 sm:mt-0">
                 <DownloadCVButton
                   text={t.downloadCV}
                   onClick={downloadResume}

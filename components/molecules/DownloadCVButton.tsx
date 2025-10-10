@@ -29,7 +29,7 @@ export function DownloadCVButton({
         onClick={onClick}
         darkMode={darkMode}
         shouldReduceAnimations={shouldReduceAnimations}
-        className="px-8 py-4 font-semibold w-full"
+        className="px-6 sm:px-8 py-4 font-semibold w-auto"
       >
         <div className={`absolute inset-0 ${
           darkMode 
