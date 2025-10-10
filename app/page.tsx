@@ -15,7 +15,8 @@ import {
   ContactSection
 } from "@/components/organisms"
 
-import { motion } from "framer-motion"ù import { ThreeJSBackground } from "@/components/ThreeJSBackground"
+import { motion } from "framer-motion"
+import { ThreeJSBackground } from "@/components/ThreeJSBackground"
 
 const FloatingParticles = React.memo(() => {
   // Adaptive particle count based on device performance - further optimized
