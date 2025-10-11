@@ -13,11 +13,9 @@ import {
 } from "@/components/atoms"
 import { 
   ValueCard, 
-  SkillItem, 
   AchievementCard, 
   CurrentRoleCard,
   SectionHeader,
-  StatsItem,
   SubsectionHeader
 } from "@/components/molecules"
 
@@ -32,12 +30,6 @@ interface Achievement {
   iconSrc: string
   link?: string
   status: string
-}
-
-interface Skill {
-  name: string
-  level: number
-  iconSrc: string
 }
 
 interface Value {
@@ -150,12 +142,6 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
     }
   ]
 
-  const skills: Skill[] = [
-    { name: "AI/ML Integration", level: 92, iconSrc: aboutIcons.cpu },
-    { name: "Full-Stack Development", level: 95, iconSrc: aboutIcons.code },
-    { name: "Cloud Architecture", level: 88, iconSrc: aboutIcons.cloud },
-    { name: "DevOps & CI/CD", level: 85, iconSrc: aboutIcons.deploy }
-  ]
 
   return (
     <section id="about" className="py-32 px-6 relative overflow-hidden">
@@ -187,10 +173,9 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
         />
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-20">
+        <div className="mb-16 lg:mb-20">
           {/* About Text Card */}
           <motion.div
-            className="lg:col-span-2"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -220,42 +205,50 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                     <p className="mb-4">
                       {parseTemplate(t.about_intro, {
                         realname: createHighlight(t.realname, 'gradient'),
+                        age: createHighlight(t.highlight_age, 'blue'),
+                        university: createHighlight(t.highlight_university, 'purple'),
+                        products: createHighlight(t.highlight_products, 'cyan'),
+                        life: createHighlight(t.highlight_life, 'emerald'),
                         web: createHighlight(t.highlight_web, 'blue'),
                         ai_fields: createHighlight(t.highlight_ai_fields, 'purple')
                       })}
                     </p>
                     
                     <p className="mb-4">
-                      {parseTemplate(t.about_experience, {
-                        age: (
-                          <span className={`font-bold text-xl ${
-                            darkMode ? "text-white" : "text-slate-900"
-                          }`}>
-                            {t.highlight_age}
-                          </span>
-                        ),
-                        aibinhdan: createHighlight(t.highlight_aibinhdan, 'emerald'),
-                        codino: createHighlight(t.highlight_codino, 'cyan'),
-                        vnpt: createHighlight(t.highlight_vnpt, 'orange')
+                      {parseTemplate(t.about_journey, {
+                        passion: createHighlight(t.highlight_passion, 'orange'),
+                        stages: createHighlight(t.highlight_stages, 'cyan'),
+                        feeling: createHighlight(t.highlight_feeling, 'emerald')
                       })}
                     </p>
 
-                    <p>
-                      {parseTemplate(t.about_skills, {
-                        techs: (
-                          <span className="inline-flex flex-wrap gap-1 items-center">
-                            {["Next.js", "React", "Node.js", "TypeScript"].map((tech, techIndex) => (
-                              <TechBadge key={tech} darkMode={darkMode} index={techIndex}>
-                                {tech}
-                              </TechBadge>
-                            ))}
-                          </span>
-                        ),
-                        principles: (
-                          <span className="font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                            {t.highlight_principles}
-                          </span>
-                        )
+                    <p className="mb-4">
+                      {parseTemplate(t.about_philosophy, {
+                        philosophy: createHighlight(t.highlight_philosophy, 'blue'),
+                        needs: createHighlight(t.highlight_needs, 'purple'),
+                        combination: createHighlight(t.highlight_combination, 'cyan')
+                      })}
+                    </p>
+
+                    <p className="mb-4">
+                      {parseTemplate(t.about_current_project, {
+                        vnlotus: createHighlight(t.highlight_vnlotus, 'gradient'),
+                        features: createHighlight(t.highlight_features, 'blue'),
+                        goal: createHighlight(t.highlight_goal, 'emerald'),
+                        spirit: createHighlight(t.highlight_spirit, 'purple')
+                      })}
+                    </p>
+
+                    <p className="mb-4">
+                      {parseTemplate(t.about_vision, {
+                        future_role: createHighlight(t.highlight_future_role, 'cyan'),
+                        meaningful_projects: createHighlight(t.highlight_meaningful_projects, 'orange')
+                      })}
+                    </p>
+
+                    <p className={`text-xl font-semibold italic ${darkMode ? "text-white" : "text-slate-900"}`}>
+                      {parseTemplate(t.about_conclusion, {
+                        motto: createHighlight(t.highlight_motto, 'gradient')
                       })}
                     </p>
                   </div>
@@ -268,100 +261,6 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                     iconSrc={aboutIcons.briefcase}
                     darkMode={darkMode}
                   />
-                </motion.div>
-              </div>
-            </LiquidGlassCard>
-          </motion.div>
-
-          {/* Modern Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <LiquidGlassCard className="h-full relative overflow-hidden">
-              {/* Glow Effect */}
-              <motion.div 
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: darkMode
-                    ? 'linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.08))'
-                    : 'linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.03), rgba(6, 182, 212, 0.04))',
-                  backgroundSize: '400% 400%',
-                  animation: 'gradientShift 6s ease-in-out infinite',
-                }}
-                animate={{
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <div className="p-6 relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <motion.div 
-                    className={`p-3 rounded-xl ${
-                      darkMode 
-                        ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30' 
-                        : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
-                    } shadow-lg`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <ExternalIcon 
-                      src={aboutIcons.cpu} 
-                      size={24}
-                      className={darkMode ? 'filter invert' : 'filter-none'}
-                    />
-                  </motion.div>
-                  <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      {t.tech_stack}
-                    </span>
-                  </h3>
-                </div>
-                
-                <div className="space-y-5">
-                  {skills.map((skill, index) => (
-                    <SkillItem
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      iconSrc={skill.iconSrc}
-                      darkMode={darkMode}
-                      index={index}
-                    />
-                  ))}
-                </div>
-                
-                {/* Highlight Stats */}
-                <motion.div
-                  className="mt-6 pt-6 border-t border-white/10"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5, duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="grid grid-cols-2 gap-4">
-                    <StatsItem
-                      value="3+"
-                      label={t.years_experience}
-                      from="from-blue-600"
-                      to="to-purple-600"
-                      darkMode={darkMode}
-                    />
-                    <StatsItem
-                      value="10+"
-                      label={t.projects_built}
-                      from="from-green-600"
-                      to="to-emerald-600"
-                      darkMode={darkMode}
-                    />
-                  </div>
                 </motion.div>
               </div>
             </LiquidGlassCard>
