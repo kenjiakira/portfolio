@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { useMobileOptimization } from "@/hooks/use-mobile"
+import { AnimatedBackground, FadeInUp } from "@/components/atoms"
 import { SectionHeader, FeaturedProjectCard, ProjectCard } from "@/components/molecules"
 
 interface ProjectsSectionProps {
@@ -24,6 +25,7 @@ interface Project {
 
 export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   const projects: Project[] =[
     {
@@ -130,40 +132,44 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
 
   return (
     <section id="projects" className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
-      {/* Liquid Glass Background - exactly like Hero */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className={`absolute top-20 left-10 w-80 h-80 ${
-            darkMode ? 'bg-white/5' : 'bg-slate-900/5'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={`absolute bottom-20 right-10 w-96 h-96 ${
-            darkMode ? 'bg-white/3' : 'bg-slate-900/3'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-      </div>
+      {/* Liquid Glass Background - tối ưu */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 pointer-events-none">
+          <AnimatedBackground
+            className={`absolute top-20 left-10 w-80 h-80 ${
+              darkMode ? 'bg-white/5' : 'bg-slate-900/5'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+          <AnimatedBackground
+            className={`absolute bottom-20 right-10 w-96 h-96 ${
+              darkMode ? 'bg-white/3' : 'bg-slate-900/3'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
@@ -183,13 +189,13 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
         )}
 
         {/* Other Projects - Grid Layout */}
-              <motion.div
+        <FadeInUp
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-                viewport={{ once: true }}
-              >
+          duration={0.6}
+          delay={0.2}
+          lazy={true}
+          reduceMotion={shouldReduceAnimations}
+        >
           {otherProjects.map((project, index) => (
             <ProjectCard
               key={project.title}
@@ -197,8 +203,8 @@ export function ProjectsSection({ darkMode }: ProjectsSectionProps) {
               index={index}
               darkMode={darkMode}
             />
-            ))}
-        </motion.div>
+          ))}
+        </FadeInUp>
       </div>
     </section>
   )

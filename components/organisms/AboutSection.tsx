@@ -1,15 +1,19 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { ExternalIcon, aboutIcons } from "@/components/ui/external-icon"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { useMobileOptimization } from "@/hooks/use-mobile"
 import { CheckCircle, Clock, Award } from "lucide-react"
 import { 
   IconContainer,
   TechBadge,
   HighlightedText,
-  LiquidGlassCard
+  LiquidGlassCard,
+  OptimizedMotion,
+  AnimatedBackground,
+  FadeInUp,
+  FadeInLeft
 } from "@/components/atoms"
 import { 
   ValueCard, 
@@ -40,6 +44,7 @@ interface Value {
 
 export function AboutSection({ darkMode }: AboutSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   // Helper function to create highlighted spans
   const createHighlight = (text: string, color: 'blue' | 'purple' | 'emerald' | 'cyan' | 'orange' | 'gradient') => {
@@ -145,24 +150,27 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
 
   return (
     <section id="about" className="py-32 px-6 relative overflow-hidden">
-      {/* Minimal Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className={`absolute top-1/4 left-1/4 w-96 h-96 ${
-            darkMode ? 'bg-white/5' : 'bg-slate-900/5'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
+      {/* Minimal Background Elements - tối ưu */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 pointer-events-none">
+          <AnimatedBackground
+            className={`absolute top-1/4 left-1/4 w-96 h-96 ${
+              darkMode ? 'bg-white/5' : 'bg-slate-900/5'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
@@ -175,20 +183,21 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
         {/* Main Content */}
         <div className="mb-16 lg:mb-20">
           {/* About Text Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+          <FadeInLeft
+            duration={0.6}
+            delay={0.1}
+            lazy={true}
+            reduceMotion={shouldReduceAnimations}
           >
             <LiquidGlassCard className="hover:shadow-3xl transition-all duration-500 group h-full">
               <div className="p-6 lg:p-8">
-                <motion.div
+                <OptimizedMotion
                   className="space-y-6"
                   initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  lazy={true}
+                  reduceMotion={shouldReduceAnimations}
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <IconContainer
@@ -261,19 +270,19 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
                     iconSrc={aboutIcons.briefcase}
                     darkMode={darkMode}
                   />
-                </motion.div>
+                </OptimizedMotion>
               </div>
             </LiquidGlassCard>
-          </motion.div>
+          </FadeInLeft>
         </div>
 
         {/* Values Grid */}
-        <motion.div
+        <FadeInUp
           className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
+          duration={0.6}
+          delay={0.2}
+          lazy={true}
+          reduceMotion={shouldReduceAnimations}
         >
           <h3 className={`text-3xl font-bold text-center mb-12 ${darkMode ? "text-white" : "text-slate-900"}`}>
             {t.what_drives_me}
@@ -290,14 +299,14 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
               />
             ))}
           </div>
-        </motion.div>
+        </FadeInUp>
 
         {/* Certificates */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
+        <FadeInUp
+          duration={0.6}
+          delay={0.3}
+          lazy={true}
+          reduceMotion={shouldReduceAnimations}
         >
           <SubsectionHeader 
             title={t.achievements}
@@ -328,7 +337,7 @@ export function AboutSection({ darkMode }: AboutSectionProps) {
               )
             })}
           </div>
-        </motion.div>
+        </FadeInUp>
       </div>
     </section>
   )

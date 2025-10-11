@@ -55,7 +55,7 @@ export const vi = {
   // Experience section
   professional_journey: "Hành trình chuyên môn qua các dự án sáng tạo và công nghệ",
   // Experience roles
-  role_outsource_fullstack: "Lập Trình Viên Full Stack Outsource",
+  role_outsource_fullstack: "Lập Trình Viên Outsource",
   role_fullstack: "Lập Trình Viên Full Stack", 
   role_chatbot: "Lập Trình Viên Chatbot",
   role_founder: "Nhà Sáng Lập & Lập Trình Viên",

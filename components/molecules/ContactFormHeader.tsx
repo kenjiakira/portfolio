@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface ContactFormHeaderProps {
   title: string
@@ -9,7 +9,8 @@ interface ContactFormHeaderProps {
 
 export function ContactFormHeader({ title, description, darkMode = false }: ContactFormHeaderProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +23,7 @@ export function ContactFormHeader({ title, description, darkMode = false }: Cont
       <p className={`${darkMode ? "text-slate-300" : "text-slate-600"}`}>
         {description}
       </p>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

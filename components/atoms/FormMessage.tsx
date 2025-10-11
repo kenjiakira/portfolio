@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface FormMessageProps {
   type: "success" | "error"
@@ -11,7 +11,8 @@ export function FormMessage({ type, message, darkMode = false }: FormMessageProp
   const isError = type === "error"
   
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -26,7 +27,7 @@ export function FormMessage({ type, message, darkMode = false }: FormMessageProp
       }`}
     >
       <p className="text-center font-medium">{message}</p>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

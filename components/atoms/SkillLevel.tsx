@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface SkillLevelProps {
   level: number
@@ -9,7 +9,8 @@ interface SkillLevelProps {
 
 export function SkillLevel({ level, index = 0, darkMode = false }: SkillLevelProps) {
   return (
-    <motion.span 
+    <OptimizedMotion
+      as="span"
       className={`text-sm font-bold px-3 py-1 rounded-full ${
         darkMode 
           ? 'bg-white/[0.08] border border-white/[0.12] text-white' 
@@ -25,7 +26,7 @@ export function SkillLevel({ level, index = 0, darkMode = false }: SkillLevelPro
       }}
     >
       {level}%
-    </motion.span>
+    </OptimizedMotion>
   )
 }
 

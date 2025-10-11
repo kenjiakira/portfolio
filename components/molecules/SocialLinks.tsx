@@ -3,7 +3,7 @@ import { LucideIcon } from "lucide-react"
 import { SocialIconButton } from "@/components/atoms/SocialIconButton"
 
 interface SocialLink {
-  icon: LucideIcon
+  icon: LucideIcon | string
   href: string
   label: string
   color?: string

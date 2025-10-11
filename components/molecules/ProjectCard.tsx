@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { LiquidGlassCard } from "@/components/atoms"
+import { LiquidGlassCard, OptimizedMotion } from "@/components/atoms"
 import { ProjectImage } from "./ProjectImage"
 import { CategoryBadge } from "@/components/atoms/CategoryBadge"
 import { ProjectStatusBadge } from "@/components/atoms/ProjectStatusBadge"
@@ -30,7 +30,8 @@ export function ProjectCard({
   darkMode = false 
 }: ProjectCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
@@ -51,7 +52,8 @@ export function ProjectCard({
           />
 
           {/* Category Badge */}
-          <motion.div
+          <OptimizedMotion
+            as="div"
             className="absolute top-3 left-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -62,10 +64,11 @@ export function ProjectCard({
               category={project.category} 
               variant="overlay"
             />
-          </motion.div>
+          </OptimizedMotion>
 
           {/* Status Badge */}
-          <motion.div
+          <OptimizedMotion
+            as="div"
             className="absolute top-3 right-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -73,20 +76,22 @@ export function ProjectCard({
             viewport={{ once: true }}
           >
             <ProjectStatusBadge status={project.status} className="text-xs" />
-          </motion.div>
+          </OptimizedMotion>
         </div>
 
         {/* Project Content */}
         <div className="p-6 flex flex-col flex-1">
-          <motion.h4
+          <OptimizedMotion
+            as="h4"
             className={`text-lg font-bold mb-3 ${darkMode ? "text-white" : "text-slate-900"}`}
             whileHover={{ x: 3 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             {project.title}
-          </motion.h4>
+          </OptimizedMotion>
 
-          <motion.p
+          <OptimizedMotion
+            as="p"
             className={`text-sm mb-4 leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -94,7 +99,7 @@ export function ProjectCard({
             viewport={{ once: true }}
           >
             {project.description}
-          </motion.p>
+          </OptimizedMotion>
 
           {/* Tech Stack - Limited */}
           <div className="mb-4">
@@ -117,7 +122,7 @@ export function ProjectCard({
           </div>
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

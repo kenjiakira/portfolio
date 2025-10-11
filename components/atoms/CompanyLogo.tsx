@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { ExternalIcon } from "@/components/ui/external-icon"
 
 interface CompanyLogoProps {
@@ -9,7 +9,8 @@ interface CompanyLogoProps {
 
 export function CompanyLogo({ iconSrc, darkMode = false }: CompanyLogoProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className={`p-4 rounded-2xl ${
         darkMode 
           ? 'bg-white/10 border border-white/20' 
@@ -22,7 +23,7 @@ export function CompanyLogo({ iconSrc, darkMode = false }: CompanyLogoProps) {
         size={24}
         className={darkMode ? 'filter invert' : 'filter-none'}
       />
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LucideIcon } from "lucide-react"
 
 interface EngagementButtonProps {
@@ -22,14 +22,15 @@ export function EngagementButton({
   }[hoverColor]
   
   return (
-    <motion.button
+    <OptimizedMotion
+      as="button"
       className={`flex items-center gap-1 ${darkMode ? "text-slate-400" : "text-slate-500"} ${hoverColorClass}`}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
       <Icon className="h-4 w-4" />
       <span>{count}</span>
-    </motion.button>
+    </OptimizedMotion>
   )
 }
 

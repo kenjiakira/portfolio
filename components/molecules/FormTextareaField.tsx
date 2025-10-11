@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { FormLabel } from "@/components/atoms/FormLabel"
 import { FormTextarea } from "@/components/atoms/FormTextarea"
 import { CharacterCount } from "@/components/atoms/CharacterCount"
@@ -30,7 +30,8 @@ export function FormTextareaField({
   delay = 0 
 }: FormTextareaFieldProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.6 }}
@@ -55,7 +56,7 @@ export function FormTextareaField({
           darkMode={darkMode} 
         />
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

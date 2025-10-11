@@ -1,8 +1,6 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
-import { Github, Linkedin, Mail } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations-context"
 import { useMobileOptimization } from "@/hooks/use-mobile"
 import {
@@ -13,6 +11,7 @@ import {
   LocationContact,
   ProfileImage
 } from "@/components/molecules"
+import { FadeInLeft, AnimatedBackground, OptimizedMotion } from "@/components/atoms"
 
 interface HeroSectionProps {
   darkMode: boolean
@@ -24,9 +23,9 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
   const { isMobile, shouldReduceAnimations } = useMobileOptimization()
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/kenjiakira", label: "GitHub", color: "hover:bg-gray-600" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/tu-ngoc-hoang-348557291/", label: "LinkedIn", color: "hover:bg-blue-600" },
-    { icon: Mail, href: "mailto:kenjiakira@gmail.com", label: "Email", color: "hover:bg-emerald-600" },
+    { icon: "/assets/svg/github.svg", href: "https://github.com/kenjiakira", label: "GitHub", color: "hover:bg-gray-600" },
+    { icon: "/assets/svg/linkedin.svg", href: "https://www.linkedin.com/in/tu-ngoc-hoang-348557291/", label: "LinkedIn", color: "hover:bg-blue-600" },
+    { icon: "/assets/svg/mail.svg", href: "mailto:kenjiakira@gmail.com", label: "Email", color: "hover:bg-emerald-600" },
   ]
 
   return (
@@ -36,7 +35,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
         {/* Liquid Glass Background - tối ưu cho mobile */}
         {!shouldReduceAnimations && (
           <div className="absolute inset-0 pointer-events-none">
-            <motion.div
+            <AnimatedBackground
               className={`absolute top-20 left-10 w-80 h-80 ${
                 darkMode ? 'bg-white/5' : 'bg-slate-900/5'
               } rounded-full blur-3xl`}
@@ -50,8 +49,9 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
+              reduceMotion={shouldReduceAnimations}
             />
-            <motion.div
+            <AnimatedBackground
               className={`absolute bottom-20 right-10 w-96 h-96 ${
                 darkMode ? 'bg-white/3' : 'bg-slate-900/3'
               } rounded-full blur-3xl`}
@@ -66,6 +66,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 ease: "easeInOut",
                 delay: 2,
               }}
+              reduceMotion={shouldReduceAnimations}
             />
           </div>
         )}
@@ -73,58 +74,74 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: shouldReduceAnimations ? 0.5 : 1, ease: "easeOut" }}
+            <FadeInLeft
+              duration={shouldReduceAnimations ? 0.5 : 0.8}
               className="space-y-6 lg:space-y-10 relative"
+              reduceMotion={shouldReduceAnimations}
+              lazy={true}
             >
-              {/* Floating Dots Background - chỉ hiển thị trên PC */}
+              {/* Floating Dots Background - giảm từ 20 xuống 8 dots để tối ưu */}
               {!shouldReduceAnimations && (
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                  {Array.from({ length: isMobile ? 10 : 20 }).map((_, i) => (
-                    <motion.div
-                      key={`dot-${i}`}
-                      className={`absolute w-1 h-1 rounded-full ${
-                        darkMode ? 'bg-white/20' : 'bg-slate-900/20'
-                      }`}
-                      style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                      }}
-                      animate={{
-                        x: [0, Math.random() * 100 - 50],
-                        y: [0, Math.random() * 100 - 50],
-                        opacity: [0.2, 0.8, 0.2],
-                        scale: [1, 1.5, 1],
-                      }}
-                      transition={{
-                        duration: Math.random() * 4 + 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: Math.random() * 2,
-                      }}
-                    />
-                  ))}
+                  {Array.from({ length: isMobile ? 4 : 8 }).map((_, i) => {
+                    // Pre-calculate random values để tránh re-render
+                    const randomX = Math.random() * 100 - 50
+                    const randomY = Math.random() * 100 - 50
+                    const randomDuration = Math.random() * 4 + 3
+                    const randomDelay = Math.random() * 2
+                    
+                    return (
+                      <div
+                        key={`dot-${i}`}
+                        className="absolute"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                        }}
+                      >
+                        <AnimatedBackground
+                          className={`w-1 h-1 rounded-full ${
+                            darkMode ? 'bg-white/20' : 'bg-slate-900/20'
+                          }`}
+                          animate={{
+                            x: [0, randomX],
+                            y: [0, randomY],
+                            opacity: [0.2, 0.8, 0.2],
+                            scale: [1, 1.5, 1],
+                          }}
+                          transition={{
+                            duration: randomDuration,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: randomDelay,
+                          }}
+                          reduceMotion={shouldReduceAnimations}
+                        />
+                      </div>
+                    )
+                  })}
                 </div>
               )}
               <div className="space-y-4 lg:space-y-6">
                 <AvailabilityStatus
-                  text="Available for new opportunities"
+                  text="Available for new opportunities" 
                   darkMode={darkMode}
                   shouldReduceAnimations={shouldReduceAnimations}
                 />
 
-                <motion.h1
+                <OptimizedMotion
+                  as="h1"
                   className={`text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold tracking-tight ${
                     darkMode ? "text-white" : "text-slate-900"
                   }`}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: shouldReduceAnimations ? 0.2 : 0.4, duration: shouldReduceAnimations ? 0.4 : 0.8 }}
+                  reduceMotion={shouldReduceAnimations}
+                  lazy={true}
                 >
                   {t.name}
-                </motion.h1>
+                </OptimizedMotion>
 
                 <AnimatedHeading
                   text={t.title}
@@ -169,7 +186,7 @@ export function HeroSection({ darkMode, downloadResume }: HeroSectionProps) {
                 darkMode={darkMode}
                 shouldReduceAnimations={shouldReduceAnimations}
               />
-            </motion.div>
+            </FadeInLeft>
 
             {/* Right Column - Enhanced Profile Image */}
             <ProfileImage

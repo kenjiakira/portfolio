@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassCard } from "@/components/atoms/LiquidGlassCard"
 import { IconContainer } from "@/components/atoms/IconContainer"
 
@@ -19,7 +19,8 @@ export function CurrentRoleCard({
   darkMode = false 
 }: CurrentRoleCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
@@ -45,7 +46,7 @@ export function CurrentRoleCard({
           </div>
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import Image from "next/image"
 
 interface ProjectImageProps {
@@ -25,7 +25,8 @@ export function ProjectImage({
 
   return (
     <div className="relative overflow-hidden">
-      <motion.div 
+      <OptimizedMotion
+        as="div"
         whileHover={{ scale: 1.05 }} 
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="h-full"
@@ -37,7 +38,7 @@ export function ProjectImage({
           height={height}
           className={className}
         />
-      </motion.div>
+      </OptimizedMotion>
       
       <div className={`absolute inset-0 ${gradientClass}`} />
     </div>

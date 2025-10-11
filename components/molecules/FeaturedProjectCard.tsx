@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassCard } from "@/components/atoms"
 import { ProjectImage } from "./ProjectImage"
 import { ProjectStatusBadge } from "@/components/atoms/ProjectStatusBadge"
@@ -31,7 +31,8 @@ export function FeaturedProjectCard({
   viewDemoText 
 }: FeaturedProjectCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="mb-16"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +53,8 @@ export function FeaturedProjectCard({
             />
 
             {/* Status Badge */}
-            <motion.div
+            <OptimizedMotion
+              as="div"
               className="absolute top-6 right-6"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -60,12 +62,13 @@ export function FeaturedProjectCard({
               viewport={{ once: true }}
             >
               <ProjectStatusBadge status={project.status} className="shadow-lg" />
-            </motion.div>
+            </OptimizedMotion>
           </div>
 
           {/* Project Content */}
           <div className="p-10 flex flex-col justify-center">
-            <motion.div
+            <OptimizedMotion
+              as="div"
               className="mb-4"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -73,9 +76,10 @@ export function FeaturedProjectCard({
               viewport={{ once: true }}
             >
               <CategoryBadge category={project.category} darkMode={darkMode} />
-            </motion.div>
+            </OptimizedMotion>
 
-            <motion.h3
+            <OptimizedMotion
+              as="h3"
               className={`text-3xl lg:text-4xl font-bold mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -84,9 +88,10 @@ export function FeaturedProjectCard({
               whileHover={{ x: 5 }}
             >
               {project.title}
-            </motion.h3>
+            </OptimizedMotion>
 
-            <motion.p
+            <OptimizedMotion
+              as="p"
               className={`text-lg mb-6 leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -94,10 +99,11 @@ export function FeaturedProjectCard({
               viewport={{ once: true }}
             >
               {project.longDescription || project.description}
-            </motion.p>
+            </OptimizedMotion>
 
             {/* Tech Stack */}
-            <motion.div
+            <OptimizedMotion
+              as="div"
               className="mb-8"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -112,10 +118,11 @@ export function FeaturedProjectCard({
                 darkMode={darkMode}
                 variant="full"
               />
-            </motion.div>
+            </OptimizedMotion>
 
             {/* Action Buttons */}
-            <motion.div
+            <OptimizedMotion
+              as="div"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
@@ -127,11 +134,11 @@ export function FeaturedProjectCard({
                 demoText={viewDemoText}
                 darkMode={darkMode}
               />
-            </motion.div>
+            </OptimizedMotion>
           </div>
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

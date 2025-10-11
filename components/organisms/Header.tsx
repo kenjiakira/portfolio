@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Moon, Sun, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations-context"
 import Image from "next/image"
 
@@ -125,7 +125,7 @@ export function Header({
                   {/* Dark Mode Toggle */}
                   <motion.button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 rounded-full liquid-glass-subtle hover:scale-105 transition-all duration-300 button-shadow-medium"
+                    className="p-2 rounded-full liquid-glass-subtle hover:scale-105 transition-all duration-300 button-shadow-medium flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -136,11 +136,24 @@ export function Header({
                         animate={{ rotate: 0, opacity: 1 }}
                         exit={{ rotate: 90, opacity: 0 }}
                         transition={{ duration: 0.3 }}
+                        className="flex items-center justify-center"
                       >
                         {darkMode ? (
-                          <Moon className="h-5 w-5 text-blue-400" />
+                          <Image
+                            src="/assets/svg/moon.svg"
+                            alt="Dark mode"
+                            width={20}
+                            height={20}
+                            className="filter invert brightness-200"
+                          />
                         ) : (
-                          <Sun className="h-5 w-5 text-amber-500" />
+                          <Image
+                            src="/assets/svg/sun.svg"
+                            alt="Light mode"
+                            width={20}
+                            height={20}
+                            className="filter-none"
+                          />
                         )}
                       </motion.div>
                     </AnimatePresence>
@@ -149,7 +162,7 @@ export function Header({
                   {/* Mobile Menu Button */}
                   <motion.button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden p-2 rounded-full liquid-glass-subtle button-shadow-medium"
+                    className="md:hidden p-2 rounded-full liquid-glass-subtle button-shadow-medium flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -160,8 +173,13 @@ export function Header({
                         animate={{ rotate: 0, opacity: 1 }}
                         exit={{ rotate: 90, opacity: 0 }}
                         transition={{ duration: 0.2 }}
+                        className="flex items-center justify-center"
                       >
-                        {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                        {mobileMenuOpen ? (
+                          <X className={`h-5 w-5 ${darkMode ? 'text-white' : 'text-slate-900'}`} />
+                        ) : (
+                          <Menu className={`h-5 w-5 ${darkMode ? 'text-white' : 'text-slate-900'}`} />
+                        )}
                       </motion.div>
                     </AnimatePresence>
                   </motion.button>

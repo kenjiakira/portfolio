@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Badge } from "@/components/ui/badge"
 
 interface ProjectTechStackProps {
@@ -21,7 +21,8 @@ export function ProjectTechStack({
   return (
     <div className="flex flex-wrap gap-2">
       {displayTech.map((tech, index) => (
-        <motion.div
+        <OptimizedMotion
+          as="div"
           key={tech}
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -43,7 +44,7 @@ export function ProjectTechStack({
           >
             {tech}
           </Badge>
-        </motion.div>
+        </OptimizedMotion>
       ))}
       {remaining > 0 && (
         <Badge variant="outline" className="text-xs">

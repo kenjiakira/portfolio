@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { StatusDot } from "@/components/atoms/StatusDot"
 
 interface AvailabilityStatusProps {
@@ -14,14 +14,15 @@ export function AvailabilityStatus({
   shouldReduceAnimations = false 
 }: AvailabilityStatusProps) {
   return (
-    <motion.div
+    <OptimizedMotion
       className="flex items-center gap-3 text-sm font-medium"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: shouldReduceAnimations ? 0.1 : 0.3 }}
     >
       <StatusDot shouldReduceAnimations={shouldReduceAnimations} />
-      <motion.div
+      <OptimizedMotion
+        as="div"
         className={`${darkMode ? "text-slate-300" : "text-slate-600"} cursor-pointer`}
         whileHover={shouldReduceAnimations ? undefined : "bounce"}
         animate={shouldReduceAnimations ? undefined : "bounce"}
@@ -30,7 +31,8 @@ export function AvailabilityStatus({
           <span>{text}</span>
         ) : (
           text.split("").map((char, index) => (
-            <motion.span
+            <OptimizedMotion
+              as="span"
               key={`available-${index}`}
               className="inline-block"
               style={{ whiteSpace: char === " " ? "pre" : "normal" }}
@@ -48,11 +50,11 @@ export function AvailabilityStatus({
               }}
             >
               {char}
-            </motion.span>
+            </OptimizedMotion>
           ))
         )}
-      </motion.div>
-    </motion.div>
+      </OptimizedMotion>
+    </OptimizedMotion>
   )
 }
 

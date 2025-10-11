@@ -1,7 +1,1 @@
-<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="Supabase--Streamline-Simple-Icons" height="24" width="24">
-  <desc>
-    Supabase Streamline Icon: https://streamlinehq.com
-  </desc>
-  <title>Supabase</title>
-  <path d="M11.9 1.036c-0.015 -0.986 -1.26 -1.41 -1.874 -0.637L0.764 12.05C-0.33 13.427 0.65 15.455 2.409 15.455h9.579l0.113 7.51c0.014 0.985 1.259 1.408 1.873 0.636l9.262 -11.653c1.093 -1.375 0.113 -3.403 -1.645 -3.403h-9.642z" fill="#000000" stroke-width="1"></path>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><linearGradient id="a" x1="237.109" x2="419.106" y1="223.219" y2="146.89" gradientTransform="matrix(1 0 0 -1 0 513)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#249361"/><stop offset="1" style="stop-color:#3ecf8e"/></linearGradient><path d="M297.6 501c-12.9 16.3-39.2 7.4-39.5-13.4L253.6 183h204.8c37.1 0 57.8 42.8 34.7 71.9z" style="fill:url(#a)"/><linearGradient id="b" x1="245.829" x2="328.829" y1="411.681" y2="255.438" gradientTransform="matrix(1 0 0 -1 0 513)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#000"/><stop offset="1" style="stop-color:#000;stop-opacity:0"/></linearGradient><path d="M297.6 501c-12.9 16.3-39.2 7.4-39.5-13.4L253.6 183h204.8c37.1 0 57.8 42.8 34.7 71.9z" style="fill:url(#b);fill-opacity:.2"/><path d="M214.4 11c12.9-16.3 39.2-7.4 39.5 13.4l2 304.5H53.7c-37.1 0-57.8-42.8-34.7-71.9z" style="fill:#3ecf8e"/></svg>

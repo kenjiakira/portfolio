@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { CategoryTitle } from "./CategoryTitle"
 import { SkillBadge } from "@/components/atoms/SkillBadge"
 
@@ -24,7 +24,8 @@ export function SkillsCategory({
   categoryIndex = 0
 }: SkillsCategoryProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: categoryIndex * 0.2, duration: 0.8 }}
@@ -51,7 +52,7 @@ export function SkillsCategory({
           />
         ))}
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LucideIcon } from "lucide-react"
 
 interface SocialButtonProps {
@@ -20,7 +20,8 @@ export function SocialButton({
   index = 0 
 }: SocialButtonProps) {
   return (
-    <motion.button
+    <OptimizedMotion
+      as="button"
       className={`p-3 rounded-xl ios-glass-button transition-all duration-300 ${color} group`}
       whileHover={{ scale: 1.1, y: -2 }}
       whileTap={{ scale: 0.9 }}
@@ -32,7 +33,7 @@ export function SocialButton({
       aria-label={label}
     >
       <Icon className={`h-5 w-5 ${darkMode ? 'text-white' : 'text-slate-700'} group-hover:text-white transition-colors duration-300`} />
-    </motion.button>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { ExternalIcon } from "@/components/ui/external-icon"
 
 interface SkillBadgeProps {
@@ -18,7 +18,8 @@ export function SkillBadge({
   categoryIndex = 0
 }: SkillBadgeProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.1 + categoryIndex * 0.2 + 0.4, duration: 0.4 }}
@@ -40,7 +41,7 @@ export function SkillBadge({
           </span>
         </div>
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

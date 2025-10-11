@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { MapPin, Coffee } from "lucide-react"
 import { InfoItem } from "@/components/atoms/InfoItem"
 
@@ -17,7 +17,8 @@ export function LocationContact({
   shouldReduceAnimations = false 
 }: LocationContactProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="flex items-center gap-6 text-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -25,7 +26,7 @@ export function LocationContact({
     >
       <InfoItem icon={MapPin} text={location} darkMode={darkMode} />
       <InfoItem icon={Coffee} text={coffeeText} darkMode={darkMode} />
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

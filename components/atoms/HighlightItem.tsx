@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface HighlightItemProps {
   text: string
@@ -9,7 +9,8 @@ interface HighlightItemProps {
 
 export function HighlightItem({ text, darkMode = false, index = 0 }: HighlightItemProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className={`flex items-center p-3 rounded-xl ${
         darkMode 
           ? 'bg-white/5 border border-white/10' 
@@ -24,7 +25,7 @@ export function HighlightItem({ text, darkMode = false, index = 0 }: HighlightIt
       <span className={`text-sm ${darkMode ? "text-slate-300" : "text-slate-700"}`}>
         {text}
       </span>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

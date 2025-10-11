@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { CompanyLogo } from "@/components/atoms/CompanyLogo"
 import { PeriodBadge } from "@/components/atoms/PeriodBadge"
 import { GradientText } from "@/components/atoms/GradientText"
@@ -24,13 +24,14 @@ export function ExperienceHeader({
       <CompanyLogo iconSrc={companyLogo} darkMode={darkMode} />
       <div className="flex-1">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-          <motion.h3
+          <OptimizedMotion
+            as="h3"
             className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}
             whileHover={{ x: 5 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             {role}
-          </motion.h3>
+          </OptimizedMotion>
           <PeriodBadge period={period} darkMode={darkMode} />
         </div>
         <p className="text-xl font-semibold">

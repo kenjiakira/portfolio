@@ -1,6 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
-import { LiquidGlassCard } from "@/components/atoms"
+import { LiquidGlassCard, OptimizedMotion } from "@/components/atoms"
 import { ExperienceHeader } from "./ExperienceHeader"
 import { HighlightsList } from "./HighlightsList"
 import { TechnologiesList } from "./TechnologiesList"
@@ -31,17 +30,17 @@ export function ExperienceCard({
   technologiesTitle
 }: ExperienceCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
       className={`relative flex items-center ${
         index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
       } flex-col lg:gap-16 justify-center lg:justify-start`}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.3, duration: 0.8 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.15, duration: 0.6 }}
+      lazy={true}
     >
       {/* Experience Card */}
-      <motion.div 
+      <OptimizedMotion 
         className="flex-1 lg:ml-16 ml-0 max-w-2xl relative z-10"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -58,15 +57,16 @@ export function ExperienceCard({
             />
 
             {/* Description */}
-            <motion.p
+            <OptimizedMotion
+              as="p"
               className={`mb-6 text-lg leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}
               initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              lazy={true}
             >
               {experience.description}
-            </motion.p>
+            </OptimizedMotion>
 
             {/* Highlights */}
             <HighlightsList
@@ -83,8 +83,8 @@ export function ExperienceCard({
             />
           </div>
         </LiquidGlassCard>
-      </motion.div>
-    </motion.div>
+      </OptimizedMotion>
+    </OptimizedMotion>
   )
 }
 

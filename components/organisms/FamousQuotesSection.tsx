@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { useMobileOptimization } from "@/hooks/use-mobile"
+import { AnimatedBackground, FadeInUp } from "@/components/atoms"
 import { SectionHeader, QuoteCard } from "@/components/molecules"
 
 interface FamousQuotesSectionProps {
@@ -24,6 +25,7 @@ interface TechQuote {
 
 export function FamousQuotesSection({ darkMode }: FamousQuotesSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   const techQuotes: TechQuote[] = [
     {
@@ -102,40 +104,44 @@ export function FamousQuotesSection({ darkMode }: FamousQuotesSectionProps) {
 
   return (
     <section className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
-      {/* Liquid Glass Background - exactly like other sections */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className={`absolute top-20 left-10 w-80 h-80 ${
-            darkMode ? 'bg-white/5' : 'bg-slate-900/5'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={`absolute bottom-20 right-10 w-96 h-96 ${
-            darkMode ? 'bg-white/3' : 'bg-slate-900/3'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-      </div>
+      {/* Liquid Glass Background - tối ưu */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 pointer-events-none">
+          <AnimatedBackground
+            className={`absolute top-20 left-10 w-80 h-80 ${
+              darkMode ? 'bg-white/5' : 'bg-slate-900/5'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+          <AnimatedBackground
+            className={`absolute bottom-20 right-10 w-96 h-96 ${
+              darkMode ? 'bg-white/3' : 'bg-slate-900/3'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         <SectionHeader
@@ -143,13 +149,12 @@ export function FamousQuotesSection({ darkMode }: FamousQuotesSectionProps) {
           darkMode={darkMode}
         />
         
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+        <FadeInUp
+          duration={0.6}
+          delay={0.1}
+          lazy={true}
+          reduceMotion={shouldReduceAnimations}
         >
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {techQuotes.map((quote, index) => (
               <QuoteCard
@@ -161,7 +166,7 @@ export function FamousQuotesSection({ darkMode }: FamousQuotesSectionProps) {
               />
             ))}
           </div>
-        </motion.div>
+        </FadeInUp>
       </div>
     </section>
   )

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface LoadingSpinnerProps {
   size?: number
@@ -8,7 +8,8 @@ interface LoadingSpinnerProps {
 
 export function LoadingSpinner({ size = 6, color = "white" }: LoadingSpinnerProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className={`w-${size} h-${size} border-2 border-${color}/30 border-t-${color} rounded-full`}
       style={{ 
         width: `${size * 4}px`, 
@@ -19,7 +20,8 @@ export function LoadingSpinner({ size = 6, color = "white" }: LoadingSpinnerProp
       }}
       animate={{ rotate: 360 }}
       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-    />
+    >
+    </OptimizedMotion>
   )
 }
 

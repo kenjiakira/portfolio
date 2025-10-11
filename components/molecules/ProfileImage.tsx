@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import Image from "next/image"
 
 interface ProfileImageProps {
@@ -16,7 +16,8 @@ export function ProfileImage({
   shouldReduceAnimations = false 
 }: ProfileImageProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: shouldReduceAnimations ? 0.5 : 1, delay: shouldReduceAnimations ? 0.1 : 0.3, ease: "easeOut" }}
@@ -24,7 +25,8 @@ export function ProfileImage({
     >
       <div className="relative max-w-lg mx-auto">
         {/* Glow Effect Container */}
-        <motion.div 
+        <OptimizedMotion
+          as="div"
           className="relative p-1 rounded-3xl"
           style={{
             background: darkMode
@@ -53,7 +55,8 @@ export function ProfileImage({
           }}
         >
           {/* Main Image Container */}
-          <motion.div
+          <OptimizedMotion
+            as="div"
             className="relative z-10 overflow-hidden rounded-3xl ios-glass-card shadow-2xl"
             whileHover={shouldReduceAnimations ? {} : { scale: 1.02, rotateY: 5 }}
             transition={{ type: "spring", stiffness: shouldReduceAnimations ? 100 : 300 }}
@@ -69,10 +72,10 @@ export function ProfileImage({
 
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-          </motion.div>
-        </motion.div>
+          </OptimizedMotion>
+        </OptimizedMotion>
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

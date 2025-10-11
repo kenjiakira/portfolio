@@ -1,6 +1,5 @@
 // Molecules components index
 export { ValueCard } from './ValueCard'
-export { SkillItem } from './SkillItem'
 export { AchievementCard } from './AchievementCard'
 export { CurrentRoleCard } from './CurrentRoleCard'
 export { SectionHeader } from './SectionHeader'

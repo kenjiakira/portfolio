@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Avatar } from "@/components/atoms/Avatar"
 import { VerifiedBadge } from "@/components/atoms/VerifiedBadge"
 
@@ -23,7 +23,8 @@ export function QuoteHeader({
   darkMode = false 
 }: QuoteHeaderProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="flex items-center gap-3 mb-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -45,7 +46,7 @@ export function QuoteHeader({
           {company}
         </p>
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

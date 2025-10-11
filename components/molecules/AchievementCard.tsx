@@ -1,8 +1,7 @@
 import React from "react"
-import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, LucideIcon } from "lucide-react"
-import { LiquidGlassCard, LiquidGlassButton } from "@/components/atoms"
+import { LiquidGlassCard, LiquidGlassButton, OptimizedMotion } from "@/components/atoms"
 import { IconContainer } from "@/components/atoms/IconContainer"
 import { StatusBadge } from "@/components/atoms/StatusBadge"
 
@@ -34,7 +33,8 @@ export function AchievementCard({
   viewCertText
 }: AchievementCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 + 0.6, duration: 0.7 }}
@@ -46,7 +46,8 @@ export function AchievementCard({
         <div className="p-6 lg:p-8">
           <div className="flex items-start gap-6 mb-6">
             {/* Company Icon */}
-            <motion.div
+            <OptimizedMotion
+              as="div"
               className={`p-4 rounded-2xl ${
                 darkMode 
                   ? 'bg-gradient-to-br from-white/10 to-white/5 border border-white/20' 
@@ -62,7 +63,7 @@ export function AchievementCard({
                 className="p-0 bg-transparent border-0 shadow-none"
                 animate={false}
               />
-            </motion.div>
+            </OptimizedMotion>
             
             {/* Status Badge */}
             <div className="ml-auto">
@@ -113,7 +114,7 @@ export function AchievementCard({
           )}
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { useMobileOptimization } from "@/hooks/use-mobile"
+import { AnimatedBackground } from "@/components/atoms"
 import { SectionHeader, SkillsCategory } from "@/components/molecules"
 
 interface SkillsSectionProps {
@@ -23,6 +24,7 @@ interface SkillCategory {
 
 export function SkillsSection({ darkMode }: SkillsSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   const skills: SkillCategory[] = [
     {
@@ -90,40 +92,44 @@ export function SkillsSection({ darkMode }: SkillsSectionProps) {
 
   return (
     <section id="skills" className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
-      {/* Liquid Glass Background - exactly like Hero */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className={`absolute top-20 left-10 w-80 h-80 ${
-            darkMode ? 'bg-white/5' : 'bg-slate-900/5'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={`absolute bottom-20 right-10 w-96 h-96 ${
-            darkMode ? 'bg-white/3' : 'bg-slate-900/3'
-          } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-      </div>
+      {/* Liquid Glass Background - tối ưu */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 pointer-events-none">
+          <AnimatedBackground
+            className={`absolute top-20 left-10 w-80 h-80 ${
+              darkMode ? 'bg-white/5' : 'bg-slate-900/5'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+          <AnimatedBackground
+            className={`absolute bottom-20 right-10 w-96 h-96 ${
+              darkMode ? 'bg-white/3' : 'bg-slate-900/3'
+            } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}

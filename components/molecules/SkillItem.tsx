@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { IconContainer } from "@/components/atoms/IconContainer"
 import { SkillLevel } from "@/components/atoms/SkillLevel"
 import { ProgressBar } from "@/components/atoms/ProgressBar"
@@ -20,7 +20,8 @@ export function SkillItem({
   index = 0 
 }: SkillItemProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="space-y-3"
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +46,7 @@ export function SkillItem({
       </div>
       
       <ProgressBar level={level} darkMode={darkMode} index={index} />
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,15 +1,16 @@
 "use client"
 
 import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { LiquidGlassCard } from "@/components/atoms"
+import { AnimatePresence } from "framer-motion"
+import { LiquidGlassCard, AnimatedBackground, FadeInLeft } from "@/components/atoms"
 import {
   Mail,
   Github,
   Linkedin,
 } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations-context"
-import { FormMessage } from "@/components/atoms"
+import { useMobileOptimization } from "@/hooks/use-mobile"
+import { FormMessage, OptimizedMotion } from "@/components/atoms"
 import {
   SectionHeader,
   FormField,
@@ -34,6 +35,7 @@ interface FormData {
 
 export function ContactSection({ darkMode }: ContactSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -125,38 +127,42 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
 
   return (
     <section id="contact" className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
-      {/* Liquid Glass Background - exactly like Hero */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className={`absolute top-20 left-10 w-80 h-80 ${darkMode ? 'bg-white/5' : 'bg-slate-900/5'
-            } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className={`absolute bottom-20 right-10 w-96 h-96 ${darkMode ? 'bg-white/3' : 'bg-slate-900/3'
-            } rounded-full blur-3xl`}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-      </div>
+      {/* Liquid Glass Background - tối ưu */}
+      {!shouldReduceAnimations && (
+        <div className="absolute inset-0 pointer-events-none">
+          <AnimatedBackground
+            className={`absolute top-20 left-10 w-80 h-80 ${darkMode ? 'bg-white/5' : 'bg-slate-900/5'
+              } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+          <AnimatedBackground
+            className={`absolute bottom-20 right-10 w-96 h-96 ${darkMode ? 'bg-white/3' : 'bg-slate-900/3'
+              } rounded-full blur-3xl`}
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+            reduceMotion={shouldReduceAnimations}
+          />
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header Section */}
@@ -171,12 +177,12 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
         {/* Main Content Layout */}
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Left Column - CTA & Social */}
-          <motion.div
+          <FadeInLeft
             className="lg:col-span-1 space-y-8"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
+            duration={0.6}
+            delay={0.1}
+            lazy={true}
+            reduceMotion={shouldReduceAnimations}
           >
             <ContactInfoCard
               title={t.contact_lets_chat}
@@ -192,15 +198,16 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                 />
               )}
             />
-          </motion.div>
+          </FadeInLeft>
 
           {/* Right Column - Contact Form */}
-          <motion.div
+          <OptimizedMotion
             className="lg:col-span-2"
             initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            lazy={true}
+            reduceMotion={shouldReduceAnimations}
           >
             <LiquidGlassCard className="h-full hover:shadow-3xl transition-all duration-500">
               <div className="p-10">
@@ -295,7 +302,7 @@ export function ContactSection({ darkMode }: ContactSectionProps) {
                   </form>
                 </div>
             </LiquidGlassCard>
-          </motion.div>
+          </OptimizedMotion>
         </div>
       </div>
     </section>

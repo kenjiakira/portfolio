@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface SubsectionHeaderProps {
   title: string
@@ -14,7 +14,8 @@ export function SubsectionHeader({
 }: SubsectionHeaderProps) {
   return (
     <div className="text-center mb-16">
-      <motion.h3 
+      <OptimizedMotion
+        as="h3"
         className={`text-4xl lg:text-5xl font-bold mb-4 ${darkMode ? "text-white" : "text-slate-900"}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -22,9 +23,10 @@ export function SubsectionHeader({
         viewport={{ once: true }}
       >
         {title}
-      </motion.h3>
+      </OptimizedMotion>
       {subtitle && (
-        <motion.p
+        <OptimizedMotion
+          as="p"
           className={`text-xl ${darkMode ? "text-slate-300" : "text-slate-600"}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +34,7 @@ export function SubsectionHeader({
           viewport={{ once: true }}
         >
           {subtitle}
-        </motion.p>
+        </OptimizedMotion>
       )}
     </div>
   )

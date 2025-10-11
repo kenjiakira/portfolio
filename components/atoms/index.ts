@@ -4,7 +4,6 @@ export { StatusBadge } from './StatusBadge'
 export { IconContainer } from './IconContainer'
 export { TechBadge } from './TechBadge'
 export { SkillLevel } from './SkillLevel'
-export { ProgressBar } from './ProgressBar'
 export { HighlightedText } from './HighlightedText'
 export { FormLabel } from './FormLabel'
 export { FormInput } from './FormInput'
@@ -30,3 +29,13 @@ export { SkillBadge } from './SkillBadge'
 export { SVGFilters } from './SVGFilters'
 export { LiquidGlassButton } from './LiquidGlassButton'
 export { LiquidGlassCard } from './LiquidGlassCard'
+export { 
+  OptimizedMotion, 
+  FadeIn, 
+  FadeInUp, 
+  FadeInLeft, 
+  ScaleIn,
+  AnimatedBackground,
+  animationPresets,
+  transitionPresets
+} from './OptimizedMotion'

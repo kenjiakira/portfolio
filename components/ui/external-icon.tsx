@@ -21,6 +21,9 @@ export function ExternalIcon({ src, alt = "icon", className = "", size = 24 }: E
 export const aboutIcons = {
   user: "/assets/svg/user.svg",
   briefcase: "/assets/svg/briefcase.svg",
+  company: "/assets/svg/company.svg",
+  bot: "/assets/svg/bot.svg",
+  ceo: "/assets/svg/ceo.svg",
   target: "/assets/svg/target.svg",
   users: "/assets/svg/users.svg",
   code: "/assets/svg/code.svg",

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassCard } from "@/components/atoms/LiquidGlassCard"
 import { IconContainer } from "@/components/atoms/IconContainer"
 
@@ -19,7 +19,8 @@ export function ValueCard({
   index = 0 
 }: ValueCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 + 0.8, duration: 0.6 }}
@@ -44,7 +45,7 @@ export function ValueCard({
           </p>
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

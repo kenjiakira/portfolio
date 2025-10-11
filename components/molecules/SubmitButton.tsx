@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Button } from "@/components/ui/button"
 import { Send, CheckCircle } from "lucide-react"
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner"
@@ -18,7 +18,8 @@ export function SubmitButton({
   darkMode = false 
 }: SubmitButtonProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
@@ -58,7 +59,8 @@ export function SubmitButton({
           {status === "loading" ? (
             <LoadingSpinner size={6} color={darkMode ? "white" : "slate"} />
           ) : status === "success" ? (
-            <motion.div
+            <OptimizedMotion
+              as="div"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 500 }}
@@ -66,7 +68,7 @@ export function SubmitButton({
             >
               <CheckCircle className="mr-2 h-5 w-5" />
               {successText}
-            </motion.div>
+            </OptimizedMotion>
           ) : (
             <>
               <Send className="mr-2 h-5 w-5" />
@@ -75,7 +77,7 @@ export function SubmitButton({
           )}
         </div>
       </Button>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

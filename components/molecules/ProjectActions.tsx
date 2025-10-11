@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassButton } from "@/components/atoms"
 import { ExternalLink, Github } from "lucide-react"
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { ExternalIcon } from "@/components/ui/external-icon"
 
 interface CategoryTitleProps {
@@ -16,14 +16,16 @@ export function CategoryTitle({
   categoryIndex = 0
 }: CategoryTitleProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="flex items-center justify-center gap-3 mb-6 lg:mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: categoryIndex * 0.2 + 0.2, duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <motion.div
+      <OptimizedMotion
+        as="div"
         whileHover={{ scale: 1.1, rotate: 5 }}
       >
         <div className="liquidGlass-wrapper border-0 shadow-md rounded-xl">
@@ -38,11 +40,11 @@ export function CategoryTitle({
             />
           </div>
         </div>
-      </motion.div>
+      </OptimizedMotion>
       <h3 className={`text-2xl font-bold ${darkMode ? "text-white" : "text-slate-900"}`}>
         {title}
       </h3>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

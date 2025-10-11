@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Download } from "lucide-react"
 import { LiquidGlassButton } from "@/components/atoms/LiquidGlassButton"
 
@@ -17,7 +17,8 @@ export function DownloadCVButton({
   shouldReduceAnimations = false 
 }: DownloadCVButtonProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
@@ -45,7 +46,7 @@ export function DownloadCVButton({
           {text}
         </div>
       </LiquidGlassButton>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

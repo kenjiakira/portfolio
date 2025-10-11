@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface TechBadgeProps {
   children: React.ReactNode
@@ -9,7 +9,8 @@ interface TechBadgeProps {
 
 export function TechBadge({ children, darkMode = false, index = 0 }: TechBadgeProps) {
   return (
-    <motion.span
+    <OptimizedMotion
+      as="span"
       className={`font-medium px-2 py-1 rounded-md text-sm ${
         darkMode 
           ? 'bg-slate-700/50 text-slate-200 border border-slate-600/50' 
@@ -22,7 +23,7 @@ export function TechBadge({ children, darkMode = false, index = 0 }: TechBadgePr
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       {children}
-    </motion.span>
+    </OptimizedMotion>
   )
 }
 

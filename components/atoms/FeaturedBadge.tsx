@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles } from "lucide-react"
 
@@ -9,7 +9,8 @@ interface FeaturedBadgeProps {
 
 export function FeaturedBadge({ text = "Featured Project" }: FeaturedBadgeProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       className="absolute top-6 left-6"
       initial={{ scale: 0, rotate: -180 }}
       whileInView={{ scale: 1, rotate: 0 }}
@@ -20,7 +21,7 @@ export function FeaturedBadge({ text = "Featured Project" }: FeaturedBadgeProps)
         <Sparkles className="h-4 w-4 mr-2" />
         {text}
       </Badge>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

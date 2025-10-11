@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { GradientText } from "@/components/atoms/GradientText"
 
 interface StatsItemProps {
@@ -18,7 +18,8 @@ export function StatsItem({
   darkMode = false 
 }: StatsItemProps) {
   return (
-    <motion.div 
+    <OptimizedMotion
+      as="div"
       className="text-center"
       whileHover={{ scale: 1.05 }}
     >
@@ -30,7 +31,7 @@ export function StatsItem({
       <div className={`text-xs ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
         {label}
       </div>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassCard } from "@/components/atoms"
 import { QuoteHeader } from "./QuoteHeader"
 import { EngagementStats } from "./EngagementStats"
@@ -26,7 +26,8 @@ interface QuoteCardProps {
 
 export function QuoteCard({ quote, content, index, darkMode = false }: QuoteCardProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.8 }}
@@ -48,7 +49,8 @@ export function QuoteCard({ quote, content, index, darkMode = false }: QuoteCard
           />
 
           {/* Content */}
-          <motion.p
+          <OptimizedMotion
+            as="p"
             className={`mb-6 flex-grow text-sm leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-700"}`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -56,7 +58,7 @@ export function QuoteCard({ quote, content, index, darkMode = false }: QuoteCard
             viewport={{ once: true }}
           >
             &quot;{content}&quot;
-          </motion.p>
+          </OptimizedMotion>
 
           {/* Engagement Stats */}
           <EngagementStats
@@ -67,7 +69,7 @@ export function QuoteCard({ quote, content, index, darkMode = false }: QuoteCard
           />
         </div>
       </LiquidGlassCard>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

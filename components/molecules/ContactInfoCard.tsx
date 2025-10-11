@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { LiquidGlassCard, LiquidGlassButton } from "@/components/atoms"
 import { Coffee, Mail, LucideIcon } from "lucide-react"
 
@@ -33,7 +33,8 @@ export function ContactInfoCard({
   return (
     <LiquidGlassCard className="hover:shadow-3xl transition-all duration-500">
       <div className="p-8 text-center">
-        <motion.div
+        <OptimizedMotion
+          as="div"
           className="mb-6"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -47,9 +48,10 @@ export function ContactInfoCard({
           } shadow-sm flex items-center justify-center`}>
             <Coffee className={`h-10 w-10 ${darkMode ? 'text-white' : 'text-slate-700'}`} />
           </div>
-        </motion.div>
+        </OptimizedMotion>
 
-        <motion.h3
+        <OptimizedMotion
+          as="h3"
           className={`text-2xl font-bold mb-4 ${darkMode ? "text-white" : "text-slate-900"}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,9 +59,10 @@ export function ContactInfoCard({
           viewport={{ once: true }}
         >
           {title}
-        </motion.h3>
+        </OptimizedMotion>
 
-        <motion.p
+        <OptimizedMotion
+          as="p"
           className={`text-sm mb-6 leading-relaxed ${darkMode ? "text-slate-300" : "text-slate-600"}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,9 +70,10 @@ export function ContactInfoCard({
           viewport={{ once: true }}
         >
           {description}
-        </motion.p>
+        </OptimizedMotion>
 
-        <motion.div
+        <OptimizedMotion
+          as="div"
           className="space-y-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,14 +93,16 @@ export function ContactInfoCard({
           </LiquidGlassButton>
 
           {/* Buy Me a Coffee */}
-          <motion.div
+          <OptimizedMotion
+            as="div"
             className="pt-4 border-t border-white/10"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <motion.a
+            <OptimizedMotion
+              as="a"
               href="https://buymeacoffee.com/kenjiakira"
               target="_blank"
               rel="noopener noreferrer"
@@ -105,7 +111,6 @@ export function ContactInfoCard({
               className="block"
             >
               <LiquidGlassButton
-                as="div"
                 darkMode={darkMode}
                 variant="icon"
                 className="w-full px-4 py-3"
@@ -123,11 +128,11 @@ export function ContactInfoCard({
                   </span>
                 </div>
               </LiquidGlassButton>
-            </motion.a>
-          </motion.div>
+            </OptimizedMotion>
+          </OptimizedMotion>
 
           {renderSocialLinks()}
-        </motion.div>
+        </OptimizedMotion>
       </div>
     </LiquidGlassCard>
   )

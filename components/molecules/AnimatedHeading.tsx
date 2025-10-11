@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 
 interface AnimatedHeadingProps {
   text: string
@@ -40,46 +40,52 @@ export function AnimatedHeading({
   // Trên mobile performance thấp, chỉ animate từng từ thay vì từng ký tự
   if (shouldReduceAnimations) {
     return (
-      <motion.div
+      <OptimizedMotion
         className={className}
         initial="hidden"
         animate="visible"
         whileHover={enableBounce ? "bounce" : undefined}
+        gpu={true}
       >
         {text.split(" ").map((word, index) => (
-          <motion.span
+          <OptimizedMotion
+            as="span"
             key={`${text}-${index}`}
             custom={index + delay * 5}
             variants={bounceVariants}
             className="inline-block mr-1"
+            gpu={true}
           >
             {word}
-          </motion.span>
+          </OptimizedMotion>
         ))}
-      </motion.div>
+      </OptimizedMotion>
     )
   }
 
   // PC - giữ nguyên animation từng ký tự
   return (
-    <motion.div
+    <OptimizedMotion
       className={className}
       initial="hidden"
       animate="visible"
       whileHover={enableBounce ? "bounce" : undefined}
+      gpu={true}
     >
       {text.split("").map((char, index) => (
-        <motion.span
+        <OptimizedMotion
+          as="span"
           key={`${text}-${index}`}
           custom={index + delay * 20}
           variants={bounceVariants}
           className="inline-block"
           style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+          gpu={true}
         >
           {char}
-        </motion.span>
+        </OptimizedMotion>
       ))}
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { OptimizedMotion } from "@/components/atoms"
 import { Badge } from "@/components/ui/badge"
 
 interface TechnologyBadgeProps {
@@ -10,7 +10,8 @@ interface TechnologyBadgeProps {
 
 export function TechnologyBadge({ name, darkMode = false, index = 0 }: TechnologyBadgeProps) {
   return (
-    <motion.div
+    <OptimizedMotion
+      as="div"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.05 + 0.6, duration: 0.3 }}
@@ -27,7 +28,7 @@ export function TechnologyBadge({ name, darkMode = false, index = 0 }: Technolog
       >
         {name}
       </Badge>
-    </motion.div>
+    </OptimizedMotion>
   )
 }
 

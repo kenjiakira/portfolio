@@ -1,9 +1,10 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { aboutIcons } from "@/components/ui/external-icon"
 import { useTranslations } from "@/hooks/use-translations-context"
+import { useMobileOptimization } from "@/hooks/use-mobile"
+import { AnimatedBackground } from "@/components/atoms"
 import { SectionHeader, ExperienceCard } from "@/components/molecules"
 
 interface ExperienceSectionProps {
@@ -22,6 +23,7 @@ interface Experience {
 
 export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
   const { t } = useTranslations()
+  const { shouldReduceAnimations } = useMobileOptimization()
 
   const experiences: Experience[] = [
     {
@@ -36,7 +38,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
         t.highlight_cicd_optimize,
         t.highlight_performance_improve
       ],
-      companyLogo: aboutIcons.briefcase
+      companyLogo: aboutIcons.company
     },
     {
       role: t.role_fullstack,
@@ -62,7 +64,7 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
         t.highlight_backend_optimize,
         t.highlight_system_stability
       ],
-      companyLogo: aboutIcons.briefcase
+      companyLogo: aboutIcons.bot
     },
     {
       role: t.role_founder,
@@ -88,15 +90,16 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
         t.highlight_community_support,
         t.highlight_codino_build
       ],
-      companyLogo: aboutIcons.briefcase
+      companyLogo: aboutIcons.ceo
     }
   ]  
 
   return (
     <section id="experience" className="py-20 lg:py-32 px-4 lg:px-6 relative overflow-hidden">
-              {/* Liquid Glass Background - exactly like Hero */}
+      {/* Liquid Glass Background - tối ưu */}
+      {!shouldReduceAnimations && (
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div
+          <AnimatedBackground
             className={`absolute top-20 left-10 w-80 h-80 ${
               darkMode ? 'bg-white/5' : 'bg-slate-900/5'
             } rounded-full blur-3xl`}
@@ -110,8 +113,9 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
               repeat: Infinity,
               ease: "easeInOut",
             }}
+            reduceMotion={shouldReduceAnimations}
           />
-          <motion.div
+          <AnimatedBackground
             className={`absolute bottom-20 right-10 w-96 h-96 ${
               darkMode ? 'bg-white/3' : 'bg-slate-900/3'
             } rounded-full blur-3xl`}
@@ -126,8 +130,10 @@ export function ExperienceSection({ darkMode }: ExperienceSectionProps) {
               ease: "easeInOut",
               delay: 2,
             }}
+            reduceMotion={shouldReduceAnimations}
           />
         </div>
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}

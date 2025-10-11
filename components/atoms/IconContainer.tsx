@@ -36,7 +36,7 @@ export function IconContainer({
   const Container = animate ? motion.div : "div"
   const animationProps = animate ? {
     whileHover: { scale: 1.1, y: -2 },
-    transition: { type: "spring", stiffness: 300 }
+    transition: { type: "spring" as const, stiffness: 300 }
   } : {}
   
   return (
